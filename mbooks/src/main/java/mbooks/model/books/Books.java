@@ -1,10 +1,11 @@
 package mbooks.model.books;
 
-import com.books.model.lending.Lending;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import mbooks.model.lending.Lending;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;

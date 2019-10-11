@@ -1,9 +1,10 @@
 package mbooks.controller.dto.books;
 
-import com.books.model.book.Cover;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import mbooks.model.books.Cover;
 
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;

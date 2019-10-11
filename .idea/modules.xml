@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mbooks/mbooks.iml" filepath="$PROJECT_DIR$/mbooks/mbooks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/memails/memails.iml" filepath="$PROJECT_DIR$/memails/memails.iml" />
+      <module fileurl="file://$PROJECT_DIR$/musers/musers.iml" filepath="$PROJECT_DIR$/musers/musers.iml" />
+    </modules>
+  </component>
+</project>

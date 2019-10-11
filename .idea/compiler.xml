@@ -6,15 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="library" />
+        <module name="eureka-server" />
         <module name="mbooks" />
-        <module name="config-server" />
         <module name="memails" />
         <module name="musers" />
+        <module name="library" />
+        <module name="config-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="config-server" target="1.8" />
+      <module name="eureka-server" target="1.8" />
       <module name="library" target="1.8" />
       <module name="mbooks" target="1.8" />
       <module name="memails" target="1.8" />
@@ -24,6 +26,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="config-server" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
       <module name="library" options="-parameters" />
       <module name="mbooks" options="-parameters" />
       <module name="memails" options="-parameters" />

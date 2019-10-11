@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Theme")
+@RequestMapping("/theme")
 public class ThemeController {
 
     @Autowired

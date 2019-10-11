@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Language")
+@RequestMapping("/language")
 public class LanguageController {
 
     Logger log = LoggerFactory.getLogger(this.getClass());

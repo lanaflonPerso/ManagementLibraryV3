@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Lending")
+@RequestMapping("/lending")
 public class LendingController {
     @Autowired
     private ILendingService lendingService;

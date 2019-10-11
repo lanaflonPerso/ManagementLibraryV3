@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr-FR"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS and CSS-->
+    <link type="text/css"  id="hueman-main-style-css" th:href="@{/css/main.min.css}"  rel="stylesheet"/>
+
+    <link id="hu-user-gfont" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300italic,300,400italic,600&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
+    <link type="text/css" th:href="@{/css/font-awesome.min.css}"  rel="stylesheet"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link type="text/css" th:href="@{/bootstrap-table/dist/bootstrap-table.min.css}"  rel="stylesheet"/>
+    <link type="text/css" th:href="@{/bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.css}"  rel="stylesheet"/>
+
+    <link type="text/css" th:href="@{/css/styles.css}"  rel="stylesheet"/>
+
+    <link type="text/css" th:href="@{/css/offcanvas.css}"  rel="stylesheet"/>
+    <link type="text/css" th:href="@{/css/climbingfriend.css}"  rel="stylesheet"/>
+    <link type="text/css" th:href="@{/css/carousel.css}"  rel="stylesheet"/>
+
+
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Les amis de l'escalade</title>
+</head>
+
+<body>
+        <th:block th:insert="~{ fragment/header :: header }" ></th:block>
+
+
+        <div layout:fragment="content" ></div>
+
+        <th:block th:insert="~{ fragment/footer :: footer }"></th:block>
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+        <script src="https://kit.fontawesome.com/688beb1e3c.js"></script>
+        <script type="text/javascript" th:src="@{/bootstrap-table/dist/bootstrap-table.min.js}"></script>
+        <script type="text/javascript" th:src="@{/bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.js}"></script>
+        <script type="text/javascript" th:src="@{/bootstrap-table/dist/locale/bootstrap-table-fr-FR.min.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/tinymce/4.7.9/tinymce.min.js}"></script>
+
+        <script type="text/javascript" th:src="@{/js/holder.min.js}"></script>
+
+
+
+
+</body>
+</html>

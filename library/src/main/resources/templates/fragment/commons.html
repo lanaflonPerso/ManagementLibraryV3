@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <title>Communs</title>
+</head>
+<body>
+    <div th:fragment="alert">
+        <div class="alert alert-danger text-center offset-3 col-md-6" role="alert" th:if="${delete == 'err'}">
+            Une contrainte en base de données empêche la réalisation de votre demande.
+        </div>
+        <div class="alert alert-success text-center offset-3 col-md-6" role="alert"  th:if="${delete == 'delete'}" >
+            L'effacement a été réalisé avec succés.
+        </div>
+    </div>
+</body>
+</html>

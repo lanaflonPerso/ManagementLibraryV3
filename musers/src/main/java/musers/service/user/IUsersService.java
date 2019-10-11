@@ -1,0 +1,30 @@
+package musers.service.user;
+
+
+
+
+import musers.model.user.Users;
+
+import java.util.List;
+
+
+public interface IUsersService  {
+
+    Users findUser(Long idUser);
+    Users findUser(String email);
+
+    List<Users> findAll();
+
+    void save(Users user);
+
+    void updateRole(Long idUser, String newRole);
+
+
+
+
+
+
+
+
+
+}

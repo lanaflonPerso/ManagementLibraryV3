@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+
+    <div th:fragment="mainContent" class="col-md-8 blog-main">
+ok
+<div th:each="l : ${languageList}" >
+    <p th:text="${l.id}"></p>
+    <p th:text="${l.value}"></p>
+
+</div>
+
+
+    </div>
+
+    <aside th:fragment="sidebar" class="col-md-4 blog-sidebar">
+
+    </aside>
+
+
+
+</body>
+</html>

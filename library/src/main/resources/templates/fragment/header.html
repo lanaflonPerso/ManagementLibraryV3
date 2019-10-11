@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <header th:fragment="header">
+        <!-- Fixed navbar [[${#httpServletRequest.remoteUser}]] -->
+
+
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top" role="navigation" >
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsClimbing" aria-controls="navbarsClimbing" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/img/logo-small.png}" th:href="@{/}" class="align-self-center mr-3" alt="logo amis de l'escalade"/>
+            </a>
+            <a sec:authorize="isAnonymous()" class="nav-link text-muted w-25" th:href="@{/registration}">S'inscrire</a>
+            <a sec:authorize="isAuthenticated()" class="nav-link text-muted w-25" th:href="@{/profil}"  >Bienvenue , </a>
+
+            <div class="collapse navbar-collapse" id="navbarsClimbing">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/}">Accueil</a>
+                    </li>
+
+
+
+
+                    <li sec:authorize="isAuthenticated()" class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mon profil
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown2">
+                            <li><a class="dropdown-item" th:href="@{/registration/info}" >Mes infos</a> </li>
+                        </ul>
+                    </li>
+                    <li sec:authorize="hasAnyRole('ADMIN','ACTUATOR')" class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Gestion
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown">
+
+
+                            <div sec:authorize="hasRole('ADMIN')">
+                                <div class="dropdown-divider"></div>
+                                <li><a class="dropdown-item" th:href="@{/registration/all}">Les utilisateurs</a></li>
+                                <li><a class="dropdown-item" th:href="@{/javadoc/index.html}">Javadoc</a></li>
+                            </div>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/apropos}">A propos</a>
+                    </li>
+                </ul>
+
+                <form class="form-inline mt-2 mt-md-0">
+                    <a sec:authorize="isAnonymous()" class="btn btn-sm btn-outline-secondary" th:href="@{/login}">Connexion</a>
+                    <a sec:authorize="isAuthenticated()" class="btn btn-sm btn-outline-secondary" th:href="@{/logout}">Déconnexion</a>
+                </form>
+            </div>
+
+        </nav>
+
+
+    </header>
+
+
+</body>
+</html>

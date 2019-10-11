@@ -1,0 +1,34 @@
+{
+  "groups": [
+    {
+      "name": "microservice.config",
+      "type": "mbooks.config.ApplicationPropertiesConfig",
+      "sourceType": "mbooks.config.ApplicationPropertiesConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "microservice.config.caroussel-interval",
+      "type": "java.lang.Long",
+      "sourceType": "mbooks.config.ApplicationPropertiesConfig"
+    },
+    {
+      "name": "microservice.config.cover-use",
+      "type": "java.lang.String",
+      "sourceType": "mbooks.config.ApplicationPropertiesConfig"
+    },
+    {
+      "name": "microservice.config.renewal-day",
+      "type": "java.lang.Integer",
+      "sourceType": "mbooks.config.ApplicationPropertiesConfig",
+      "defaultValue": 0
+    },
+    {
+      "name": "microservice.config.renewal-number",
+      "type": "java.lang.Integer",
+      "sourceType": "mbooks.config.ApplicationPropertiesConfig",
+      "defaultValue": 0
+    }
+  ],
+  "hints": []
+}

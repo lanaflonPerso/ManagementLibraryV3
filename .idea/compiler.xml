@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eureka-server" />
         <module name="mbooks" />
+        <module name="eureka-server" />
         <module name="memails" />
+        <module name="zuul-server" />
         <module name="musers" />
         <module name="library" />
         <module name="config-server" />
@@ -21,6 +22,7 @@
       <module name="mbooks" target="1.8" />
       <module name="memails" target="1.8" />
       <module name="musers" target="1.8" />
+      <module name="zuul-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -31,6 +33,7 @@
       <module name="mbooks" options="-parameters" />
       <module name="memails" options="-parameters" />
       <module name="musers" options="-parameters" />
+      <module name="zuul-server" options="-parameters" />
     </option>
   </component>
 </project>

@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/microservice-users")
 public interface IMicroserviceUsersProxy {
 
-    @GetMapping(value = "/connection/{id}")
+    @GetMapping(value = "/user/connection/{id}")
     UsersBean user(@PathVariable("id") String  id);
 }

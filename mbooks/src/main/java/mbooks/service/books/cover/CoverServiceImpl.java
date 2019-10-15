@@ -44,7 +44,7 @@ public class CoverServiceImpl implements ICoverService {
      * @return On retourne le fichier si présent en base de données
      * sinon on retourne le nouveau fichier : (entity) Photo
      */
-    public Cover storeFile(MultipartFile file)  {
+    public Cover storeFile(MultipartFile file, String use)  {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
         try {
@@ -60,7 +60,7 @@ public class CoverServiceImpl implements ICoverService {
             if(cover != null )
                 return cover;
             else
-                return this.save( fileName, contentType,  data );
+                return this.save( fileName, contentType,  data, use );
 
         } catch (IOException ex) {
 
@@ -75,9 +75,9 @@ public class CoverServiceImpl implements ICoverService {
      * @param data Le contenu du fichier
      * @return Le nouveau fichier sauvegardé : (entity) Photo
      */
-    public Cover save(String fileName, String contentType, byte[] data) {
+    public Cover save(String fileName, String contentType, byte[] data, String use) {
             Cover cover = new Cover(fileName, contentType, data, appPropertiesConfig.getCoverUse() );
-
+            cover.setUse( use );
             return coverRepository.save( cover );
     }
 

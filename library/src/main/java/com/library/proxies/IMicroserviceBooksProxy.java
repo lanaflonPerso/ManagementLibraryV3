@@ -1,10 +1,14 @@
 package com.library.proxies;
 
+import com.library.beans.mbooks.book.CoverBean;
 import com.library.beans.mbooks.book.LanguageBean;
+import com.library.technical.uploadfile.UploadFileResponse;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,4 +19,11 @@ public interface IMicroserviceBooksProxy {
 
     @GetMapping(value = "/language/all")
     List<LanguageBean> languageList();
+
+
+    @GetMapping("/cover/photo/{fileId}")
+    ResponseEntity<Resource> downloadFile(@PathVariable("fileId") String fileId);
+
+    @PostMapping("/cover/uploadFile")
+    UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("use") String use);
 }

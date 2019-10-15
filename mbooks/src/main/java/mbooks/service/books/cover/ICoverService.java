@@ -9,8 +9,8 @@ public interface ICoverService {
 
     List<Cover> findAll();
 
-    Cover save(String fileName, String contentType, byte[] data);
-    Cover storeFile(MultipartFile file);
+    Cover save(String fileName, String contentType, byte[] data,String use);
+    Cover storeFile(MultipartFile file,String use);
     Cover getFile(String fileId);
     Long getCarousselInterval();
 }

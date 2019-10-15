@@ -15,5 +15,28 @@
             L'effacement a été réalisé avec succés.
         </div>
     </div>
+
+    <h1 th:fragment="titleH1( title )" class="text-dark" >
+        <strong th:text="${title}"></strong>
+    </h1>
+
+
+    <div th:fragment="titleH4( title )" class="d-flex align-items-center p-3 mb-2 text-white-50 bg-secondary rounded box-shadow">
+        <div class="lh-100 offset-4">
+            <h4 class="mb-0 text-white lh-100 text-center" th:text="${title}">Title</h4>
+        </div>
+    </div>
+
+
+
+    <div th:fragment="titles( title )" role="alert" class="alert alert-success float-left w-50 p-2 text-center" th:text="${title}" >Title</div>
+
+    <!-- sec:authorize="isAuthenticated()" -->
+    <a th:fragment="navAdd( url,title)" class="btn btn-outline-success float-right" th:href="@{/{url}/add}"  ><i class="fas fa-plus-circle mx-2"></i> <span th:text="${title}">Title</span></a>
+    <a th:fragment="navUpdate( url,id,title)" class="btn btn-outline-success float-right" th:href="@{ /{url}/edit/{id}(id=${id},url=${url}) }"  ><i class="fas fa-edit mx-2"></i><span th:text="${title}">Title</span> </a>
+
+    <button th:fragment="buttonSubmit" class="btn btn-outline-success btn-lg btn-block" type="submit"><i class="fas fa-plus-circle mx-2"></i> Valider</button>
+
+
 </body>
 </html>

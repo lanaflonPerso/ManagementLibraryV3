@@ -15,10 +15,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img th:src="@{/img/logo-small.png}" th:href="@{/}" class="align-self-center mr-3" alt="logo amis de l'escalade"/>
+                <img th:src="@{/img/logo-small.png}" th:href="@{/}" class="align-self-center mr-3" alt="Bibliothèque de Villeurbanne"/>
             </a>
-            <a sec:authorize="isAnonymous()" class="nav-link text-muted w-25" th:href="@{/registration}">S'inscrire</a>
-            <a sec:authorize="isAuthenticated()" class="nav-link text-muted w-25" th:href="@{/profil}"  >Bienvenue , </a>
+
 
             <div class="collapse navbar-collapse" id="navbarsClimbing">
                 <ul class="navbar-nav mr-auto">
@@ -26,9 +25,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" th:href="@{/}">Accueil</a>
                     </li>
-
-
-
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/}">Liste des livres disponibles</a>
+                    </li>
 
                     <li sec:authorize="isAuthenticated()" class="nav-item dropdown active">
                         <a class="nav-link dropdown-toggle" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,6 +35,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown2">
                             <li><a class="dropdown-item" th:href="@{/registration/info}" >Mes infos</a> </li>
+                            <li><a class="dropdown-item" th:href="@{/}" >Mes emprunts</a> </li>
                         </ul>
                     </li>
                     <li sec:authorize="hasAnyRole('ADMIN','ACTUATOR')" class="nav-item dropdown active">
@@ -43,11 +43,20 @@
                             Gestion
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown">
-
+                            <div sec:authorize="hasAnyRole('ADMIN','ACTUATOR')">
+                                <li><a class="dropdown-item" th:href="@{/}">Ajout d'un utilisateur</a></li>
+                                <li><a class="dropdown-item" th:href="@{/}">Liste des emprunts par livre</a></li>
+                                <li><a class="dropdown-item" th:href="@{/}">Liste des emprunts par utilisateur</a></li>
+                            </div>
 
                             <div sec:authorize="hasRole('ADMIN')">
                                 <div class="dropdown-divider"></div>
                                 <li><a class="dropdown-item" th:href="@{/registration/all}">Les utilisateurs</a></li>
+                                <li><a class="dropdown-item" th:href="@{/cover/add}">Ajout d'une couverture</a></li>
+                                <li><a class="dropdown-item" th:href="@{/}">Ajout d'un auteur</a></li>
+                                <li><a class="dropdown-item" th:href="@{/}">Ajout d'une langue</a></li>
+                                <li><a class="dropdown-item" th:href="@{/}">Ajout d'un thème</a></li>
+                                <li><a class="dropdown-item" th:href="@{/}">Les utilisateurs</a></li>
                                 <li><a class="dropdown-item" th:href="@{/javadoc/index.html}">Javadoc</a></li>
                             </div>
 
@@ -57,10 +66,11 @@
                         <a class="nav-link" th:href="@{/apropos}">A propos</a>
                     </li>
                 </ul>
-
+                <a sec:authorize="isAuthenticated()" class="nav-link text-muted w-25" th:href="@{/profil}"  >Bienvenue , </a>
                 <form class="form-inline mt-2 mt-md-0">
-                    <a sec:authorize="isAnonymous()" class="btn btn-sm btn-outline-secondary" th:href="@{/login}">Connexion</a>
-                    <a sec:authorize="isAuthenticated()" class="btn btn-sm btn-outline-secondary" th:href="@{/logout}">Déconnexion</a>
+
+                    <a sec:authorize="isAnonymous()" class="btn btn-sm btn-outline-secondary ml-1" th:href="@{/login}">Connexion</a>
+                    <a sec:authorize="isAuthenticated()" class="btn btn-sm btn-outline-secondary ml-1" th:href="@{/logout}">Déconnexion</a>
                 </form>
             </div>
 

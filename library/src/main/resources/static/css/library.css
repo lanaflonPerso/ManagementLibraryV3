@@ -8,6 +8,12 @@ body {
     -o-background-size: cover;
 }
 */
+
+
+.logo{
+    width: 12px;
+    height: 12px;
+}
 .colEtat {
     width: 95px;
 }

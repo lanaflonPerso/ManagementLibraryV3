@@ -1,15 +1,20 @@
-package mbooks.controller.dto.books.cover;
+package com.library.beans.mbooks.cover;
 
+import com.library.beans.mbooks.book.BookBean;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class CoverCreateDto {
+public  @Data class CoverBean {
+
+    private String id;
 
     @NotBlank(message = "Le nom de l''image est obligatoire.")
     private String fileName;
@@ -25,4 +30,6 @@ public class CoverCreateDto {
 
     @NotBlank(message = "Le type d''utilisation de l''image est obligatoire.")
     private String use;
+
+    private List<BookBean> bookList;
 }

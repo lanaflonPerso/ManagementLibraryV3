@@ -25,12 +25,10 @@ $(document).ready(function () {
         var formData = new FormData();
 
         formData.append('file',$('#filePhoto')[0].files[0]);
-        formData.append('use', $('#use').val() );
-
         $.post({
 
             enctype: 'multipart/form-data',
-            url: "/cover/uploadFile",
+            url: "/cover/uploadCover",
             data: formData,
             processData: false,
             contentType: false,

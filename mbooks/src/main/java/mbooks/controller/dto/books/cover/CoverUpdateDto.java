@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -16,13 +17,18 @@ public class CoverUpdateDto {
     @Id
     private String id;
 
-    @NonNull
+    @NotBlank(message = "Le nom de l''image est obligatoire.")
     private String fileName;
 
-    @NonNull
+    @NotBlank(message = "Le type d''image est obligatoire.")
     private String fileType;
 
-    @NonNull
-    @Lob
+    @NotBlank(message = "La taille de l''image est obligatoire.")
+    private String fileSize;
+
+    @NotBlank(message = "L''image est obligatoire.")
     private byte[] data;
+
+    @NotBlank(message = "Le type d''utilisation de l''image est obligatoire.")
+    private String use;
 }

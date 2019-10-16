@@ -1,6 +1,7 @@
 package mbooks.controller.book;
 
 
+import mbooks.config.ApplicationPropertiesConfig;
 import mbooks.controller.dto.books.cover.CoverCreateDto;
 import mbooks.controller.dto.books.cover.CoverUpdateDto;
 import mbooks.exceptions.ResourceNotFoundException;
@@ -15,10 +16,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,6 +34,11 @@ public class CoverController {
     @Autowired
     private ICoverService coverService;
 
+    @GetMapping("/{id}")
+    public Cover getCover(@PathVariable String id) {
+        return coverService.getCover( id );
+    }
+
     @GetMapping("/all")
     public List<Cover> coverList(){
 
@@ -38,37 +47,29 @@ public class CoverController {
 
         return coverList;
     }
-    @GetMapping("/photo/{fileId}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) {
 
-        Cover cover = coverService.getFile(fileId);
+    @PostMapping("/save")
+    public Cover save(@DTO(CoverCreateDto.class) Cover cover)  {
 
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(cover.getFileType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + cover.getFileName() + "\"")
-                .body(new ByteArrayResource(cover.getData()));
+        return coverService.save( cover );
     }
 
-    @PostMapping("/uploadFile")
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("use")  String use)  {
-        Cover cover = coverService.storeFile( file, use );
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@DTO(CoverUpdateDto.class) Cover cover){
 
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/photo/")
-                .path(cover.getId())
-                .toUriString();
-
-        return new UploadFileResponse(cover.getId(),cover.getFileName(), fileDownloadUri,
-                file.getContentType(), file.getSize(),use);
+        coverService.save( cover );
     }
 
-    @PostMapping("/uploadMultipleFiles")
-    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files, String use) {
-        return Arrays.asList(files)
-                .stream()
-                .map(file -> uploadFile(file, use))
-                .collect(Collectors.toList());
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public boolean delete(@PathVariable String id){
+
+        return coverService.delete( id );
     }
+
+
+
 
 
 }

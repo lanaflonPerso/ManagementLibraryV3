@@ -1,5 +1,6 @@
 package com.library.beans.mbooks.book;
 
+import com.library.beans.mbooks.cover.CoverBean;
 import com.library.beans.mbooks.lending.LendingBean;
 import lombok.Data;
 import lombok.NoArgsConstructor;

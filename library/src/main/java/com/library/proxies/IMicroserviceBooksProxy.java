@@ -1,14 +1,12 @@
 package com.library.proxies;
 
-import com.library.beans.mbooks.book.CoverBean;
+
 import com.library.beans.mbooks.book.LanguageBean;
-import com.library.technical.uploadfile.UploadFileResponse;
+import com.library.beans.mbooks.cover.CoverBean;
+import com.library.beans.mbooks.cover.CoverCreateBean;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.core.io.Resource;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -17,13 +15,25 @@ import java.util.List;
 @RequestMapping("/microservice-books")
 public interface IMicroserviceBooksProxy {
 
+
+
     @GetMapping(value = "/language/all")
     List<LanguageBean> languageList();
 
 
-    @GetMapping("/cover/photo/{fileId}")
-    ResponseEntity<Resource> downloadFile(@PathVariable("fileId") String fileId);
+    @GetMapping("/cover/{id}")
+    CoverBean getCover(@PathVariable("id") String id);
 
-    @PostMapping("/cover/uploadFile")
-    UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("use") String use);
+    @GetMapping("/cover/all")
+     List<CoverBean> coverList();
+
+    @PostMapping("/cover/save")
+    CoverBean save(@RequestBody CoverCreateBean cover);
+
+    @PutMapping("/cover/update")
+    void update(@RequestBody CoverBean cover);
+
+    @DeleteMapping("/cover/{id}")
+    boolean delete(@PathVariable String id);
+
 }

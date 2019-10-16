@@ -9,10 +9,10 @@
     <title>Infos couverture</title>
 </head>
 <body>
-<main role="main" class="container" th:object="${cover}" layout:fragment="content" >
+<main role="main" class="container" th:object="${coverBean}" layout:fragment="content" >
     <div class="clearfix pb-2 pt-2 my-2" >
         <th:block th:insert="~{ fragment/commons :: titles( 'Information de la couverture d''un livre' ) }"></th:block>
-        <th:block th:insert="~{ fragment/commons :: navUpdate( 'cover',${cover.id},'Modifier la couverture'  ) }"></th:block>
+        <th:block th:insert="~{ fragment/commons :: navUpdate( 'cover',${coverBean.id},'Modifier la couverture'  ) }"></th:block>
     </div>
 
     <th:block th:insert="~{ fragment/cover :: infoHeader }"></th:block>

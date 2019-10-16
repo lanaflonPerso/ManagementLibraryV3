@@ -27,7 +27,7 @@ class UploadFileResponse {
     @NonNull
     private long size;
 
-    @NonNull String use;
+
 
 
 }

@@ -30,6 +30,9 @@ public @Data class Cover {
     private String fileType;
 
     @NonNull
+    private String fileSize;
+
+    @NonNull
     @Lob
     private byte[] data;
 

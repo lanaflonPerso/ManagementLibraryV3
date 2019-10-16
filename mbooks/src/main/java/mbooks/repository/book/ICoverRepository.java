@@ -13,7 +13,7 @@ import java.util.List;
  * JPA Initialisation de l'entity Photo
  */
 @Repository
-public interface ICoverRepository extends JpaRepository<Cover, String> {
+public interface ICoverRepository extends JpaRepository<Cover, Long> {
 
 
     List<Cover> findAllByUseIs(String use);

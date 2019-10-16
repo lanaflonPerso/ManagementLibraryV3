@@ -11,7 +11,7 @@
 
     <!---  début de div.media ----------------------------------------------------->
     <div th:fragment="infoHeader" class="media" >
-        <img class="w-50 align-self-center mr-3 photoSize" th:src="${'/photo/' + cover.id}"  th:alt="${'Image de couverture '+ cover.fileName}" />
+        <img class="w-50 align-self-center mr-3 photoSize" th:src="${ coverPath  + coverBean.fileName }"  th:alt="${'Image de couverture '+ coverBean.fileName}" />
 
         <!---  début de div.media-body ----------------------------------------------------->
         <div class="media-body">
@@ -21,27 +21,18 @@
                 <img th:src="@{/img/easymoblog.png}" alt="" class="mr-2 rounded bg-dark logo"/>
                 <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                     <strong class="d-block text-gray-dark">Nom du fichier</strong>
-                    <span th:text="${cover.fileName}"></span>
+                    <span th:text="${coverBean.fileName}"></span>
                 </p>
             </div>
             <!-------------------------------  fin de div.media text-muted : Type --------------------------->
 
-            <!---  début de div.media text-muted : Hauteur ----------------------------------------------------->
-            <div class="media text-muted pt-3">
-                <img th:src="@{/img/filetypes.png}" alt="" class="mr-2 rounded bg-dark logo"/>
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">Type de fichier</strong>
-                    <span th:text="${cover.fileType}"></span>
-                </p>
-            </div>
-            <!-------------------------------  fin de div.media text-muted : Hauteur --------------------------->
 
             <!---  début de div.media text-muted : Orientation ----------------------------------------------------->
             <div class="media text-muted pt-3" >
                 <img th:src="@{/img/utilities.png}" alt="" class="mr-2 rounded bg-dark logo"/>
                 <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                     <strong class="d-block text-gray-dark">Utilisation</strong>
-                    <span th:text="${cover.use}"></span>
+                    <span th:text="${coverBean.use}"></span>
                 </p>
             </div>
             <!-------------------------------  fin de div.media text-muted : Orientation --------------------------->

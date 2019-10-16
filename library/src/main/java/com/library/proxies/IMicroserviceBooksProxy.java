@@ -22,18 +22,18 @@ public interface IMicroserviceBooksProxy {
 
 
     @GetMapping("/cover/{id}")
-    CoverBean getCover(@PathVariable("id") String id);
+    CoverBean getCover(@PathVariable("id") Long id);
 
     @GetMapping("/cover/all")
      List<CoverBean> coverList();
 
     @PostMapping("/cover/save")
-    CoverBean save(@RequestBody CoverBean cover);
+    CoverBean save(@RequestBody CoverCreateBean coverCreateBean);
 
     @PutMapping("/cover/update")
-    void update(@RequestBody CoverBean cover);
+    void update(@RequestBody CoverBean coverBean);
 
     @DeleteMapping("/cover/{id}")
-    boolean delete(@PathVariable String id);
+    boolean delete(@PathVariable Long id);
 
 }

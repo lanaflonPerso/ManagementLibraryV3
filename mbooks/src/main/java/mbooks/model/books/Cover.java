@@ -18,10 +18,9 @@ import java.util.List;
 @Entity
 public @Data class Cover {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
 
     @NonNull
     private String fileName;

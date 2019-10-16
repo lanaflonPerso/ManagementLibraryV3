@@ -45,8 +45,6 @@ public class CoverServiceImpl implements ICoverService {
 
            CoverBean coverBean = new CoverBean();
            coverBean.setFileName( fileName );
-           coverBean.setFileType( contentType );
-           coverBean.setData( data );
            return coverBean;
 
         } catch (IOException ex) {

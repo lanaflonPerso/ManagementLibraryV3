@@ -37,12 +37,12 @@ public class CoverServiceImpl implements ICoverService {
     }
 
 
-    public Cover getCover(String id ) {
+    public Cover getCover(Long id ) {
         return coverRepository.findById( id )
                 .orElseThrow(() -> new MyFileNotFoundException("Fichier non trouvé avec l'id " + id ));
     }
 
-    public boolean delete(String id){
+    public boolean delete(Long id){
         try {
             coverRepository.deleteById( id );
             return true;

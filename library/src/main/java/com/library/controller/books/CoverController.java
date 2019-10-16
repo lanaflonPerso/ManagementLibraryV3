@@ -36,14 +36,17 @@ public class CoverController {
     @Autowired
     private ApplicationPropertiesConfig appPropertiesConfig;
 
+
+
     @ModelAttribute
-    private CoverBean coverBean(){return new  CoverBean(); }
+    private CoverCreateBean coverCreateBean(){return new CoverCreateBean(); }
 
     @GetMapping("/info/{id}")
-    public String info(@PathVariable("id") String id,Model model){
+    public String info(@PathVariable("id") Long id,Model model){
 
        CoverBean coverBean =  mBooksProxy.getCover( id );
 
+       model.addAttribute("coverPath",appPropertiesConfig.getCoverPath() );
        model.addAttribute( coverBean );
 
         return "books/cover/info-cover";
@@ -62,19 +65,19 @@ public class CoverController {
     public String add(Model model){ return "books/cover/add-cover";}
 
     @PostMapping("/save")
-    public String update(@ModelAttribute @Valid CoverBean coverBean, BindingResult result,Model model){
+    public String update(@ModelAttribute @Valid CoverCreateBean coverCreateBean, BindingResult result,Model model){
 
         if ( result.hasErrors() )
             return "books/cover/add-cover";
 
-         mBooksProxy.save( coverBean );
+         CoverBean coverBean = mBooksProxy.save( coverCreateBean );
 
         return "redirect:/cover/info/" + coverBean.getId();
 
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") String id,Model model){
+    public String edit(@PathVariable("id") Long id,Model model){
         CoverBean coverBean =  mBooksProxy.getCover( id );
         model.addAttribute( coverBean );
         return "/books/cover/update-cover";
@@ -92,7 +95,7 @@ public class CoverController {
     }
 
     @GetMapping("/delete/{id]")
-    public String delete(@PathVariable("id") String id,Model model){
+    public String delete(@PathVariable("id") Long id,Model model){
         if ( mBooksProxy.delete( id ) )
             model.addAttribute("delete","delete");
         else
@@ -100,35 +103,6 @@ public class CoverController {
         return "redirect: /cover/all";
     }
 
-
-
-    @PostMapping("/uploadCover")
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file)  {
-        CoverBean coveBeanCreate = coverService.storeFile( file );
-
-        CoverBean coverBean = mBooksProxy.save( coveBeanCreate );
-
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path(appPropertiesConfig.getCoverPath())
-                .path(coverBean.getId())
-                .toUriString();
-
-        return new UploadFileResponse(coverBean.getId(),coverBean.getFileName(), fileDownloadUri,
-                file.getContentType(), file.getSize());
-    }
-/*
-    @GetMapping("/photo/{fileId}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) {
-
-        Photo photo = photoService.getFile(fileId);
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(photo.getFileType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + photo.getFileName() + "\"")
-                .body(new ByteArrayResource(photo.getData()));
-    }
-
- */
 
 
 

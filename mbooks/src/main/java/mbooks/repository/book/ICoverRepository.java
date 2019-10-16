@@ -15,6 +15,6 @@ import java.util.List;
 @Repository
 public interface ICoverRepository extends JpaRepository<Cover, String> {
 
-    Cover findByData(byte[] data);
+
     List<Cover> findAllByUseIs(String use);
 }

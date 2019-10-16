@@ -18,23 +18,13 @@ import java.util.List;
 @Entity
 public @Data class Cover {
 
+
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     @NonNull
     private String fileName;
-
-    @NonNull
-    private String fileType;
-
-    @NonNull
-    private String fileSize;
-
-    @NonNull
-    @Lob
-    private byte[] data;
 
     @NonNull
     private String use;

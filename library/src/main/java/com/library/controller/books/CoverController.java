@@ -37,7 +37,7 @@ public class CoverController {
     private ApplicationPropertiesConfig appPropertiesConfig;
 
     @ModelAttribute
-    private CoverCreateBean coverCreateBean(){return new  CoverCreateBean(); }
+    private CoverBean coverBean(){return new  CoverBean(); }
 
     @GetMapping("/info/{id}")
     public String info(@PathVariable("id") String id,Model model){
@@ -62,12 +62,12 @@ public class CoverController {
     public String add(Model model){ return "books/cover/add-cover";}
 
     @PostMapping("/save")
-    public String update(@ModelAttribute @Valid CoverCreateBean coverCreateBean, BindingResult result,Model model){
+    public String update(@ModelAttribute @Valid CoverBean coverBean, BindingResult result,Model model){
 
         if ( result.hasErrors() )
             return "books/cover/add-cover";
 
-        CoverBean coverBean = mBooksProxy.save( coverCreateBean );
+         mBooksProxy.save( coverBean );
 
         return "redirect:/cover/info/" + coverBean.getId();
 
@@ -104,9 +104,9 @@ public class CoverController {
 
     @PostMapping("/uploadCover")
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file)  {
-        CoverCreateBean coverCreateBean = coverService.storeFile( file );
+        CoverBean coveBeanCreate = coverService.storeFile( file );
 
-        CoverBean coverBean = mBooksProxy.save( coverCreateBean );
+        CoverBean coverBean = mBooksProxy.save( coveBeanCreate );
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(appPropertiesConfig.getCoverPath())

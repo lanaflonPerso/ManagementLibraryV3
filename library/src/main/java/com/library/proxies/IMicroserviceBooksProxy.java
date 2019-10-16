@@ -28,7 +28,7 @@ public interface IMicroserviceBooksProxy {
      List<CoverBean> coverList();
 
     @PostMapping("/cover/save")
-    CoverBean save(@RequestBody CoverCreateBean cover);
+    CoverBean save(@RequestBody CoverBean cover);
 
     @PutMapping("/cover/update")
     void update(@RequestBody CoverBean cover);

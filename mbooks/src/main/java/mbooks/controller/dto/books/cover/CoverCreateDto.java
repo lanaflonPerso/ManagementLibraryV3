@@ -4,12 +4,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class CoverCreateDto {
+
+    @Id
+    private String id;
 
     @NotBlank(message = "Le nom de l''image est obligatoire.")
     private String fileName;

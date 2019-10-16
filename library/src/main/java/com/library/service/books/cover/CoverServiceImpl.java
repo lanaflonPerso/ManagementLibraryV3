@@ -33,7 +33,7 @@ public class CoverServiceImpl implements ICoverService {
      * @return On retourne le fichier si présent en base de données
      * sinon on retourne le nouveau fichier : (entity) Photo
      */
-    public CoverCreateBean storeFile(MultipartFile file)  {
+    public CoverBean storeFile(MultipartFile file)  {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
         try {
@@ -43,11 +43,11 @@ public class CoverServiceImpl implements ICoverService {
             String contentType = file.getContentType();
             byte[] data = file.getBytes();
 
-           CoverCreateBean coverCreateBean = new CoverCreateBean();
-           coverCreateBean.setFileName( fileName );
-           coverCreateBean.setFileType( contentType );
-           coverCreateBean.setData( data );
-           return coverCreateBean;
+           CoverBean coverBean = new CoverBean();
+           coverBean.setFileName( fileName );
+           coverBean.setFileType( contentType );
+           coverBean.setData( data );
+           return coverBean;
 
         } catch (IOException ex) {
             throw new FileStorageException("Impossible de stocker ou de trouver  le fichier " + fileName + ". Veuillez réessayer!", ex);

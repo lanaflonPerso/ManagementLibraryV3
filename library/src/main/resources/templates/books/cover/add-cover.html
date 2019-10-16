@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <form action="#" th:action="@{/cover/save}"  method="post" th:object="${coverCreateBean}" >
+            <form action="#" th:action="@{/cover/save}"  method="post" th:object="${coverBean}" >
                 <th:block th:insert="~{fragment/commons :: titleH4( ${'Ajout d''une couverture de livre'} ) }"></th:block>
 
                 <th:block th:insert="~{fragment/cover :: coverContent( ${'Sélectionner une photo'} ) }"></th:block>

@@ -8,8 +8,8 @@
   ],
   "properties": [
     {
-      "name": "microservice.config.caroussel-interval",
-      "type": "java.lang.Long",
+      "name": "microservice.config.cover-path",
+      "type": "java.lang.String",
       "sourceType": "mbooks.config.ApplicationPropertiesConfig"
     },
     {

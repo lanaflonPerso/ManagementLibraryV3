@@ -3,6 +3,10 @@ package com.library.controller.books.book;
 import com.library.beans.mbooks.book.BookBean;
 import com.library.beans.mbooks.book.BookCreateBean;
 import com.library.service.books.IBooksService;
+import com.library.service.books.author.IAuthorService;
+import com.library.service.books.edition.IEditionService;
+import com.library.service.books.language.ILanguageService;
+import com.library.service.books.theme.IThemeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +23,32 @@ public class BookController {
 
     @ModelAttribute
     public IBooksService booksService(){return booksService;}
+
+    @Autowired
+    private IAuthorService authorService;
+
+    @ModelAttribute
+    public IAuthorService authorService(){return authorService;}
+
+    @Autowired
+    private IEditionService editionService;
+
+    @ModelAttribute
+    public IEditionService editionService(){return editionService;}
+
+    @Autowired
+    private ILanguageService languageService;
+
+    @ModelAttribute
+    public ILanguageService languageService(){return languageService;}
+
+    @Autowired
+    private IThemeService themeService;
+
+    @ModelAttribute
+    public IThemeService themeService(){return themeService;}
+
+
 
     @ModelAttribute
     private BookCreateBean bookCreateBean(){return new BookCreateBean();}

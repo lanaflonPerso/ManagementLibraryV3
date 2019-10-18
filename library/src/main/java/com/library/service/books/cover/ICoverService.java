@@ -10,6 +10,6 @@ public interface ICoverService {
 
 
 
-    CoverBean storeFile(MultipartFile file);
+    CoverCreateBean storeFile(MultipartFile file);
     Long getCarousselInterval();
 }

@@ -4,9 +4,13 @@ package mbooks.controller.dto.books;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import mbooks.model.books.Author;
 import mbooks.model.books.Cover;
+import mbooks.model.books.Language;
+import mbooks.model.books.Theme;
 
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -16,21 +20,32 @@ import javax.validation.constraints.NotNull;
 public class BooksUpdateDto {
 
     @Id
-    @NotEmpty(message = "Le numéro isbn est obligatoire.")
+    private Long id;
+
+    @NotBlank(message = "Le numéro ISBN est obligatoire.")
     private String isbn;
 
-    @NotEmpty(message = "Le titre est obligatoire.")
+    @NotBlank(message = "Le titre du livre est obligatoire.")
     private String title;
 
-    @NotEmpty(message = "Le resumé du livre est obligatoire")
+    @NotBlank(message = "Le résumé du livre est obligaoire")
     private String summary;
 
-    @NotNull(message = "Le nombre d''éxamplaire est obligatoire.")
+    @NotBlank(message ="Le nombre d'examplaire est obligatoire.")
     private Long review;
 
-    @NotNull(message = "Le nombre d''examplaire disponible est obligatoire.")
+    @NotBlank(message = "Le nombre de livre disponible est obligatoire.")
     private Long availability;
 
-    @NotNull
+    @NotNull(message = "Le choix de la couverture est obligatoire.")
     private Cover cover;
+
+    @NotNull(message = "Le choix du langage est obligatoire.")
+    private Language language;
+
+    @NotNull(message = "Le choix de l''auteut est obligatoire.")
+    private Author author;
+
+    @NotNull(message = "Le choix du thème est obligatoire.")
+    private Theme theme;
 }

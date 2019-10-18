@@ -28,7 +28,7 @@ $(document).ready(function () {
         $.post({
 
             enctype: 'multipart/form-data',
-            url: "/cover/uploadCover",
+            url: "/cover/upload",
             data: formData,
             processData: false,
             contentType: false,

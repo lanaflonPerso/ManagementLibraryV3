@@ -20,24 +20,35 @@ public class ThemeController {
     @Autowired
     private IThemeService themeService;
 
-    @GetMapping("/all")
-    public List<Theme> themeList(){
+    @GetMapping("/{id}")
+    public Theme find(@PathVariable Long id) {
+        return themeService.find( id );
+    }
 
-        List<Theme> themeList = themeService.findAll();
-        if (themeList.isEmpty()) throw new ResourceNotFoundException( "Aucun utilisateur trouvé");
+    @GetMapping("/all")
+    public List<Theme> list(){
+
+        List<Theme> themeList = themeService.list();
+        if (themeList.isEmpty()) throw new ResourceNotFoundException( "Aucune couverture de livre trouvée");
 
         return themeList;
     }
 
-    @PostMapping
-    public void newTheme(@DTO(ThemeCreateDto.class) Theme theme) {
-        themeService.save( theme );
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.OK)
+    public Theme save(@DTO(ThemeCreateDto.class) @RequestBody Theme theme)  {
+        return themeService.save(theme);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public void updateTheme(@DTO(ThemeUpdateDto.class) Theme theme ){
-        themeService.save( theme );
+    public Theme update(@DTO(ThemeUpdateDto.class) @RequestBody Theme theme){
+        return themeService.save( theme );
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable Long id){
+        return themeService.delete( id );
     }
 
 }

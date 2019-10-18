@@ -11,6 +11,8 @@ import mbooks.technical.dto.DTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 
 @RestController
@@ -21,7 +23,7 @@ public class CoverController {
     private ICoverService coverService;
 
     @GetMapping("/{id}")
-    public Cover getCover(@PathVariable Long id) {
+    public Cover getCover(@PathVariable String id) {
         return coverService.getCover( id );
     }
 
@@ -35,23 +37,41 @@ public class CoverController {
     }
 
     @PostMapping("/save")
-    public Cover save(@DTO(CoverCreateDto.class) Cover cover)  {
+    @ResponseStatus(HttpStatus.OK)
+    public String save(@DTO(CoverCreateDto.class) @RequestBody Cover cover)  {
 
-        return coverService.save( cover );
+        System.out.println( cover.getFileName() );
+
+        Cover cover1= coverService.save( cover );
+
+        return cover1.getId();
+
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public void update(@DTO(CoverUpdateDto.class) Cover cover){
+    public void update(@DTO(CoverUpdateDto.class) @RequestBody Cover cover){
 
-        coverService.save( cover );
+                coverService.save( cover );
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public boolean delete(@PathVariable Long id){
+    public boolean delete(@PathVariable String id){
 
         return coverService.delete( id );
+    }
+
+
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public String upload(  @RequestParam("file") MultipartFile file){
+
+        return "ok";
+    }
+
+    @GetMapping("/download/{id}")
+    public MultipartFile[] download(  @PathVariable String id){
+
+        return null;
     }
 
 

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import mbooks.model.lending.Lending;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,11 +13,14 @@ import java.util.List;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "isbn"))
 public @Data class Books {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @NonNull
     private String isbn;
 
     @NonNull
@@ -39,7 +41,7 @@ public @Data class Books {
     @NonNull
     private Cover cover;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name="book_lending",
             joinColumns=@JoinColumn(name="isbn", referencedColumnName="isbn"),
@@ -61,5 +63,11 @@ public @Data class Books {
     @JoinColumn(name="id_theme", referencedColumnName="id")
     @NonNull
     private Theme theme;
+
+    @ManyToOne
+    @JoinColumn(name="id_edition", referencedColumnName="id")
+    @NonNull
+    private  Edition edition;
+
 
 }

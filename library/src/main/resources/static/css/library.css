@@ -11,8 +11,8 @@ body {
 
 
 .logo{
-    width: 12px;
-    height: 12px;
+    width: 36px;
+    height: 36px;
 }
 .colEtat {
     width: 95px;
@@ -27,8 +27,8 @@ body {
     content: "Parcourir";
 }
 .photoSize{
-    max-width: 550px;
-    max-height: 350px;
+    max-width: 200px;
+    max-height: 250px;
 }
 .photoTopoSite{
     max-width: 55px;

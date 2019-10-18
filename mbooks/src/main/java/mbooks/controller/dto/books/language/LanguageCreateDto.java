@@ -10,6 +10,6 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Setter
 public class LanguageCreateDto {
-    @NotEmpty(message = "Le nom de langue est obligatoire.")
+    @NotEmpty(message = "Le nom de la langue est obligatoire.")
     private String value;
 }

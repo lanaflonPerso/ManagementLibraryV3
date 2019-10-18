@@ -9,37 +9,46 @@
 <body>
 
 
-    <!---  début de div.media ----------------------------------------------------->
-    <div th:fragment="infoHeader" class="media" >
-        <img class="w-50 align-self-center mr-3 photoSize" th:src="${ coverPath  + coverBean.fileName }"  th:alt="${'Image de couverture '+ coverBean.fileName}" />
+<!---  début de div.media ----------------------------------------------------->
+<div th:fragment="infoHeader" class="media" >
+    <img class="w-50 align-self-center mr-3 photoSize" th:src="${'/photo/' + cover.id}"  th:alt="${'Image de couverture '+ cover.fileName}" />
 
-        <!---  début de div.media-body ----------------------------------------------------->
-        <div class="media-body">
+    <!---  début de div.media-body ----------------------------------------------------->
+    <div class="media-body">
 
-            <!---  début de div.media text-muted : Type----------------------------------------------------->
-            <div class="media text-muted pt-3">
-                <img th:src="@{/img/easymoblog.png}" alt="" class="mr-2 rounded bg-dark logo"/>
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">Nom du fichier</strong>
-                    <span th:text="${coverBean.fileName}"></span>
-                </p>
-            </div>
-            <!-------------------------------  fin de div.media text-muted : Type --------------------------->
-
-
-            <!---  début de div.media text-muted : Orientation ----------------------------------------------------->
-            <div class="media text-muted pt-3" >
-                <img th:src="@{/img/utilities.png}" alt="" class="mr-2 rounded bg-dark logo"/>
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">Utilisation</strong>
-                    <span th:text="${coverBean.use}"></span>
-                </p>
-            </div>
-            <!-------------------------------  fin de div.media text-muted : Orientation --------------------------->
+        <!---  début de div.media text-muted : Type----------------------------------------------------->
+        <div class="media text-muted pt-3">
+            <img th:src="@{/img/easymoblog.png}" alt="" class="mr-2 rounded bg-dark logo"/>
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">Nom du fichier</strong>
+                <span th:text="${cover.fileName}"></span>
+            </p>
         </div>
-        <!-------------------------------  fin de div.media-body --------------------------->
+        <!-------------------------------  fin de div.media text-muted : Type --------------------------->
+
+        <!---  début de div.media text-muted : Hauteur ----------------------------------------------------->
+        <div class="media text-muted pt-3">
+            <img th:src="@{/img/filetypes.png}" alt="" class="mr-2 rounded bg-dark logo"/>
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">Type de fichier</strong>
+                <span th:text="${cover.fileType}"></span>
+            </p>
+        </div>
+        <!-------------------------------  fin de div.media text-muted : Hauteur --------------------------->
+
+        <!---  début de div.media text-muted : Orientation ----------------------------------------------------->
+        <div class="media text-muted pt-3" >
+            <img th:src="@{/img/utilities.png}" alt="" class="mr-2 rounded bg-dark logo"/>
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">Utilisation</strong>
+                <span th:text="${cover.use}"></span>
+            </p>
+        </div>
+        <!-------------------------------  fin de div.media text-muted : Orientation --------------------------->
     </div>
-    <!-------------------------------  fin de div.media --------------------------->
+    <!-------------------------------  fin de div.media-body --------------------------->
+</div>
+<!-------------------------------  fin de div.media --------------------------->
 
 <div th:fragment="coverContent( photofileName )">
     <div class="row">
@@ -54,8 +63,8 @@
                 </div>
                 <div class="custom-file">
                     <input type="file" name="file" class="custom-file-input" id="filePhoto" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
-                    <input type="hidden" class="form-control" th:field="*{id}" id="photo"  />
-                    <!--  -->
+                    <input type="hidden" class="form-control"  id="photo"  />
+                    <!-- th:field="*{id}" -->
                     <label class="custom-file-label" id="filePhotoLabel" for="filePhoto" th:text="${photofileName}" >Sélectionner une photo</label>
                 </div>
             </div>
@@ -69,8 +78,8 @@
         <input type="text" class="form-control" th:field="*{use}" id="use"  />
     </div>
 
-    <div th:if="${id != '' }" class="row" id="coverImg">
-        <img class="w-50 align-self-center mr-3 photoSize" th:src="${'/cover/photo/' + id}"  th:alt="${'Image de couverture '+ fileName}" />
+    <div  class="row" id="coverImg">
+        <img class="w-50 align-self-center mr-3 photoSize" th:src="${'/cover/donwloadCover/45365c89-bd17-4174-9fb6-9cdd5cd94b99' }"  th:alt="${'Image de couverture '}" />
     </div>
 
     <!-------------------- fin de div.row : ---------------->

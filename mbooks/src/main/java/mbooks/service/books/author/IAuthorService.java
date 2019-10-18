@@ -6,6 +6,8 @@ import mbooks.model.books.Author;
 import java.util.List;
 
 public interface IAuthorService {
-    List<Author> findAll();
-    void save(Author author);
+    List<Author> list();
+    Author find(Long id);
+    Author save(Author author);
+    boolean delete(Long id);
 }

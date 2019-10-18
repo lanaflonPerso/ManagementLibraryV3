@@ -15,6 +15,6 @@ public class LanguageUpdateDto {
     @Id
     private Long id;
 
-    @NotEmpty(message = "Le nom de langue est obligatoire.")
+    @NotEmpty(message = "Le nom de la langue est obligatoire.")
     private String value;
 }

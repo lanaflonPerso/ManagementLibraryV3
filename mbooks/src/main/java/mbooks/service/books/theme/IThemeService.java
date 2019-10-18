@@ -5,7 +5,11 @@ import mbooks.model.books.Theme;
 import java.util.List;
 
 public interface IThemeService {
-    List<Theme> findAll();
-    void save(Theme theme);
+
+    Theme find(Long id);
+    List<Theme> list();
+    Theme save(Theme theme);
+    boolean delete(Long id);
+
 }
 

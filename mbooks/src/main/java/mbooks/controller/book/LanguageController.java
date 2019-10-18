@@ -5,6 +5,7 @@ import mbooks.controller.dto.books.language.LanguageCreateDto;
 import mbooks.controller.dto.books.language.LanguageUpdateDto;
 import mbooks.exceptions.ResourceNotFoundException;
 import mbooks.model.books.Language;
+import mbooks.service.books.author.IAuthorService;
 import mbooks.service.books.language.ILanguageService;
 import mbooks.technical.dto.DTO;
 import org.slf4j.Logger;
@@ -19,30 +20,37 @@ import java.util.List;
 @RequestMapping("/language")
 public class LanguageController {
 
-    Logger log = LoggerFactory.getLogger(this.getClass());
-
     @Autowired
     private ILanguageService languageService;
 
+    @GetMapping("/{id}")
+    public Language find(@PathVariable Long id) {
+        return languageService.find( id );
+    }
 
     @GetMapping("/all")
-    public List<Language> languageList(){
+    public List<Language> list(){
 
-        List<Language> addressList = languageService.findAll();
-        if (addressList.isEmpty()) throw new ResourceNotFoundException( "Aucun langage trouvé");
+        List<Language> languageList = languageService.list();
+        if (languageList.isEmpty()) throw new ResourceNotFoundException( "Aucun langage trouvé.");
 
-        log.info("Récupération de la liste des langues");
-        return addressList;
+        return languageList;
     }
 
-    @PostMapping
-    public void newLanguage(@DTO(LanguageCreateDto.class) Language language) {
-        languageService.save( language );
-    }
-
-    @PutMapping
+    @PostMapping("/save")
     @ResponseStatus(HttpStatus.OK)
-    public void updateLanguage(@DTO(LanguageUpdateDto.class) Language language ){
-        languageService.save( language );
+    public Language save(@DTO(LanguageCreateDto.class) @RequestBody Language language)  {
+        return languageService.save(language);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public Language update(@DTO(LanguageUpdateDto.class) @RequestBody Language language){
+        return languageService.save( language );
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable Long id){
+        return languageService.delete( id );
     }
 }

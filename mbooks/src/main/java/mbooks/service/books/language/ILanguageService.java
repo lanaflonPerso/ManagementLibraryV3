@@ -5,6 +5,9 @@ import mbooks.model.books.Language;
 import java.util.List;
 
 public interface ILanguageService {
-    List<Language> findAll();
-    void save(Language language);
+
+    Language find(Long id);
+    List<Language> list();
+    Language save(Language language);
+    boolean delete(Long id);
 }

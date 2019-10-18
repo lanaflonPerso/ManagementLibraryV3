@@ -20,23 +20,34 @@ public class BooksController {
     @Autowired
     private IBooksService booksService;
 
-    @GetMapping("/all")
-    public List<Books> bookList(){
+    @GetMapping("/{id}")
+    public Books find(@PathVariable Long id) {
+        return booksService.find( id );
+    }
 
-        List<Books> booksList = booksService.findAll();
-        if (booksList.isEmpty()) throw new ResourceNotFoundException( "Aucun utilisateur trouvé");
+    @GetMapping("/all")
+    public List<Books> list(){
+
+        List<Books> booksList = booksService.list();
+        if (booksList.isEmpty()) throw new ResourceNotFoundException( "Aucun livre trouvé.");
 
         return booksList;
     }
 
-    @PostMapping
-    public void newBook(@DTO(BooksCreateDto.class) Books books) {
-        booksService.save( books );
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.OK)
+    public Books save(@DTO(BooksCreateDto.class) @RequestBody Books book)  {
+        return booksService.save(book);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public void updateBook(@DTO(BooksUpdateDto.class) Books books ){
-        booksService.save( books );
+    public Books update(@DTO(BooksUpdateDto.class) @RequestBody Books book){
+        return booksService.save( book );
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable Long id){
+        return booksService.delete( id );
     }
 }

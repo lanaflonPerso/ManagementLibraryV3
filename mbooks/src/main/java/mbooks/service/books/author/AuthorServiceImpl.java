@@ -1,9 +1,11 @@
 package mbooks.service.books.author;
 
 
+import mbooks.exceptions.ResourceNotFoundException;
 import mbooks.model.books.Author;
 import mbooks.repository.book.IAuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,11 +16,23 @@ public class AuthorServiceImpl implements IAuthorService {
     @Autowired
     private IAuthorRepository authorRepository;
 
-    public List<Author> findAll(){
-        return authorRepository.findAll();
+    public List<Author> list(){return authorRepository.findAll();}
+
+    public Author find(Long id){
+        return authorRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Editeur non trouvé avec l'id " + id ) );
     }
 
-    public void save(Author author){
-        authorRepository.save( author );
+    public Author save(Author author){
+        return authorRepository.save( author );
+    }
+
+    public boolean delete(Long id){
+        try {
+            authorRepository.deleteById( id );
+            return true;
+        }catch (DataIntegrityViolationException ee){
+            return false;
+        }
     }
 }

@@ -5,6 +5,7 @@ import mbooks.controller.dto.books.author.AuthorCreateDto;
 import mbooks.controller.dto.books.author.AuthorUpdateDto;
 import mbooks.exceptions.ResourceNotFoundException;
 import mbooks.model.books.Author;
+import mbooks.model.books.Language;
 import mbooks.service.books.author.IAuthorService;
 import mbooks.technical.dto.DTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,23 +20,34 @@ public class AuthorController {
     @Autowired
     private IAuthorService authorService;
 
-    @GetMapping("/all")
-    public List<Author> authorList(){
+    @GetMapping("/{id}")
+    public Author find(@PathVariable Long id) {
+        return authorService.find( id );
+    }
 
-        List<Author> authorList = authorService.findAll();
-        if (authorList.isEmpty()) throw new ResourceNotFoundException( "Aucun utilisateur trouvé");
+    @GetMapping("/all")
+    public List<Author> list(){
+
+        List<Author> authorList = authorService.list();
+        if (authorList.isEmpty()) throw new ResourceNotFoundException( "Aucun auteur trouvé.");
 
         return authorList;
     }
 
-    @PostMapping
-    public void newAuthor(@DTO(AuthorCreateDto.class) Author author) {
-        authorService.save( author );
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.OK)
+    public Author save(@DTO(AuthorCreateDto.class) @RequestBody Author author)  {
+        return authorService.save(author);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public void updateAuthor(@DTO(AuthorUpdateDto.class) Author author ){
-        authorService.save( author );
+    public Author update(@DTO(AuthorUpdateDto.class) @RequestBody Author author){
+        return authorService.save( author );
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable Long id){
+        return authorService.delete( id );
     }
 }

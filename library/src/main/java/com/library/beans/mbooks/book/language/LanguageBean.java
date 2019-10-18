@@ -1,11 +1,12 @@
-package com.library.beans.mbooks.book;
+package com.library.beans.mbooks.book.language;
 
+import com.library.beans.mbooks.book.BookBean;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
+
 
 
 @NoArgsConstructor
@@ -13,6 +14,7 @@ public  @Data class LanguageBean {
 
     private Long id;
 
+    @NotBlank(message = "Le langage est obligatoire.")
     private String value;
 
     private List<BookBean> bookList;

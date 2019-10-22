@@ -1,10 +1,10 @@
 package mbooks.controller.book;
 
-import mbooks.controller.dto.books.edition.EditionCreateDto;
-import mbooks.controller.dto.books.edition.EditionUpdateDto;
+import mbooks.controller.dto.edition.EditionCreateDto;
+import mbooks.controller.dto.edition.EditionUpdateDto;
 import mbooks.exceptions.ResourceNotFoundException;
-import mbooks.model.books.Edition;
-import mbooks.service.books.edition.IEditionService;
+import mbooks.model.Edition;
+import mbooks.service.edition.IEditionService;
 import mbooks.technical.dto.DTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

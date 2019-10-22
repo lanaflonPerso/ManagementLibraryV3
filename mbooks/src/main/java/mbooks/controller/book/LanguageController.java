@@ -1,19 +1,19 @@
 package mbooks.controller.book;
 
 
-import mbooks.controller.dto.books.language.LanguageCreateDto;
-import mbooks.controller.dto.books.language.LanguageUpdateDto;
+import mbooks.controller.dto.language.LanguageCreateDto;
+import mbooks.controller.dto.language.LanguageUpdateDto;
 import mbooks.exceptions.ResourceNotFoundException;
-import mbooks.model.books.Language;
-import mbooks.service.books.author.IAuthorService;
-import mbooks.service.books.language.ILanguageService;
+import mbooks.model.Language;
+import mbooks.service.language.ILanguageService;
 import mbooks.technical.dto.DTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @RestController
@@ -23,13 +23,18 @@ public class LanguageController {
     @Autowired
     private ILanguageService languageService;
 
+
+
     @GetMapping("/{id}")
     public Language find(@PathVariable Long id) {
         return languageService.find( id );
     }
 
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
     @GetMapping("/all")
     public List<Language> list(){
+
 
         List<Language> languageList = languageService.list();
         if (languageList.isEmpty()) throw new ResourceNotFoundException( "Aucun langage trouvé.");

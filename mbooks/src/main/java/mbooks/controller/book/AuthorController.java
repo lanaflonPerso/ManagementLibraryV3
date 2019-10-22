@@ -1,12 +1,11 @@
 package mbooks.controller.book;
 
 
-import mbooks.controller.dto.books.author.AuthorCreateDto;
-import mbooks.controller.dto.books.author.AuthorUpdateDto;
+import mbooks.controller.dto.author.AuthorCreateDto;
+import mbooks.controller.dto.author.AuthorUpdateDto;
 import mbooks.exceptions.ResourceNotFoundException;
-import mbooks.model.books.Author;
-import mbooks.model.books.Language;
-import mbooks.service.books.author.IAuthorService;
+import mbooks.model.Author;
+import mbooks.service.author.IAuthorService;
 import mbooks.technical.dto.DTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

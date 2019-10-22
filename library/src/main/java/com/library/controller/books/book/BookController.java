@@ -64,7 +64,7 @@ public class BookController {
     public List<Field> fieldList (){
 
         List< Field > fieldList = Arrays.asList(
-               new Field("cover.id" ),
+               new Field("idCover" ),
                 new Field("isbn" ) ,
                 new Field("title" ),
                 new Field("summary" ) ,
@@ -99,8 +99,7 @@ public class BookController {
     @PostMapping("/save")
     public String save(@ModelAttribute @Valid BookCreateBean bookCreateBean, BindingResult result, Model model){
 
-        if( bookCreateBean.getCover().getId() == ""  )
-            result.rejectValue("cover.id",null,"La photo de couverture du livre est obligatoire.");
+
 
         if ( result.hasErrors() )
             return "books/book/add-book";

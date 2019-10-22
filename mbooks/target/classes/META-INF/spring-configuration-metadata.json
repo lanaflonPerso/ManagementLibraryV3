@@ -8,16 +8,6 @@
   ],
   "properties": [
     {
-      "name": "microservice.config.cover-path",
-      "type": "java.lang.String",
-      "sourceType": "mbooks.config.ApplicationPropertiesConfig"
-    },
-    {
-      "name": "microservice.config.cover-use",
-      "type": "java.lang.String",
-      "sourceType": "mbooks.config.ApplicationPropertiesConfig"
-    },
-    {
       "name": "microservice.config.renewal-day",
       "type": "java.lang.Integer",
       "sourceType": "mbooks.config.ApplicationPropertiesConfig",

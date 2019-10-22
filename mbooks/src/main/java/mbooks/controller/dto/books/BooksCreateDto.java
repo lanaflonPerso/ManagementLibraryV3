@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import mbooks.model.books.Author;
-import mbooks.model.books.Cover;
 import mbooks.model.books.Language;
 import mbooks.model.books.Theme;
 
@@ -34,7 +33,7 @@ public class BooksCreateDto {
 
 
     @NotNull(message = "Le choix de la couverture est obligatoire.")
-    private Cover cover;
+    private String idCover;
 
     @NotNull(message = "Le choix du langage est obligatoire.")
     private Language language;

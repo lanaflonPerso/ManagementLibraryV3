@@ -29,7 +29,7 @@ public @Data class BookCreateBean {
     private Long availability;
 
     @NotNull(message = "Le choix de la couverture est obligatoire.")
-    private CoverBean cover;
+    private String idCover;
 
     @NotNull(message = "Le choix du langage est obligatoire.")
     private LanguageBean language;

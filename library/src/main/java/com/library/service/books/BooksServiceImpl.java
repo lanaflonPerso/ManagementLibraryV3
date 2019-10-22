@@ -45,7 +45,6 @@ public class BooksServiceImpl implements IBooksService {
 
     public BookBean save(BookCreateBean book){
 
-        book.setCover( coverProxy.find( book.getCover().getId() ) );
         book.setAuthor( authorProxy.find( book.getAuthor().getId() ) );
         book.setEdition( editionProxy.find( book.getEdition().getId() ) );
         book.setTheme( themeProxy.find( book.getTheme().getId() ) );

@@ -13,6 +13,4 @@ public class ApplicationPropertiesConfig {
 
     private int renewalNumber;
     private int renewalDay;
-    private String coverUse;
-    private String coverPath;
 }

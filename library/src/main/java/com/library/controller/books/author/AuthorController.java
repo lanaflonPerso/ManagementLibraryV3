@@ -19,8 +19,7 @@ public class AuthorController {
     @Autowired
     private IAuthorService authorService;
 
-    @ModelAttribute
-    public IAuthorService authorService(){return authorService;}
+
 
     @ModelAttribute
     private AuthorCreateBean authorCreateBean(){return new AuthorCreateBean();}

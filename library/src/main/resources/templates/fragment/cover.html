@@ -50,10 +50,17 @@
 </div>
 <!-------------------------------  fin de div.media --------------------------->
 
-<div th:fragment="coverContent( photofileName )">
+<div th:fragment="coverContent( photofileName )" >
     <div class="row">
-        <div class="col-md-10 mb-3">
-            <label>Image du site</label>
+        <th:block th:insert="~{fragment/commons :: titles( ${'Image de la couverture du livre'} ) }"></th:block>
+    </div>
+    <div class="row mb-1">
+
+        <div class="col-md-3 mb-1 text-center">
+            <img  class="w-50 align-self-center mr-3 photoSize" th:src="${'/img/cover/photo-vide.png'}"  th:alt="${'Image de couverture vide'}" id="imgCover" />
+        </div>
+        <div class="col-md-8 mb-1 align-self-center">
+
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text badge-danger" id="badgePhoto"><i class="fas fa-camera-retro"></i></span>
@@ -63,23 +70,14 @@
                 </div>
                 <div class="custom-file">
                     <input type="file" name="file" class="custom-file-input" id="filePhoto" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
-                    <input type="hidden" class="form-control"  id="photo"  />
-                    <!-- th:field="*{id}" -->
-                    <label class="custom-file-label" id="filePhotoLabel" for="filePhoto" th:text="${photofileName}" >Sélectionner une photo</label>
+                    <input type="hidden" class="form-control"  id="cover" th:field="*{cover.id}"/>
+
+                    <!--   -->
+                    <label class="custom-file-label" id="filePhotoLabel" for="filePhoto" th:text="${photofileName}" >Sélectionner une couverture</label>
                 </div>
             </div>
         </div>
 
-    </div>
-    <div class="row">
-        <div class="col-md-2 mb-1">
-            <label >Utilisation </label>
-        </div>
-        <input type="text" class="form-control" th:field="*{use}" id="use"  />
-    </div>
-
-    <div  class="row" id="coverImg">
-        <img class="w-50 align-self-center mr-3 photoSize" th:src="${'/cover/donwloadCover/45365c89-bd17-4174-9fb6-9cdd5cd94b99' }"  th:alt="${'Image de couverture '}" />
     </div>
 
     <!-------------------- fin de div.row : ---------------->

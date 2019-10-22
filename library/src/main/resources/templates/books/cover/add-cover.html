@@ -15,9 +15,7 @@
 
             <form action="#" th:action="@{/cover/save}"  method="post" th:object="${coverCreateBean}" >
                 <th:block th:insert="~{fragment/commons :: titleH4( ${'Ajout d''une couverture de livre'} ) }"></th:block>
-
                 <th:block th:insert="~{fragment/cover :: coverContent( ${'Sélectionner une photo'} ) }"></th:block>
-
                 <hr class="mb-4">
 
                 <th:block th:insert="~{fragment/commons :: buttonSubmit }"></th:block>

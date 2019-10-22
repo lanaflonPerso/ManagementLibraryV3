@@ -2,9 +2,7 @@ package com.library.beans.mbooks.book.author;
 
 import com.library.beans.mbooks.book.BookBean;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import java.util.List;
@@ -19,5 +17,5 @@ public @Data class AuthorBean {
     @NotBlank(message = "Le prénom de l''auteur est obligatoire.")
     private String firstName;
 
-    private List<BookBean> bookList;
+   private List<BookBean> bookList;
 }

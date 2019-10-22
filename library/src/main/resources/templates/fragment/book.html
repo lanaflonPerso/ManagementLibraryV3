@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <title>Livre</title>
+</head>
+<body>
+
+
+<div th:fragment="content" >
+    <div class="row">
+        <th:block th:insert="~{fragment/commons :: titles( ${'Eléments du livre'} ) }"></th:block>
+    </div>
+
+    <div class="media">
+        <div class="media-body offset-2 mr-1 col-md-4 mb-1">
+            <!---  début de div.media text-muted : Type----------------------------------------------------->
+            <div class="media text-muted pt-3">
+                <img th:src="@{/img/easymoblog.png}" alt="" class="mr-2 rounded logo align-self-center"/>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Nom du livre</strong>
+                    <input type="text" th:field="*{title}" class="form-control"  id="title" />
+                </p>
+            </div>
+            <!-------------------------------  fin de div.media text-muted : Type --------------------------->
+
+            <!---  début de div.media text-muted : Hauteur ----------------------------------------------------->
+            <div class="media text-muted pt-3">
+                <img th:src="@{/img/filetypes.png}" alt="" class="mr-2 rounded align-self-center logo"/>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">N° ISBN</strong>
+                    <input type="text" th:field="*{isbn}" class="form-control"  id="isbn" />
+                </p>
+            </div>
+            <!-------------------------------  fin de div.media text-muted : Hauteur --------------------------->
+            <!---  début de div.media text-muted : Orientation ----------------------------------------------------->
+            <div class="media text-muted pt-3" >
+                <img th:src="@{/img/forward.png}" alt="" class="mr-2 rounded align-self-center logo"/>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Nombre d'examplaire en stock</strong>
+                    <input type="text" th:field="*{review}" class="form-control"  id="review" />
+                </p>
+            </div>
+            <!-------------------------------  fin de div.media text-muted : Orientation --------------------------->
+            <!---  début de div.media text-muted : Orientation ----------------------------------------------------->
+            <div class="media text-muted pt-3" >
+                <img th:src="@{/img/loopnone.png}" alt="" class="mr-2 rounded align-self-center logo"/>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Nombre d'examplaire disponible</strong>
+                    <input type="text" th:field="*{availability}" class="form-control"  id="availability" />
+                </p>
+            </div>
+            <!-------------------------------  fin de div.media text-muted : Orientation --------------------------->
+        </div>
+        <!---  début de div.media-body ----------------------------------------------------->
+        <div class="media-body col-md-4">
+            <!---  début de div.media text-muted : Orientation ----------------------------------------------------->
+            <div class="media text-muted pt-3" >
+                <img th:src="@{/img/kuser.png}" alt="" class="mr-2 rounded align-self-center logo"/>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Auteur</strong>
+                    <select class="custom-select" id="author" th:field="*{author.id}"  >
+                        <option value="">Choisir...</option>
+                        <option th:each="a : ${authorBeanList}" th:value="${a.id}" th:text="${a.firstName + ' ' + a.lastName}" ></option>
+                    </select>
+                </p>
+            </div>
+            <!-------------------------------  fin de div.media text-muted : Orientation --------------------------->
+            <!---  début de div.media text-muted : Orientation ----------------------------------------------------->
+            <div class="media text-muted pt-3" >
+                <img th:src="@{/img/LoginManager.png}" alt="" class="mr-2 rounded align-self-center logo"/>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Editeur</strong>
+                    <select class="custom-select" id="edition" th:field="*{edition.id}"  >
+                        <option value="">Choisir...</option>
+                        <option th:each="e : ${editionBeanList}" th:value="${e.id}" th:text="${e.name}" ></option>
+                    </select>
+                </p>
+            </div>
+            <!-------------------------------  fin de div.media text-muted : Orientation --------------------------->
+            <!---  début de div.media text-muted : Orientation ----------------------------------------------------->
+            <div class="media text-muted pt-3" >
+                <img th:src="@{/img/info.png}" alt="" class="mr-2 rounded align-self-center logo"/>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Thème</strong>
+                    <select class="custom-select" id="theme" th:field="*{theme.id}"  >
+                        <option value="">Choisir...</option>
+                        <option th:each="t : ${themeBeanList}" th:value="${t.id}" th:text="${t.value}" ></option>
+                    </select>
+                </p>
+            </div>
+            <!-------------------------------  fin de div.media text-muted : Orientation --------------------------->
+            <!---  début de div.media text-muted : Orientation ----------------------------------------------------->
+            <div class="media text-muted pt-3" >
+                <img th:src="@{/img/aim.png}" alt="" class="mr-2 rounded align-self-center logo"/>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Langue</strong>
+                    <select class="custom-select" id="language" th:field="*{language.id}"  >
+                        <option value="">Choisir...</option>
+                        <option th:each="l : ${languageBeanList}" th:value="${l.id}" th:text="${l.value}" ></option>
+                    </select>
+                </p>
+            </div>
+            <!-------------------------------  fin de div.media text-muted : Orientation --------------------------->
+        </div>
+    </div>
+
+    <!-------------------------------  fin de div.media-body --------------------------->
+
+</div>
+<div th:fragment="contentResume" class="mt-1 mb-3 p-1 bg-white rounded box-shadow">
+    <div class="form-group">
+        <label for="summary">Résumé du livre</label>
+        <textarea class="form-control" th:field="*{summary}" id="summary"  ></textarea>
+    </div>
+</div>
+
+
+
+</body>
+</html>

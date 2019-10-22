@@ -3,6 +3,7 @@ package com.library.service.books.author;
 import com.library.beans.mbooks.book.author.AuthorBean;
 import com.library.beans.mbooks.book.author.AuthorCreateBean;
 import com.library.proxies.IAuthorProxy;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,15 @@ public class AuthorServiceImpl implements IAuthorService {
     @Autowired
     private IAuthorProxy authorProxy;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     public AuthorBean find(Long id ){
         return  authorProxy.find(id );
     }
 
     public List<AuthorBean> list(){
+      //  Longueur longueur = modelMapper.map(longueurUpdateDto,Longueur.class);
         return authorProxy.list();
     }
 

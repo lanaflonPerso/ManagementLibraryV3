@@ -38,5 +38,18 @@
     <button th:fragment="buttonSubmit" class="btn btn-outline-success btn-lg btn-block" type="submit"><i class="fas fa-plus-circle mx-2"></i> Valider</button>
 
 
+    <div th:fragment="contentError" class="row" >
+        <hr class="mb-1">
+        <div class="error-message" th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">
+            Erreur de validation
+        </div>
+        <div th:each="field :  ${fieldList}" class="d-flex flex-wrap">
+            <div class="alert alert-danger text-center mr-1" role="alert"
+                 th:each="error: ${#fields.errors( field.name )}" th:text="${error}">
+                Erreur de validation
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

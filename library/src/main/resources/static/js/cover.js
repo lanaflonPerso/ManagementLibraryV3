@@ -6,12 +6,12 @@ $(document).ready(function () {
 
     $("#filePhoto").change(function (e){
             $('#badgePhoto').removeClass('badge-succes').addClass('badge-danger');
-            $('#photo').val("");
+            $('#cover').val("");
             $("#filePhotoLabel").text(e.target.files[0].name);}
         );
 
 
-    if ( $('#photo').val() != "")
+    if ( $('#cover').val() != "")
         $('#badgePhoto').removeClass('badge-danger').addClass('badge-success');
 
 
@@ -35,7 +35,8 @@ $(document).ready(function () {
             success: function (response) {
                 if(response.id != "") {
                     $('#badgePhoto').removeClass('badge-danger').addClass('badge-success');
-                    $('#photo').val(response.id);
+                    $('#cover').val(response.id);
+                    $('#imgCover').attr('src','/cover/img/' + response.id );
 
                 }
 

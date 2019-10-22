@@ -25,8 +25,7 @@ public class BooksServiceImpl implements IBooksService {
         return bookRepository.findAll();
     }
 
-    public Books  save(Books book){ return bookRepository.save( book );
-    }
+    public Books  save(Books book){ return bookRepository.save( book ); }
 
     public boolean delete(Long id){
         try {

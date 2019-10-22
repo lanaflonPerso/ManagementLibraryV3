@@ -1,5 +1,7 @@
 package mbooks.model.books;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -23,5 +25,6 @@ public @Data class Author {
     private String firstName;
 
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Books> bookList;
 }

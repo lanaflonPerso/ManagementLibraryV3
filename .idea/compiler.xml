@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mbooks" />
         <module name="eureka-server" />
+        <module name="mfile" />
         <module name="memails" />
         <module name="zuul-server" />
         <module name="musers" />
@@ -21,6 +22,7 @@
       <module name="library" target="1.8" />
       <module name="mbooks" target="1.8" />
       <module name="memails" target="1.8" />
+      <module name="mfile" target="1.8" />
       <module name="musers" target="1.8" />
       <module name="zuul-server" target="1.8" />
     </bytecodeTargetLevel>
@@ -32,6 +34,7 @@
       <module name="library" options="-parameters" />
       <module name="mbooks" options="-parameters" />
       <module name="memails" options="-parameters" />
+      <module name="mfile" options="-parameters" />
       <module name="musers" options="-parameters" />
       <module name="zuul-server" options="-parameters" />
     </option>

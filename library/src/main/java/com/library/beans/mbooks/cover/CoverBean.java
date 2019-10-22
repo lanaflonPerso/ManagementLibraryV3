@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public  @Data class CoverBean {
 
+    @Id
     private String id;
 
     @NotBlank(message = "Le nom de l''image est obligatoire.")

@@ -183,6 +183,7 @@
     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish:javax.el:3.0.1-b09" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator-cdi:6.0.17.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.modelmapper:modelmapper:2.3.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.1.9.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.1.9.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:2.1.9.RELEASE" level="project" />
@@ -204,5 +205,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.1.10.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.1.10.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.6.3" level="project" />
+    <orderEntry type="library" name="Maven: javax.persistence:javax.persistence-api:2.2" level="project" />
   </component>
 </module>

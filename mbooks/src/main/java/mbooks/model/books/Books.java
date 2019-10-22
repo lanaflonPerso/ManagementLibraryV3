@@ -24,6 +24,9 @@ public @Data class Books {
     private String isbn;
 
     @NonNull
+    private String idCover;
+
+    @NonNull
     private String title;
 
     @NonNull
@@ -35,11 +38,6 @@ public @Data class Books {
 
     @NonNull
     private Long availability;
-
-    @ManyToOne
-    @JoinColumn(name="id_cover", referencedColumnName="id")
-    @NonNull
-    private Cover cover;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(

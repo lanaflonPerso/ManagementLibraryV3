@@ -10,10 +10,11 @@ import java.util.List;
 
 @NoArgsConstructor
 public @Data class EditionBean {
+
     private Long id;
 
     @NotBlank(message = "Le nom de l''éditeur est obligatoire.")
     private String name;
 
-    private List<BookBean> bookList;
+    private List< BookBean > bookList;
 }

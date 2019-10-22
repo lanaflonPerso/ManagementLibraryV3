@@ -18,9 +18,6 @@ public class EditionController {
     private IEditionService editionService;
 
     @ModelAttribute
-    public IEditionService editionService(){return editionService;}
-
-    @ModelAttribute
     private EditionCreateBean editionCreateBean(){return new EditionCreateBean();}
 
     @GetMapping("/all")

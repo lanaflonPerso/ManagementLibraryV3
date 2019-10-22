@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient(name = "zuul-server",contextId = "coverProxy")
-@RibbonClient(name = "microservice-books")
-@RequestMapping("/microservice-books/cover")
+@RibbonClient(name = "microservice-file")
+@RequestMapping("/microservice-file/cover")
 public interface ICoverProxy {
 
     @GetMapping("/{id}")
@@ -26,5 +26,5 @@ public interface ICoverProxy {
     CoverBean update( @RequestBody CoverBean cover);
 
     @DeleteMapping("/{id}")
-    boolean delete(@PathVariable("id") Long id);
+    boolean delete(@PathVariable("id") String id);
 }

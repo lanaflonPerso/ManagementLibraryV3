@@ -18,9 +18,6 @@ public class ThemeController {
     private IThemeService themeService;
 
     @ModelAttribute
-    public IThemeService themeService(){return themeService;}
-
-    @ModelAttribute
     private ThemeCreateBean themeCreateBean(){return new ThemeCreateBean();}
 
     @GetMapping("/all")

@@ -17,8 +17,6 @@ public class LanguageController {
     @Autowired
     private ILanguageService languageService;
 
-    @ModelAttribute
-    public ILanguageService languageService(){return languageService;}
 
     @ModelAttribute
     private LanguageCreateBean languageCreateBean(){return new LanguageCreateBean();}

@@ -32,6 +32,7 @@ public class BooksCreateDto {
     @NotBlank(message = "Le nombre de livre disponible est obligatoire.")
     private Long availability;
 
+
     @NotNull(message = "Le choix de la couverture est obligatoire.")
     private Cover cover;
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface IUsersService  {
 
-    Users findUser(Long idUser);
+    Users findUser(Long id);
     Users findUser(String email);
 
     List<Users> findAll();

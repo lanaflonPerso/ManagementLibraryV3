@@ -22,6 +22,7 @@ public class UserServiceImpl implements IUsersService {
 
     /**
      * On cherche un utilisateur
+     *
      * @param email Email de l'utilisateur à chercher
      * @return L'utilisateur si l'utilisateur est trouvé.
      * @throws UsernameNotFoundException Exception de la présence de l'utilisateur recherché
@@ -31,27 +32,38 @@ public class UserServiceImpl implements IUsersService {
 
 
         System.out.println("email : " + email);
-        UsersBean user = mUsersProxy.user( email );
+        UsersBean user = mUsersProxy.user(email);
         if (user == null) {
             throw new UsernameNotFoundException("Utilisateur ou mot de passe incorrect.");
         }
 
         return new org.springframework.security.core.userdetails.User(user.getEmail(),
                 user.getPassword(),
-                mapRolesToAuthorities( user.getRoleList() ) ) ;
-
+                mapRolesToAuthorities(user.getRoleList()));
 
 
     }
 
     /**
-     *
      * @param roles role de l'utilisateur
      * @return
      */
-    private Collection< ? extends GrantedAuthority> mapRolesToAuthorities(List<RoleBean> roles) {
+    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(List<RoleBean> roles) {
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
+    }
+
+    public UsersBean find(Long id) {
+        UsersBean user = mUsersProxy.user(id);
+
+        if (user == null) throw new UsernameNotFoundException("Utilisateur inconnu.");
+
+        return user;
+    }
+
+    public String fullName(Long id){
+        UsersBean user = this.find( id);
+        return user.getFirstName()+ ' ' + user.getLastName();
     }
 }

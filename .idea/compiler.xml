@@ -9,12 +9,11 @@
         <module name="eureka-server" />
         <module name="mfile" />
         <module name="mbooks" />
+        <module name="config-server" />
         <module name="memails" />
         <module name="zuul-server" />
-        <module name="mlending" />
         <module name="musers" />
         <module name="library" />
-        <module name="config-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

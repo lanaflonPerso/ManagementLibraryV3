@@ -1,0 +1,38 @@
+package com.library.proxies;
+
+
+import com.library.beans.mbooks.lending.LendingBean;
+import com.library.beans.mbooks.lending.LendingCreateBean;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@FeignClient(name = "zuul-server",contextId = "lendingProxy")
+@RibbonClient(name = "microservice-books")
+@RequestMapping("/microservice-books/lending")
+public interface ILendingProxy {
+
+    @GetMapping("/{id}")
+    LendingBean find(@PathVariable("id") Long id);
+
+    @GetMapping("/all")
+    List<LendingBean> list();
+
+    @GetMapping("/user/{id}")
+    List<LendingBean> list(@PathVariable("id") Long id);
+
+    @GetMapping("/book/{id}")
+    List<LendingBean> list(@PathVariable("id") String id);
+
+    @PostMapping("/save")
+    LendingBean save( @RequestBody LendingCreateBean lending);
+
+    @PutMapping("/update")
+    LendingBean update( @RequestBody LendingBean lending);
+
+    @DeleteMapping("/{id}")
+    boolean delete(@PathVariable("id") Long id);
+
+}

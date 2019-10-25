@@ -4,7 +4,6 @@ import com.library.beans.mbooks.book.author.AuthorBean;
 import com.library.beans.mbooks.book.edition.EditionBean;
 import com.library.beans.mbooks.book.language.LanguageBean;
 import com.library.beans.mbooks.book.theme.ThemeBean;
-import com.library.beans.mbooks.cover.CoverBean;
 import com.library.beans.mbooks.lending.LendingBean;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -49,6 +48,5 @@ public  @Data class BookBean {
     @NotNull(message = "Le choix de l''éditeur est obligatoire.")
     private EditionBean edition;
 
-    private List<LendingBean> lendingList;
 
 }

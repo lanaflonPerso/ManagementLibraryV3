@@ -7,6 +7,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -36,6 +37,7 @@ public @Data class Books {
 
     @NonNull
     private Long availability;
+
 
     @ManyToOne
     @JoinColumn(name="id_language", referencedColumnName="id")

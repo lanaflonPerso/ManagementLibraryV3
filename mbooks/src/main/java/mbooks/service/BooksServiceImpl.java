@@ -21,6 +21,10 @@ public class BooksServiceImpl implements IBooksService {
                 .orElseThrow(() -> new ResourceNotFoundException("Livre non trouvé avec l'id " + id ) );
     }
 
+    public Books find(String isbn){
+        return bookRepository.findByIsbn( isbn );
+    }
+
     public List<Books> list(){
         return bookRepository.findAll();
     }

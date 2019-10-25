@@ -2,6 +2,7 @@ package musers.service.user;
 
 
 import musers.config.ApplicationPropertiesConfig;
+import musers.exceptions.ResourceNotFoundException;
 import musers.model.user.Role;
 import musers.model.user.Users;
 import musers.repository.user.IUsersRepository;
@@ -35,8 +36,9 @@ public class UsersServiceImpl implements IUsersService {
 
 
 
-    public Users findUser(Long idUser){
-        return usersRepository.findByIdAndActiveTrue(idUser);
+    public Users findUser(Long id){
+        return usersRepository.findById(id) .orElseThrow(
+                () -> new ResourceNotFoundException("Livre non trouvé avec l'id " + id ) );
     }
 
     public Users findUser(String email){return usersRepository.findByEmailAndActiveTrue( email );}

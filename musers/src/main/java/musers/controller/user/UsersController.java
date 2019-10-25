@@ -29,13 +29,22 @@ public class UsersController {
         return usersList;
     }
 
-    @GetMapping(value = "/connection/{id}")
-    public Users user(@PathVariable String  id){
-
+    @GetMapping(value = "/byId/{id}")
+    public Users user(@PathVariable Long  id){
         return usersService.findUser( id );
-
     }
 
+    @GetMapping(value = "/byEmail/{id}")
+    public Users user(@PathVariable String  id){
+        return usersService.findUser( id );
+    }
+
+
+
+    @GetMapping(value = "/id/{id}")
+    public Long idUser(@PathVariable String  id){
+        return usersService.findUser( id ).getId();
+    }
 
 
     @PostMapping

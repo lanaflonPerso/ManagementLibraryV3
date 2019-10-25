@@ -117,7 +117,74 @@
     </div>
 </div>
 
+<!-- Debut de th:fragment="listContent" -------------------------------------------->
+<div th:fragment="listContent" class="container p-1" th:with="list = ${ bookBeanList }" >
 
+    <!-- Debut de div.container p-1 > row : album -------------------------------------------->
+    <div class="row"  >
+        <div th:if="${ list.size() == 0}" class="alert alert-primary text-center" role="alert">
+            Aucun livre à afficher
+        </div>
 
+        <!-- Debut de div#album -------------------------------------------->
+        <div id="album" class="album p-3 bg-light" th:if="${list.size() > 0}">
+
+            <!-- Debut de div#album > .container -------------------------------------------->
+            <div class="container">
+
+                <!-- Debut de div#album > .container > .row -------------------------------------------->
+                <div class="row">
+                    <!-- Debut de div#album > .container > .row > .col-md-4 -------------------------------------------->
+
+                    <div class="col-md-4" th:each="b : ${list}" >
+
+                        <!-- Debut de div#album > .container > .row > .col-md-4 > .card -------------------------------------------->
+                        <div class="card mb-1 box-shadow"  >
+                            <img class="card-img-top" th:src="${ getCoverPath + b.idCover}"  th:alt="${'Image du livre '+ b.title}" /> <!---->
+
+                            <!-- Debut de div#album > .container > .row > .col-md-4 > .card > .card-body -------------------------------------------->
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <span class="badge badge-pill badge-success" th:if="${ IBooksService.isAvailability( b ) }">Disponible</span>
+                                    <span class="badge badge-pill badge-danger" th:if="${ !IBooksService.isAvailability( b ) }">Indisponible</span>
+                                </p>
+                                <!-- Debut des p.card-text  -------------------------------------------->
+                                <p class="card-text" th:text="${'Titre : ' + b.title }"> </p>
+                                <p class="card-text" th:text="${'Auteur : ' + IBooksService.fullAuthorName( b )  }"> </p>
+                                <p class="card-text" th:text="${'Isbn : ' + b.isbn }"> </p>
+                                <p class="card-text" th:text="${'Editeur : ' + b.edition.name }"> </p>
+                                <p class="card-text" th:utext="${'Examplaire en stock : ' +  b.review}"> </p>
+                                <p class="card-text" th:utext="${'Examplaire disponible : ' +  b.availability}"> </p>
+                                <p class="card-text" th:utext="${'Resume :</br> ' + b.summary }"> </p>
+                                <!---------------------------------------------- Fin des  p.card-text -->
+                                <!-- Debut de div : button - Infos & Longueurs -------------------------------------------->
+                                <div class="d-flex justify-content-between align-items-center flex-wrap" th:if="${ IBooksService.isAvailability( b ) }">
+                                    <a class="btn btn-sm btn-outline-secondary mt-1" role="button" th:href="@{/lending/add/{id}(id=${b.id})}"  >Enregistrer un emprunt</a>
+
+                                </div>
+                                <!---------------------------------------------- Fin de  div : button - Infos & Longueurs -->
+                            </div>
+                            <!---------------------------------------------- Fin de  div#album .container > .row > col-md-4 > .card > .card-body -->
+
+                        </div>
+                        <!---------------------------------------------- Fin de  div#album .container > .row > col-md-4 > .card-->
+
+                    </div>
+                    <!---------------------------------------------- Fin de  div#album .container > .row > col-md-4-->
+
+                </div>
+                <!---------------------------------------------- Fin de  div#album .container > .row -->
+
+            </div>
+            <!---------------------------------------------- Fin de  div#album .container -->
+
+        </div>
+        <!---------------------------------------------- Fin de  div#album  -->
+
+    </div>
+    <!---------------------------------------------- Fin de  div.container p-1 > row  -->
+
+</div>
+<!---------------------------------------------- Fin de th:fragment="listContent" -->
 </body>
 </html>

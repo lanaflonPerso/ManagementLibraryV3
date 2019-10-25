@@ -18,6 +18,9 @@ public interface IBooksProxy {
     @GetMapping("/{id}")
     BookBean find(@PathVariable("id") Long id);
 
+    @GetMapping("/{isbn}")
+    BookBean find(@PathVariable("isbn") String isbn);
+
     @GetMapping("/all")
     List<BookBean> list();
 

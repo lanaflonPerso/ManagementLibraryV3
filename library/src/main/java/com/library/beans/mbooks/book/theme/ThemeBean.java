@@ -17,5 +17,4 @@ public  @Data class ThemeBean {
     @NotBlank(message = "Le thème est obligatoire.")
     private String value;
 
-    private List<BookBean> bookList;
 }

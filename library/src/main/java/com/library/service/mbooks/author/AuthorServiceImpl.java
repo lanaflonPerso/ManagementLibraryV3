@@ -38,4 +38,7 @@ public class AuthorServiceImpl implements IAuthorService {
     public boolean delete(Long id){
         return authorProxy.delete( id );
     }
+    public String fullAuthorName(AuthorBean author){
+        return author.getFirstName() + ' ' + author.getLastName();
+    }
 }

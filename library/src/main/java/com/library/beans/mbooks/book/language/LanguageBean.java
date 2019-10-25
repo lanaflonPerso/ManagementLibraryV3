@@ -17,5 +17,4 @@ public  @Data class LanguageBean {
     @NotBlank(message = "Le langage est obligatoire.")
     private String value;
 
-    private List<BookBean> bookList;
 }

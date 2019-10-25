@@ -13,7 +13,9 @@ import com.library.service.mbooks.edition.IEditionService;
 import com.library.service.mbooks.language.ILanguageService;
 import com.library.service.mbooks.theme.IThemeService;
 import com.library.technical.error.Field;
+import jdk.nashorn.internal.objects.annotations.Function;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,12 +28,24 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/book")
-public class BookController {
+public class BookController implements IBookController {
+
+    @Autowired
+    private IBookController bookController;
+
+    @ModelAttribute
+    public IBookController bookController(){return bookController;}
+
+    public String getFullAuthorName(AuthorBean author){
+        return  authorService.fullAuthorName( author );
+    }
+
     @Autowired
     private IBooksService booksService;
 
     @ModelAttribute
     public IBooksService booksService(){return booksService;}
+
 
     /*
     @ModelAttribute("isAvailability")
@@ -43,6 +57,11 @@ public class BookController {
 
     @Autowired
     private IAuthorService authorService;
+
+    @ModelAttribute
+    public IAuthorService authorService(){return authorService;}
+
+
 
     @Autowired
     private IEditionService editionService;
@@ -105,12 +124,15 @@ public class BookController {
 */
 
     @GetMapping("/all")
-    public String list(Model model){
+    public String list(  Model model) throws NoSuchMethodException {
         List<BookBean> bookBeanList = booksService.list();
         model.addAttribute( bookBeanList );
         model.addAttribute("title","Liste des livres");
+
         return "books/book/list-book";
     }
+
+
 
     @GetMapping("/info/{id}")
     public String info(@PathVariable("id") long id, Model model){

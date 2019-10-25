@@ -5,6 +5,7 @@ import com.library.beans.mbooks.lending.LendingBean;
 import com.library.beans.mbooks.lending.LendingCreateBean;
 import com.library.config.ApplicationPropertiesConfig;
 import com.library.service.mbooks.IBooksService;
+import com.library.service.mbooks.author.IAuthorService;
 import com.library.service.mbooks.lending.ILendingService;
 import com.library.service.users.IUsersService;
 import com.library.technical.date.SimpleDate;
@@ -36,6 +37,12 @@ public class LendingController {
 
     @Autowired
     private IUsersService usersService;
+
+    @Autowired
+    private IAuthorService authorService;
+
+    @ModelAttribute
+    public IAuthorService authorService(){return authorService;}
 
     @Autowired
     private ApplicationPropertiesConfig appPropertiesConfig;

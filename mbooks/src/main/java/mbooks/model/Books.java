@@ -50,6 +50,10 @@ public @Data class Books {
     private Author author;
 
     @ManyToOne
+    @JoinColumn(name="id_coauthor", referencedColumnName="id")
+    private Author coAuthor;
+
+    @ManyToOne
     @JoinColumn(name="id_theme", referencedColumnName="id")
     @NonNull
     private Theme theme;

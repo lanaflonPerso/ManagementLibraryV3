@@ -14,4 +14,6 @@ public interface IAuthorService {
     AuthorBean save(AuthorBean author);
 
     boolean delete(Long id);
+
+    String fullAuthorName(AuthorBean author);
 }

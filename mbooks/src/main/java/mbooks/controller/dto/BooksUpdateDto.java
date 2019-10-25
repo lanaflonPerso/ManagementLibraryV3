@@ -44,6 +44,8 @@ public class BooksUpdateDto {
     @NotNull(message = "Le choix de l''auteut est obligatoire.")
     private Author author;
 
+    private Author coAuthor;
+
     @NotNull(message = "Le choix du thème est obligatoire.")
     private Theme theme;
 }

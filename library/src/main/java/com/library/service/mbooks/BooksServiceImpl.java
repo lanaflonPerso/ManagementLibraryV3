@@ -2,6 +2,7 @@ package com.library.service.mbooks;
 
 import com.library.beans.mbooks.book.BookBean;
 import com.library.beans.mbooks.book.BookCreateBean;
+import com.library.beans.mbooks.book.author.AuthorBean;
 import com.library.proxies.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,7 +64,5 @@ public class BooksServiceImpl implements IBooksService {
         return ( book.getAvailability() > 0) ;
     }
 
-    public String fullAuthorName(BookBean book){
-      return book.getAuthor().getFirstName() + ' ' + book.getAuthor().getLastName();
-    }
+
 }

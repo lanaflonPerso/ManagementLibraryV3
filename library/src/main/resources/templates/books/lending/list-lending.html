@@ -34,7 +34,7 @@
                     <div class="row">
                         <!-- Debut de div#album > .container > .row > .col-md-4 -------------------------------------------->
 
-                        <div class="col-md-4" th:each="l : ${list}" >
+                        <div class="col-md-6" th:each="l : ${list}" >
 
                             <!-- Debut de div#album > .container > .row > .col-md-4 > .card -------------------------------------------->
                             <div class="card mb-1 box-shadow" th:with="b = ${l.book }" >
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <p class="card-text" th:utext="${'<strong>Titre : </strong>' + b.title }"> </p>
-                                        <p class="card-text" th:utext="${'<strong>Auteur : </strong>' + IBooksService.fullAuthorName( b )  }"> </p>
+                                        <p class="card-text" th:utext="${'<strong>Auteur : </strong>' + IAuthorService.fullAuthorName( b )  }"> </p>
                                         <p class="card-text" th:utext="${'<strong>Isbn : </strong>' + b.isbn }"> </p>
                                         <p class="card-text" th:utext="${'<strong>Editeur : </strong>' + b.edition.name }"> </p>
                                     </div>

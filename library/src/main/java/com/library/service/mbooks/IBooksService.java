@@ -2,6 +2,7 @@ package com.library.service.mbooks;
 
 import com.library.beans.mbooks.book.BookBean;
 import com.library.beans.mbooks.book.BookCreateBean;
+import com.library.beans.mbooks.book.author.AuthorBean;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface IBooksService {
 
     boolean isAvailability(BookBean book);
 
-    String fullAuthorName(BookBean book);
+
 }

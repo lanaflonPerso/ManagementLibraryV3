@@ -37,6 +37,8 @@ public @Data class BookCreateBean {
     @NotNull(message = "Le choix de l''auteut est obligatoire.")
     private AuthorBean author;
 
+    private AuthorBean coAuthor;
+
     @NotNull(message = "Le choix du thème est obligatoire.")
     private ThemeBean theme;
 

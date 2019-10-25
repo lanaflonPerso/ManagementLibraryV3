@@ -17,5 +17,5 @@ public @Data class AuthorBean {
     @NotBlank(message = "Le prénom de l''auteur est obligatoire.")
     private String firstName;
 
-   private List<BookBean> bookList;
+
 }

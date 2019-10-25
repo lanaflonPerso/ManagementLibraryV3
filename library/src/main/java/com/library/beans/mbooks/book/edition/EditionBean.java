@@ -16,5 +16,5 @@ public @Data class EditionBean {
     @NotBlank(message = "Le nom de l''éditeur est obligatoire.")
     private String name;
 
-    private List< BookBean > bookList;
+
 }

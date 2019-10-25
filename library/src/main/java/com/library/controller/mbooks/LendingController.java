@@ -25,8 +25,14 @@ public class LendingController {
     @Autowired
     private ILendingService lendingService;
 
+    @ModelAttribute
+    public ILendingService lendingService(){return lendingService;}
+
     @Autowired
     private IBooksService booksService;
+
+    @ModelAttribute
+    public IBooksService booksService(){return booksService;}
 
     @Autowired
     private IUsersService usersService;
@@ -34,7 +40,7 @@ public class LendingController {
     @Autowired
     private ApplicationPropertiesConfig appPropertiesConfig;
 
-    @ModelAttribute
+    @ModelAttribute("getCoverPath")
     public String getCoverPath(){return appPropertiesConfig.getCoverPath();}
 
     @ModelAttribute
@@ -42,27 +48,36 @@ public class LendingController {
 
 
 
+    /*
+
     @ModelAttribute
     public String getDate(Date date){ return lendingService.getDate( date );   }
 
     @ModelAttribute
     public boolean isInProgress(LendingBean lending){
-        return lendingService.isInProgress( lending.getEndDate(), lending.getReturnDate() );
+        return lendingService.isInProgress( lending );
     }
+
+
+
 
     @ModelAttribute
     public boolean isOutOfTime(LendingBean lending){
-        return lendingService.isOutOfTime( lending.getEndDate(), lending.getReturnDate() );
+        return lendingService.isOutOfTime( lending );
     }
 
     @ModelAttribute
-    public boolean isReturn(LendingBean lending){ return lendingService.isReturn( lending.getReturnDate());   }
+    public boolean isReturn(LendingBean lending){ return lendingService.isReturn( lending);   }
 
     @ModelAttribute
     public boolean isRenewable(Long renewal){ return lendingService.isRenewable( renewal ); }
 
     @ModelAttribute
     public String fullAuthorName(BookBean book){ return booksService.fullAuthorName( book );}
+
+
+
+     */
 
     @GetMapping("/all")
     public String list(Model model){
@@ -72,6 +87,7 @@ public class LendingController {
         model.addAttribute("title","Liste de tous les prêts.");
         return "books/lending/list-lending";
     }
+
 
     @GetMapping("/user/{id}")
     public String list(@PathVariable("id") Long id,Model model){

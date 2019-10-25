@@ -55,25 +55,25 @@ public class LendingServiceImpl implements ILendingService {
 
     public String getDate(Date date){ return simpleDate.getDate( date );   }
 
-    public boolean isInProgress( Date endDate, Date returnDate){
-        return isStartDateBeforeEndDate(  endDate, returnDate);
+    public boolean isInProgress( LendingBean lending){
+        return isStartDateBeforeEndDate(  lending);
     }
 
-    public boolean isOutOfTime( Date endDate, Date returnDate ){
-        return isStartDateBeforeEndDate(  endDate, returnDate);
+    public boolean isOutOfTime( LendingBean lending ){
+        return !isStartDateBeforeEndDate(  lending);
     }
 
-    public boolean isReturn(Date returnDate){
-        if ( returnDate == null)
+    public boolean isReturn(LendingBean lending){
+        if ( lending.getReturnDate() == null)
             return false;
 
         return true;
     }
 
-    private boolean isStartDateBeforeEndDate( Date endDate,Date returnDate){
+    private boolean isStartDateBeforeEndDate( LendingBean lending){
         Date now = new Date();
-        if( !this.isReturn( returnDate ) )
-            return ( now.compareTo( endDate ) <= 0 );
+        if( !this.isReturn( lending ) )
+            return ( now.compareTo( lending.getEndDate() ) <= 0 );
 
         return false;
     }

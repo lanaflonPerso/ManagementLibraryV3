@@ -56,7 +56,7 @@ public class BookController {
     @Autowired
     private ApplicationPropertiesConfig appPropertiesConfig;
 
-    @ModelAttribute
+    @ModelAttribute("getCoverPath")
     public String getCoverPath(){return appPropertiesConfig.getCoverPath();}
 
     @ModelAttribute

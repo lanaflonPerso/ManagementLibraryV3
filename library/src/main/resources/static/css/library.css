@@ -43,9 +43,12 @@ main.container{
 
 
 }
+.card{
+    min-width: 500px;
+}
 .card-img-top {
-    width: 3000px;
-    height: 200px;
+    max-width: 200px;
+    height: 250px;
 
 }
 /* navbar */

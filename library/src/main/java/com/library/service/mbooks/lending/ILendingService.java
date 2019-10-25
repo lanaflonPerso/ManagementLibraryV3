@@ -21,9 +21,9 @@ public interface ILendingService {
 
     String getDate(Date date);
 
-    boolean isInProgress( Date endDate, Date returnDate );
-    boolean isOutOfTime(  Date endDate, Date returnDate );
-    boolean isReturn(Date returnDate);
+    boolean isInProgress( LendingBean lending );
+    boolean isOutOfTime(  LendingBean lending );
+    boolean isReturn( LendingBean lending );
 
     boolean isRenewable(Long renewal);
 }

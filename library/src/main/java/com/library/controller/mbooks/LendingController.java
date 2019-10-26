@@ -1,6 +1,7 @@
 package com.library.controller.mbooks;
 
 import com.library.beans.mbooks.book.BookBean;
+import com.library.beans.mbooks.book.author.AuthorBean;
 import com.library.beans.mbooks.lending.LendingBean;
 import com.library.beans.mbooks.lending.LendingCreateBean;
 import com.library.config.ApplicationPropertiesConfig;
@@ -21,28 +22,39 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/lending")
-public class LendingController {
+public class LendingController implements ILendingController {
+    @Autowired
+    private ILendingController lendingController;
+
+    @ModelAttribute
+    public ILendingController lendingController(){ return lendingController;}
+
+    public String getDate(Date date){ return lendingService.getDate( date );   }
+
+    public boolean isInProgress(LendingBean lending){
+        return lendingService.isInProgress( lending );
+    }
+
+    public boolean isOutOfTime(LendingBean lending){ return lendingService.isOutOfTime( lending ); }
+
+    public boolean isReturn(LendingBean lending){ return lendingService.isReturn( lending);   }
+
+    public boolean isRenewable(Long renewal){ return lendingService.isRenewable( renewal ); }
+
+    public String getFullAuthorName(AuthorBean author){ return authorService.fullAuthorName( author );}
+
 
     @Autowired
     private ILendingService lendingService;
 
-    @ModelAttribute
-    public ILendingService lendingService(){return lendingService;}
-
     @Autowired
     private IBooksService booksService;
-
-    @ModelAttribute
-    public IBooksService booksService(){return booksService;}
 
     @Autowired
     private IUsersService usersService;
 
     @Autowired
     private IAuthorService authorService;
-
-    @ModelAttribute
-    public IAuthorService authorService(){return authorService;}
 
     @Autowired
     private ApplicationPropertiesConfig appPropertiesConfig;
@@ -55,36 +67,7 @@ public class LendingController {
 
 
 
-    /*
 
-    @ModelAttribute
-    public String getDate(Date date){ return lendingService.getDate( date );   }
-
-    @ModelAttribute
-    public boolean isInProgress(LendingBean lending){
-        return lendingService.isInProgress( lending );
-    }
-
-
-
-
-    @ModelAttribute
-    public boolean isOutOfTime(LendingBean lending){
-        return lendingService.isOutOfTime( lending );
-    }
-
-    @ModelAttribute
-    public boolean isReturn(LendingBean lending){ return lendingService.isReturn( lending);   }
-
-    @ModelAttribute
-    public boolean isRenewable(Long renewal){ return lendingService.isRenewable( renewal ); }
-
-    @ModelAttribute
-    public String fullAuthorName(BookBean book){ return booksService.fullAuthorName( book );}
-
-
-
-     */
 
     @GetMapping("/all")
     public String list(Model model){

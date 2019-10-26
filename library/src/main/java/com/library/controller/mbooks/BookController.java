@@ -13,15 +13,11 @@ import com.library.service.mbooks.edition.IEditionService;
 import com.library.service.mbooks.language.ILanguageService;
 import com.library.service.mbooks.theme.IThemeService;
 import com.library.technical.error.Field;
-import jdk.nashorn.internal.objects.annotations.Function;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
@@ -40,28 +36,13 @@ public class BookController implements IBookController {
         return  authorService.fullAuthorName( author );
     }
 
+    public boolean isAvailability(BookBean book){ return booksService.isAvailability( book ) ;}
+
     @Autowired
     private IBooksService booksService;
 
-    @ModelAttribute
-    public IBooksService booksService(){return booksService;}
-
-
-    /*
-    @ModelAttribute("isAvailability")
-    public boolean isAvailability(BookBean book){ return booksService.isAvailability( book ) ;}
-
-    @ModelAttribute("fullAuthorName")
-    public String fullAuthorName(BookBean book){ return booksService.fullAuthorName( book );}
-*/
-
     @Autowired
     private IAuthorService authorService;
-
-    @ModelAttribute
-    public IAuthorService authorService(){return authorService;}
-
-
 
     @Autowired
     private IEditionService editionService;
@@ -118,10 +99,7 @@ public class BookController implements IBookController {
 
     @ModelAttribute
     public BookCreateBean bookCreateBean(){return new BookCreateBean();}
-/*
-    @ModelAttribute
-    public List<BookBean> bookBeanList(){return booksService.list();}
-*/
+
 
     @GetMapping("/all")
     public String list(  Model model) throws NoSuchMethodException {
@@ -132,8 +110,6 @@ public class BookController implements IBookController {
         return "books/book/list-book";
     }
 
-
-
     @GetMapping("/info/{id}")
     public String info(@PathVariable("id") long id, Model model){
         model.addAttribute( "idBook", id);
@@ -141,13 +117,11 @@ public class BookController implements IBookController {
         return "books/book/info-book";
     }
 
-
     @GetMapping("/add")
     public String add( Model model){
 
         return "books/book/add-book";
     }
-
 
     @PostMapping("/save")
     public String save(@ModelAttribute @Valid BookCreateBean bookCreateBean, BindingResult result, Model model){

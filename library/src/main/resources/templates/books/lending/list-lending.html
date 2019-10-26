@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <p class="card-text" th:utext="${'<strong>Titre : </strong>' + b.title }"> </p>
-                                        <p class="card-text" th:utext="${'<strong>Auteur : </strong>' + controller.getFullAuthorName( b )  }"> </p>
+                                        <p class="card-text" th:utext="${'<strong>Auteur : </strong>' + controller.getFullAuthorName( b.author )  }"> </p>
                                         <p class="card-text" th:utext="${'<strong>Isbn : </strong>' + b.isbn }"> </p>
                                         <p class="card-text" th:utext="${'<strong>Editeur : </strong>' + b.edition.name }"> </p>
                                     </div>
@@ -62,7 +62,7 @@
                                     <!-- Debut des p.card-text  -------------------------------------------->
 
                                     <p class="card-text" th:utext="${'<strong>Resume :</strong></br> ' + b.summary }"> </p>
-                                    <p class="card-text" th:utext="${'Emprunté par [emprunteur] ' + controller.getDate(l.startDate )  }"> </p>
+                                    <p class="card-text" th:utext="${'Emprunté ' + controller.getDate(l.startDate )  }"> </p>
                                     <p class="card-text" th:utext="${'A retourner avant '  + controller.getDate( l.endDate )  }"> </p>
                                     <p class="card-text" th:if="${l.returnDate}" th:utext="${'Retour '  + controller.getDate( l.returnDate )  }"> </p>
                                     <!---------------------------------------------- Fin des  p.card-text -->

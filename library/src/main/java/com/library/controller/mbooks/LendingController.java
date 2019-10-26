@@ -1,6 +1,5 @@
 package com.library.controller.mbooks;
 
-import com.library.beans.mbooks.book.BookBean;
 import com.library.beans.mbooks.book.author.AuthorBean;
 import com.library.beans.mbooks.lending.LendingBean;
 import com.library.beans.mbooks.lending.LendingCreateBean;
@@ -9,7 +8,6 @@ import com.library.service.mbooks.IBooksService;
 import com.library.service.mbooks.author.IAuthorService;
 import com.library.service.mbooks.lending.ILendingService;
 import com.library.service.users.IUsersService;
-import com.library.technical.date.SimpleDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +37,7 @@ public class LendingController implements ILendingController {
 
     public boolean isReturn(LendingBean lending){ return lendingService.isReturn( lending);   }
 
-    public boolean isRenewable(Long renewal){ return lendingService.isRenewable( renewal ); }
+    public boolean isRenewable(Integer renewal){ return lendingService.isRenewable( renewal ); }
 
     public String getFullAuthorName(AuthorBean author){ return authorService.fullAuthorName( author );}
 
@@ -62,15 +60,31 @@ public class LendingController implements ILendingController {
     @ModelAttribute("getCoverPath")
     public String getCoverPath(){return appPropertiesConfig.getCoverPath();}
 
+
+    @GetMapping("/user")
+    public String userList(Model model){
+
+        model.addAttribute("title","Liste de mes prêts " );
+        List<LendingBean> lendingBeanList = lendingService.list( usersService.getCurrentUserId() );
+        model.addAttribute( lendingBeanList );
+        return "books/lending/list-lending";
+    }
+
+    @GetMapping("/renewal/{id}")
+    public String renawal(@PathVariable("id")Long id, Model model){
+        lendingService.renewal( id );
+
+        return "redirect:/lending/user";
+    }
+
+
+
     @ModelAttribute
     public LendingCreateBean lendingCreateBean(){return new  LendingCreateBean();}
 
 
-
-
-
     @GetMapping("/all")
-    public String list(Model model){
+    public String allList(Model model){
         List<LendingBean> lendingBeanList = lendingService.list();
         model.addAttribute( lendingBeanList );
 
@@ -79,14 +93,7 @@ public class LendingController implements ILendingController {
     }
 
 
-    @GetMapping("/user/{id}")
-    public String list(@PathVariable("id") Long id,Model model){
 
-        model.addAttribute("title","Liste des prêts de l'utilisateur : " + usersService.fullName( id ) );
-        List<LendingBean> lendingBeanList = lendingService.list( id );
-        model.addAttribute( lendingBeanList );
-        return "books/lending/list-lending";
-    }
 
     @GetMapping("/book/{id}")
     public String list(@PathVariable("id") String id,Model model){

@@ -8,16 +8,19 @@
   ],
   "properties": [
     {
+      "name": "microservice.config.lending-day",
+      "type": "java.lang.Integer",
+      "sourceType": "mbooks.config.ApplicationPropertiesConfig"
+    },
+    {
       "name": "microservice.config.renewal-day",
       "type": "java.lang.Integer",
-      "sourceType": "mbooks.config.ApplicationPropertiesConfig",
-      "defaultValue": 0
+      "sourceType": "mbooks.config.ApplicationPropertiesConfig"
     },
     {
       "name": "microservice.config.renewal-number",
       "type": "java.lang.Integer",
-      "sourceType": "mbooks.config.ApplicationPropertiesConfig",
-      "defaultValue": 0
+      "sourceType": "mbooks.config.ApplicationPropertiesConfig"
     }
   ],
   "hints": []

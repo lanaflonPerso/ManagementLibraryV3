@@ -28,7 +28,7 @@ public  @Data class LendingBean {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date returnDate;
 
-    private Long renewal;
+    private Integer renewal;
 
     @NotNull(message = "Le choix du livre est obligatoire")
     private BookBean book;

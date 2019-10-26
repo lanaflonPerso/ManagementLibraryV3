@@ -14,6 +14,5 @@ public class ApplicationPropertiesConfig {
     private String coverUse;
     private Long carousselInterval;
     private String coverPath;
-    private Long renewalNumber;
 
 }

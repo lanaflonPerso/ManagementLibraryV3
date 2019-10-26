@@ -63,6 +63,11 @@ public class LendingController {
     public Lending update(@DTO(LendingUpdateDto.class) @RequestBody Lending lending){
         return lendingService.save( lending );
     }
+    @PutMapping("/renewal")
+    @ResponseStatus(HttpStatus.OK)
+    public void renewal(@RequestBody Long id){
+        lendingService.renewal(id );
+    }
 
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable Long id){

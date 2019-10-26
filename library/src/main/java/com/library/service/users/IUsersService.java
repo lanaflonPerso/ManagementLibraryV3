@@ -5,6 +5,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface IUsersService extends UserDetailsService {
 
-    UsersBean find(Long id);
-    String fullName(Long id);
+    UsersBean getCurrentUser();
+    String currentUserNameSimple();
+
+
+    String getCurrentUserFullName();
+    String getCurrentUserEmail();
+    String getCurrentUserPhone();
+    Long getCurrentUserId();
 }

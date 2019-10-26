@@ -35,7 +35,7 @@ public @Data class Lending {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date returnDate;
 
-    private Long renewal;
+    private Integer renewal;
 
     @ManyToOne
     @JoinColumn(name="id_books", referencedColumnName="id")

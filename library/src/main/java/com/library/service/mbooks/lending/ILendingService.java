@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface ILendingService {
 
+    void renewal(Long id);
+
     LendingBean find(Long id);
 
     List<LendingBean> list();
@@ -25,5 +27,5 @@ public interface ILendingService {
     boolean isOutOfTime(  LendingBean lending );
     boolean isReturn( LendingBean lending );
 
-    boolean isRenewable(Long renewal);
+    boolean isRenewable(Integer renewal);
 }

@@ -12,7 +12,7 @@ public interface ILendingController {
     boolean isInProgress(LendingBean lending);
     boolean isOutOfTime(LendingBean lending);
     boolean isReturn(LendingBean lending);
-    boolean isRenewable(Long renewal);
+    boolean isRenewable(Integer renewal);
 
     String getFullAuthorName(AuthorBean author);
 

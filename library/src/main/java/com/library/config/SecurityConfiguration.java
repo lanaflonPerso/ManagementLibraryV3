@@ -24,6 +24,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     IUsersService usersService;
 
+    @Autowired
+    ApplicationPropertiesConfig appPropertiesConfig;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -39,7 +42,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/img/**",
                         "/webjars/**",
                         "/bootstrap-table/**",
-                        "/**"
+                        "/",
+                        "/apropos",
+                        appPropertiesConfig.getCoverPath() + "*",
+                        "/book/all"
                         ).permitAll()
                 .anyRequest().authenticated()
                 .and()

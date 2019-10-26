@@ -2,6 +2,7 @@ package com.library.service.mbooks.lending;
 import com.library.beans.mbooks.lending.LendingBean;
 import com.library.beans.mbooks.lending.LendingCreateBean;
 import com.library.config.ApplicationPropertiesConfig;
+import com.library.proxies.IBooksPropertiesProxy;
 import com.library.proxies.ILendingProxy;
 import com.library.technical.date.SimpleDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,14 @@ public class LendingServiceImpl implements ILendingService {
     @Autowired
     private SimpleDate simpleDate;
 
+
     @Autowired
-    private ApplicationPropertiesConfig appPropertiesConfig;
+    private IBooksPropertiesProxy booksPropertiesProxy;
+
+    public void renewal(Long id){
+
+        lendingProxy.renewal( id );
+    }
 
     public LendingBean find(Long id){
         return lendingProxy.find( id ) ;
@@ -78,8 +85,8 @@ public class LendingServiceImpl implements ILendingService {
         return false;
     }
 
-    public boolean isRenewable(Long renewal){
-        return (renewal < appPropertiesConfig.getRenewalNumber() );
+    public boolean isRenewable(Integer renewal){
+        return (renewal < booksPropertiesProxy.renewalNumber() );
     }
 
 }

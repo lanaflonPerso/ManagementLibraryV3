@@ -32,6 +32,9 @@ public interface ILendingProxy {
     @PutMapping("/update")
     LendingBean update( @RequestBody LendingBean lending);
 
+    @PutMapping("/renewal")
+    void renewal(@RequestBody Long id);
+
     @DeleteMapping("/{id}")
     boolean delete(@PathVariable("id") Long id);
 

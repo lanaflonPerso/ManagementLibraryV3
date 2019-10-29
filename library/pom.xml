@@ -55,6 +55,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 		<dependency>
@@ -62,23 +66,19 @@
 			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jersey</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>2.29.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
 			<version>4.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.github.openfeign.form</groupId>
-			<artifactId>feign-form</artifactId>
-			<version>3.8.0</version>
-		</dependency>
-		<dependency>
-			<groupId>io.github.openfeign.form</groupId>
-			<artifactId>feign-form-spring</artifactId>
-			<version>3.8.0</version>
 		</dependency>
 
 		<dependency>
@@ -107,7 +107,7 @@
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>1.9.3</version>
+			<version>1.9.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>

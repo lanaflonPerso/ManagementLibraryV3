@@ -32,10 +32,10 @@ public class EmailController {
 
     @PostMapping("/sendRevival")
     @ResponseStatus(HttpStatus.OK)
-    public String sendAgainEmail(@RequestBody List<EmailBean> emailBeanList){
+    public void sendRevival(@RequestBody List<EmailBean> emailList){
 
-            emailService.sendAgainEmail( emailBeanList );
-           return "Emails envoyés";
+            emailService.sendAgainEmail( emailList );
+
     }
 
     @PostMapping

@@ -13,5 +13,5 @@ import java.util.List;
 public interface IEmailProxy {
 
     @PostMapping("/sendRevival")
-    String sendAgainEmail(@RequestBody List<EmailWrapper> emailWrapperList);
+    void sendRevival(@RequestBody List<EmailWrapper> emailList);
 }

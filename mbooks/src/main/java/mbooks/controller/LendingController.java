@@ -75,8 +75,7 @@ public class LendingController {
     }
 
     @GetMapping("/email/sendRevival")
-    public String sendRevival(){
+    public void sendRevival(){
         lendingService.revival();
-        return "Emails  envoyé";
     }
 }

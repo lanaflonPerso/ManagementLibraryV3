@@ -94,9 +94,9 @@ public class LendingServiceImpl implements ILendingService {
                 emails.add(new EmailWrapper(usersBean.getEmail(),l.getBook().getTitle(), simpleDate.getDate( l.getEndDate() ) ) );
             }
 
-        List< EmailWrapper > search = new ArrayList<>( emails );
+        List< EmailWrapper > emailList = new ArrayList<>( emails );
 
-        emailProxy.sendAgainEmail( search );
+        emailProxy.sendRevival( emailList );
 
     }
 }

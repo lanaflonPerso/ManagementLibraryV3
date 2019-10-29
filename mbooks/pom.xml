@@ -24,6 +24,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jersey</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>2.29.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -46,12 +52,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
@@ -60,10 +67,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-batch</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-quartz</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.modelmapper</groupId>
@@ -78,7 +81,7 @@
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>1.9.3</version>
+			<version>1.9.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

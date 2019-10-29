@@ -22,8 +22,6 @@ public class EmailServiceImpl implements IEmailService {
     @Autowired
     private IEmailRepository emailRepository;
 
-    @Autowired
-    public SimpleMailMessage template;
 
     public List<Email> findAll(){
         return emailRepository.findAll();

@@ -4,14 +4,14 @@ hystrix:
   command:
     default:
       execution:
-        iso lation:
+        isolation:
           thread:
             timeoutInMilliseconds: 30000
 
 
 ribbon:
   ReadTimeout: 60000
-  connection-timeout: 3000
+  ConnectTimeout: 3000
   eureka:
     enabled: true
 

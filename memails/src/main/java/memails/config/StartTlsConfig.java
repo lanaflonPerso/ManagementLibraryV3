@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @RefreshScope
-@ConfigurationProperties("spring.mail.properties.mail.smtp.startls")
+@ConfigurationProperties("spring.mail.properties.mail.smtp.starttls")
 public class StartTlsConfig {
     private boolean enable;
     private boolean required;

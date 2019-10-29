@@ -201,7 +201,7 @@ public class BookController implements IBookController {
         int n = suggestions.size() > 20 ? 20 : suggestions.size();
 
         List<BookBean> search = new ArrayList<>( suggestions.subList(0, n) );
-        model.addAttribute( "bookBeanList", search );
+
         return search;
 
     }

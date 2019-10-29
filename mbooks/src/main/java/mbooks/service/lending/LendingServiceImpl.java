@@ -11,15 +11,13 @@ import mbooks.proxies.IMicroserviceUsersProxy;
 import mbooks.repository.ILendingRepository;
 import mbooks.service.IBooksService;
 import mbooks.technical.date.SimpleDate;
+import mbooks.technical.email.EmailWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class LendingServiceImpl implements ILendingService {
@@ -84,22 +82,21 @@ public class LendingServiceImpl implements ILendingService {
         }
     }
 
-    public String revival(){
+    public void revival(){
         Date now = new Date();
         List<Lending> lendingList= lendingRepository.findAllByReturnDateIsNullAndAndEndDateBefore( now );
 
-        if(lendingList.size()> 0 ){
+        ArrayList< EmailWrapper > emails = new ArrayList<>();
 
+        if(lendingList.size()> 0 )
             for (Lending l: lendingList ) {
                 UsersBean usersBean= usersProxy.user( l.getIdUser() );
-                emailProxy.sendAgainEmail(usersBean.getEmail(),l.getBook().getTitle(), simpleDate.getDate( l.getEndDate() ) );
+                emails.add(new EmailWrapper(usersBean.getEmail(),l.getBook().getTitle(), simpleDate.getDate( l.getEndDate() ) ) );
             }
 
-            return "les emails de relance ont été envoyés.";
-        }
+        List< EmailWrapper > search = new ArrayList<>( emails );
 
-        return "Aucun mail envoyé.";
-
+        emailProxy.sendAgainEmail( search );
 
     }
 }

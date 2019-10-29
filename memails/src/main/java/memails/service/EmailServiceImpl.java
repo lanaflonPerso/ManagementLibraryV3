@@ -1,6 +1,7 @@
 package memails.service;
 
 
+import memails.beans.EmailBean;
 import memails.model.Email;
 import memails.repository.IEmailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,13 +67,16 @@ public class EmailServiceImpl implements IEmailService {
         emailSender.send(message);
 
     }
-    public void sendAgainEmail(String to,String book, String endDate){
+    public void sendAgainEmail(List<EmailBean> emailBeanList){
+
        Email email = emailRepository.findByName("relance");
-       // [BOOK_TITLE] // [END_DATE]
-       String text = email.getContent()
-               .replace("[BOOK_TITLE]", book)
-               .replace("[END_DATE]", endDate);
-       sendSimpleMessage(to,email.getSubject(),text);
+
+        for (EmailBean e: emailBeanList) {
+            String text = email.getContent()
+                    .replace("[BOOK_TITLE]", e.getTitle())
+                    .replace("[END_DATE]", e.getEndDate());
+            sendSimpleMessage(e.getEmail(),email.getSubject(),text);
+        }
     }
 
 }

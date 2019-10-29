@@ -1,6 +1,7 @@
 package memails.controller;
 
 
+import memails.beans.EmailBean;
 import memails.controller.dto.EmailCreateDto;
 import memails.controller.dto.EmailUpdateDto;
 import memails.exceptions.ResourceNotFoundException;
@@ -29,11 +30,12 @@ public class EmailController {
         return emailList;
     }
 
-    @GetMapping("/send/{to}/{book}/{endDate}")
-    public String sendAgainEmail(@PathVariable("to") String to,@PathVariable("book") String book,@PathVariable("endDate")String endDate){
+    @PostMapping("/sendRevival")
+    @ResponseStatus(HttpStatus.OK)
+    public String sendAgainEmail(@RequestBody List<EmailBean> emailBeanList){
 
-            emailService.sendAgainEmail( to, book, endDate );
-           return "Email envoyé";
+            emailService.sendAgainEmail( emailBeanList );
+           return "Emails envoyés";
     }
 
     @PostMapping

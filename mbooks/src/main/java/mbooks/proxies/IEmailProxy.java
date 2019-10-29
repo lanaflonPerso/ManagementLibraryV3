@@ -1,16 +1,17 @@
 package mbooks.proxies;
 
+import mbooks.technical.email.EmailWrapper;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @FeignClient(name = "zuul-server",contextId = "emailProxy")
 @RibbonClient(name = "microservice-emails")
 @RequestMapping("/microservice-emails/email")
 public interface IEmailProxy {
 
-    @GetMapping("/send/{to}/{book}/{endDate}")
-    String sendAgainEmail(@PathVariable("to") String to, @PathVariable("book") String book, @PathVariable("endDate")String endDate);
+    @PostMapping("/sendRevival")
+    String sendAgainEmail(@RequestBody List<EmailWrapper> emailWrapperList);
 }

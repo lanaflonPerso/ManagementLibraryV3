@@ -12,13 +12,16 @@ import com.library.service.mbooks.author.IAuthorService;
 import com.library.service.mbooks.edition.IEditionService;
 import com.library.service.mbooks.language.ILanguageService;
 import com.library.service.mbooks.theme.IThemeService;
+import com.library.service.users.IUsersService;
 import com.library.technical.error.Field;
+import com.library.technical.search.BookWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -56,8 +59,16 @@ public class BookController implements IBookController {
     @Autowired
     private ApplicationPropertiesConfig appPropertiesConfig;
 
+    @Autowired
+    private IUsersService usersService;
+
     @ModelAttribute("getCoverPath")
     public String getCoverPath(){return appPropertiesConfig.getCoverPath();}
+
+    @ModelAttribute("cuurentUser")
+    public String getCurrentUserFullName(){
+        return  usersService.getCurrentUserFullName();
+    }
 
     @ModelAttribute
     public List<AuthorBean> authorBeanList(){
@@ -102,7 +113,7 @@ public class BookController implements IBookController {
 
 
     @GetMapping("/all")
-    public String list(  Model model) throws NoSuchMethodException {
+    public String list(  Model model)  {
         List<BookBean> bookBeanList = booksService.list();
         model.addAttribute( bookBeanList );
         model.addAttribute("title","Liste des livres");
@@ -168,6 +179,32 @@ public class BookController implements IBookController {
     }
 
 
+    @RequestMapping(value = "/bookList", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public List<BookBean> bookBeanList(@RequestParam("term") String term,Model model){
+
+        System.out.println("term : " + term);
+        ArrayList< BookBean > suggestions = new ArrayList<>();
+        List< BookBean > bookBeanList= booksService.list();
+
+        for (BookBean book: bookBeanList ) {
+
+            if (book.getTitle().toLowerCase().contains(term.toLowerCase())
+                    || book.getIsbn().contains(term)
+                    || book.getSummary().toLowerCase().contains(term.toLowerCase())) {
+                suggestions.add( book );
+            }
+        }
+
+
+        // truncate the list to the first n, max 20 elements
+        int n = suggestions.size() > 20 ? 20 : suggestions.size();
+
+        List<BookBean> search = new ArrayList<>( suggestions.subList(0, n) );
+        model.addAttribute( "bookBeanList", search );
+        return search;
+
+    }
 
 
 

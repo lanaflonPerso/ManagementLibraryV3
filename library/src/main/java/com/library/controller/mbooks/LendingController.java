@@ -60,6 +60,10 @@ public class LendingController implements ILendingController {
     @ModelAttribute("getCoverPath")
     public String getCoverPath(){return appPropertiesConfig.getCoverPath();}
 
+    @ModelAttribute("cuurentUser")
+    public String getCurrentUserFullName(){
+        return  usersService.getCurrentUserFullName();
+    }
 
     @GetMapping("/user")
     public String userList(Model model){

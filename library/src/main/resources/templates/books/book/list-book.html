@@ -11,8 +11,17 @@
 <body>
 <main role="main" class="container" layout:fragment="content" th:with="controller = ${IBookController}"  >
 
+
+
     <div class="row">
         <th:block th:insert="~{fragment/commons :: titles( ${ title } ) }"></th:block>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="bookSearch">Recherche d'un livre</label>
+            <input type="text" class="form-control " id="bookSearch" placeholder="Rechercher un livre (isbn, titre ou résumé)" >
+        </div>
     </div>
 
    <!-- Debut de th:fragment="listContent" -------------------------------------------->
@@ -34,7 +43,7 @@
                     <div class="row">
                         <!-- Debut de div#album > .container > .row > .col-md-4 -------------------------------------------->
 
-                        <div class="col-md-6" th:each="b : ${list}" >
+                        <div class="col-md-6 bookList" th:each="b : ${list}" th:attrappend="id=${b.isbn}" >
 
                             <!-- Debut de div#album > .container > .row > .col-md-4 > .card -------------------------------------------->
                             <div class="card mb-1 box-shadow"  >

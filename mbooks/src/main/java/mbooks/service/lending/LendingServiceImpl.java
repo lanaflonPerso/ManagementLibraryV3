@@ -6,17 +6,16 @@ import mbooks.config.ApplicationPropertiesConfig;
 import mbooks.exceptions.ResourceNotFoundException;
 import mbooks.model.Books;
 import mbooks.model.Lending;
-import mbooks.proxies.IEmailProxy;
 import mbooks.proxies.IMicroserviceUsersProxy;
 import mbooks.repository.ILendingRepository;
 import mbooks.service.IBooksService;
+import mbooks.service.email.IEmailService;
 import mbooks.technical.date.SimpleDate;
 import mbooks.technical.email.EmailWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
 import java.util.*;
 
 @Service
@@ -35,7 +34,9 @@ public class LendingServiceImpl implements ILendingService {
     private SimpleDate simpleDate;
 
     @Autowired
-    private IEmailProxy emailProxy;
+    private IEmailService emailService;
+
+
 
     @Autowired
     private IMicroserviceUsersProxy usersProxy;
@@ -82,21 +83,20 @@ public class LendingServiceImpl implements ILendingService {
         }
     }
 
-    public void revival(){
-        Date now = new Date();
-        List<Lending> lendingList= lendingRepository.findAllByReturnDateIsNullAndAndEndDateBefore( now );
+    public void revival() {
 
-        ArrayList< EmailWrapper > emails = new ArrayList<>();
+            Date now = new Date();
+            List<Lending> lendingList = lendingRepository.findAllByReturnDateIsNullAndAndEndDateBefore(now);
 
-        if(lendingList.size()> 0 )
-            for (Lending l: lendingList ) {
-                UsersBean usersBean= usersProxy.user( l.getIdUser() );
-                emails.add(new EmailWrapper(usersBean.getEmail(),l.getBook().getTitle(), simpleDate.getDate( l.getEndDate() ) ) );
-            }
+            ArrayList<EmailWrapper> emails = new ArrayList<>();
 
-        List< EmailWrapper > emailList = new ArrayList<>( emails );
+            if (lendingList.size() > 0)
+                for (Lending l : lendingList) {
+                    UsersBean usersBean = usersProxy.user(l.getIdUser());
+                    emails.add(new EmailWrapper(usersBean.getEmail(), l.getBook().getTitle(), simpleDate.getDate(l.getEndDate())));
+                }
 
-        emailProxy.sendRevival( emailList );
-
+            List<EmailWrapper> emailList = new ArrayList<>(emails);
+            emailService.sendRevival(emailList);
     }
 }

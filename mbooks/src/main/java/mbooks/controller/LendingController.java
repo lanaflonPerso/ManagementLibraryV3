@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.net.SocketTimeoutException;
 import java.util.List;
 
 @RestController
@@ -74,8 +76,14 @@ public class LendingController {
         return lendingService.delete( id );
     }
 
-    @GetMapping("/email/sendRevival")
-    public void sendRevival(){
-        lendingService.revival();
+    @GetMapping("/sendRevival")
+    public void sendRevival() {
+
+
+            lendingService.revival();
+
     }
+
+
+
 }

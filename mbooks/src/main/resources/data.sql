@@ -48,3 +48,12 @@ INSERT INTO "lending"(
 	(5, '2019-11-21 14:00:00', 1, 0, null , '2019-10-26 14:00:00', 7);
 
 
+INSERT INTO "email" (id, name,subject,content)
+VALUES
+(1,'relance','Relance pour livre non rendu',
+'	Bonjour,
+
+	Vous deviez rendre le livre [BOOK_TITLE] à la blibliothèque au plus tard pour [END_DATE].
+Hors nous n avons toujours pas enregistré ce retour.
+Nous vous demandons de régulariser la situation dès à présent.
+Bien cordialement.');

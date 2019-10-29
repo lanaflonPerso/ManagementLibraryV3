@@ -77,10 +77,11 @@ public class LendingController {
     }
 
     @GetMapping("/sendRevival")
-    public void sendRevival() {
+    public String sendRevival() {
 
 
             lendingService.revival();
+            return "Les mails ont été envoyés";
 
     }
 

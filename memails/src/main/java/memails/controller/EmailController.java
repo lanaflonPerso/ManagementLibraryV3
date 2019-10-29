@@ -30,12 +30,14 @@ public class EmailController {
     }
 
     @GetMapping("/send")
-    public void sendEmail(){
+    public String sendEmail(){
         String to= "romaindavid.sergeant@gmail.com";
         String subject="Relance pour livre non rendu";
         String text=" Bonjour,\nVous deviez rendre le livre pour le 30/11/2019. A ce jour noous n'avons toujours pas enregistré ce retour.\nMerci de faire le nécessaire";
 
            emailService.sendSimpleMessage(to,subject,text);
+
+           return "Email envoyé";
     }
     @PostMapping
     public void newEmail(@DTO(EmailCreateDto.class) Email email) {

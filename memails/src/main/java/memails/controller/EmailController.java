@@ -29,16 +29,13 @@ public class EmailController {
         return emailList;
     }
 
-    @GetMapping("/send")
-    public String sendEmail(){
-        String to= "romaindavid.sergeant@gmail.com";
-        String subject="Relance pour livre non rendu";
-        String text=" Bonjour,\nVous deviez rendre le livre pour le 30/11/2019. A ce jour noous n'avons toujours pas enregistré ce retour.\nMerci de faire le nécessaire";
+    @GetMapping("/send/{to}/{book}/{endDate}")
+    public String sendAgainEmail(@PathVariable("to") String to,@PathVariable("book") String book,@PathVariable("endDate")String endDate){
 
-           emailService.sendSimpleMessage(to,subject,text);
-
+            emailService.sendAgainEmail( to, book, endDate );
            return "Email envoyé";
     }
+
     @PostMapping
     public void newEmail(@DTO(EmailCreateDto.class) Email email) {
         emailService.save( email );

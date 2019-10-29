@@ -20,7 +20,7 @@ public @Data class Email {
 
     @NonNull
     @Column(columnDefinition = "TEXT")
-    private String objet;
+    private String subject;
 
     @NonNull
     @Column(columnDefinition = "TEXT")

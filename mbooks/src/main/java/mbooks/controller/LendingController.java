@@ -73,4 +73,10 @@ public class LendingController {
     public boolean delete(@PathVariable Long id){
         return lendingService.delete( id );
     }
+
+    @GetMapping("/email/sendRevival")
+    public String sendRevival(){
+
+        return lendingService.revival();
+    }
 }

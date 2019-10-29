@@ -1,11 +1,16 @@
 package mbooks.service.lending;
 
+
+import mbooks.beans.musers.user.UsersBean;
 import mbooks.config.ApplicationPropertiesConfig;
 import mbooks.exceptions.ResourceNotFoundException;
 import mbooks.model.Books;
 import mbooks.model.Lending;
+import mbooks.proxies.IEmailProxy;
+import mbooks.proxies.IMicroserviceUsersProxy;
 import mbooks.repository.ILendingRepository;
 import mbooks.service.IBooksService;
+import mbooks.technical.date.SimpleDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -13,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +32,15 @@ public class LendingServiceImpl implements ILendingService {
 
     @Autowired
     private ApplicationPropertiesConfig appPropertiesConfig;
+
+    @Autowired
+    private SimpleDate simpleDate;
+
+    @Autowired
+    private IEmailProxy emailProxy;
+
+    @Autowired
+    private IMicroserviceUsersProxy usersProxy;
 
     public void renewal(Long id){
     Lending lending = this.find( id );
@@ -67,5 +82,24 @@ public class LendingServiceImpl implements ILendingService {
         }catch (DataIntegrityViolationException ee){
             return false;
         }
+    }
+
+    public String revival(){
+        Date now = new Date();
+        List<Lending> lendingList= lendingRepository.findAllByReturnDateIsNullAndAndEndDateBefore( now );
+
+        if(lendingList.size()> 0 ){
+
+            for (Lending l: lendingList ) {
+                UsersBean usersBean= usersProxy.user( l.getIdUser() );
+                emailProxy.sendAgainEmail(usersBean.getEmail(),l.getBook().getTitle(), simpleDate.getDate( l.getEndDate() ) );
+            }
+
+            return "les emails de relance ont été envoyés.";
+        }
+
+        return "Aucun mail envoyé.";
+
+
     }
 }

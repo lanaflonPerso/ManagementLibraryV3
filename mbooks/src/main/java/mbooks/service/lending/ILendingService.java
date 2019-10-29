@@ -13,4 +13,6 @@ public interface ILendingService {
     List<Lending> list(Long idUser);
     Lending save(Lending lending);
     boolean delete(Long id);
+
+    String revival();
 }

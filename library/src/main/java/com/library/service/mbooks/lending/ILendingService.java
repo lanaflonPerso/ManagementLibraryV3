@@ -28,4 +28,6 @@ public interface ILendingService {
     boolean isReturn( LendingBean lending );
 
     boolean isRenewable(Integer renewal);
+
+
 }

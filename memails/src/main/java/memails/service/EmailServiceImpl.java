@@ -37,7 +37,7 @@ public class EmailServiceImpl implements IEmailService {
 
 
 
-    public void sendSimpleMessage(String to, String subject, String text) {
+   private void sendSimpleMessage(String to, String subject, String text) {
 
         //String text = String.format(template.getText(), templateArgs);
         //sendSimpleMessage(to, subject, text);
@@ -48,8 +48,8 @@ public class EmailServiceImpl implements IEmailService {
         message.setText(text);
         emailSender.send(message);
     }
-    @Override
-    public void sendMessageWithAttachment(String to, String subject, String text, String pathToAttachment) throws MessagingException {
+
+    private void sendMessageWithAttachment(String to, String subject, String text, String pathToAttachment) throws MessagingException {
 
 
         MimeMessage message = emailSender.createMimeMessage();
@@ -65,6 +65,14 @@ public class EmailServiceImpl implements IEmailService {
 
         emailSender.send(message);
 
+    }
+    public void sendAgainEmail(String to,String book, String endDate){
+       Email email = emailRepository.findByName("relance");
+       // [BOOK_TITLE] // [END_DATE]
+       String text = email.getContent()
+               .replace("[BOOK_TITLE]", book)
+               .replace("[END_DATE]", endDate);
+       sendSimpleMessage(to,email.getSubject(),text);
     }
 
 }

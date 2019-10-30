@@ -16,11 +16,10 @@ public class MainController {
     @Autowired
     private IUsersService usersService;
 
-    @ModelAttribute("cuurentUser")
-    public String getCurrentUserFullName(){
-        return  usersService.getCurrentUserFullName();
+    @ModelAttribute("currentUser")
+    public String getCurrentUserFirstName(){
+        return  usersService.getCurrentUserFirstName();
     }
-
 
 
     @GetMapping("/erreur")

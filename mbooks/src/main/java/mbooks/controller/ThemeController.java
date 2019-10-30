@@ -8,6 +8,8 @@ import mbooks.model.Theme;
 import mbooks.service.theme.IThemeService;
 import mbooks.technical.dto.DTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/theme")
-public class ThemeController {
+public class ThemeController implements HealthIndicator {
 
     @Autowired
     private IThemeService themeService;
@@ -51,4 +53,13 @@ public class ThemeController {
         return themeService.delete( id );
     }
 
+    @Override
+    public Health health() {
+        List<Theme> themeList = themeService.list();
+
+        if(themeList.isEmpty()) {
+            return Health.down().build();
+        }
+        return Health.up().build();
+    }
 }

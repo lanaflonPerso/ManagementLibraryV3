@@ -33,6 +33,10 @@ public class UserServiceImpl implements IUsersService {
 
     private String currentUserFullName;
 
+    private String currentUserFirstName;
+
+    private String currentUserLastName;
+
     private String currentUserEmail;
 
     private String currentUserPhone;
@@ -41,6 +45,14 @@ public class UserServiceImpl implements IUsersService {
 
     public UsersBean getCurrentUser() {
         return currentUser;
+    }
+
+    public String getCurrentUserFirstName() {
+        return currentUserFirstName;
+    }
+
+    public String getCurrentUserLastName() {
+        return currentUserLastName;
     }
 
     public String getCurrentUserFullName() {
@@ -59,6 +71,8 @@ public class UserServiceImpl implements IUsersService {
         return currentUserId;
     }
 
+
+
     /**
      * On cherche un utilisateur
      *
@@ -74,6 +88,8 @@ public class UserServiceImpl implements IUsersService {
             throw new UsernameNotFoundException("Utilisateur ou mot de passe incorrect.");
         }
         currentUserEmail = currentUser.getEmail();
+        currentUserFirstName = currentUser.getFirstName();
+        currentUserLastName = currentUser.getLastName();
         currentUserFullName = currentUser.getFirstName() + ' ' + currentUser.getLastName();
         currentUserId = currentUser.getId();
         currentUserPhone = currentUser.getPhone();

@@ -8,6 +8,8 @@ import mbooks.model.Books;
 import mbooks.service.IBooksService;
 import mbooks.technical.dto.DTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/book")
-public class BooksController {
+public class BooksController implements HealthIndicator {
 
     @Autowired
     private IBooksService booksService;
@@ -54,5 +56,15 @@ public class BooksController {
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable Long id){
         return booksService.delete( id );
+    }
+
+    @Override
+    public Health health() {
+        List<Books> booksList = booksService.list();
+
+        if(booksList.isEmpty()) {
+            return Health.down().build();
+        }
+        return Health.up().build();
     }
 }

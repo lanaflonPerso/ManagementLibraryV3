@@ -9,6 +9,8 @@ import mbooks.model.Email;
 import mbooks.service.email.IEmailService;
 import mbooks.technical.dto.DTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/email")
-public class EmailController {
+public class EmailController implements HealthIndicator {
     @Autowired
     private IEmailService emailService;
 
@@ -41,5 +43,16 @@ public class EmailController {
     @ResponseStatus(HttpStatus.OK)
     public void updateEmail(@DTO(EmailUpdateDto.class) Email email ){
         emailService.save( email );
+    }
+
+
+    @Override
+    public Health health() {
+        List<Email> emailList = emailService.findAll();
+
+        if(emailList.isEmpty()) {
+            return Health.down().build();
+        }
+        return Health.up().build();
     }
 }

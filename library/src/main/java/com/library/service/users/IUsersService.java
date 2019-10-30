@@ -8,7 +8,8 @@ public interface IUsersService extends UserDetailsService {
     UsersBean getCurrentUser();
     String currentUserNameSimple();
 
-
+    String getCurrentUserFirstName();
+    String getCurrentUserLastName();
     String getCurrentUserFullName();
     String getCurrentUserEmail();
     String getCurrentUserPhone();

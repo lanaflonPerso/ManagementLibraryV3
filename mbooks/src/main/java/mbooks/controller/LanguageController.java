@@ -8,6 +8,8 @@ import mbooks.model.Language;
 import mbooks.service.language.ILanguageService;
 import mbooks.technical.dto.DTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/language")
-public class LanguageController {
+public class LanguageController  implements HealthIndicator {
 
     @Autowired
     private ILanguageService languageService;
@@ -57,5 +59,15 @@ public class LanguageController {
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable Long id){
         return languageService.delete( id );
+    }
+
+    @Override
+    public Health health() {
+        List<Language> languageList = languageService.list();
+
+        if(languageList.isEmpty()) {
+            return Health.down().build();
+        }
+        return Health.up().build();
     }
 }

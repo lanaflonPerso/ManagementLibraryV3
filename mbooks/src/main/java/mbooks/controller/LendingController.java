@@ -7,6 +7,8 @@ import mbooks.model.Lending;
 import mbooks.service.lending.ILendingService;
 import mbooks.technical.dto.DTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/lending")
-public class LendingController {
+public class LendingController   {
     @Autowired
     private ILendingService lendingService;
 
@@ -84,7 +86,6 @@ public class LendingController {
             return "Les mails ont été envoyés";
 
     }
-
 
 
 }

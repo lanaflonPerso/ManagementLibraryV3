@@ -34,7 +34,7 @@
                         <a class="nav-link" th:href="@{/apropos}">A propos</a>
                     </li>
                 </ul>
-                <a sec:authorize="isAuthenticated()" class="nav-link text-muted w-25" th:text="${'Bienvenue ' + getCurrentUserFullName + ','}" >Bievenue </a>
+                <a sec:authorize="isAuthenticated()" class="nav-link text-muted w-25" th:text="${'Bienvenue ' + currentUser + ','}" >Bievenue </a>
                 <form class="form-inline mt-2 mt-md-0">
                     <a sec:authorize="isAnonymous()" class="btn btn-sm btn-outline-secondary ml-1" th:href="@{/login}">Connexion</a>
                     <a sec:authorize="isAuthenticated()" class="btn btn-sm btn-outline-secondary ml-1" th:href="@{/logout}">Déconnexion</a>

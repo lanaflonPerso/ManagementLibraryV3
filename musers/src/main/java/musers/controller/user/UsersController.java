@@ -8,6 +8,8 @@ import musers.model.user.Users;
 import musers.service.user.IUsersService;
 import musers.technical.dto.DTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-public class UsersController {
+public class UsersController implements HealthIndicator {
 
     @Autowired
     private IUsersService usersService;
@@ -58,6 +60,13 @@ public class UsersController {
         usersService.save( user );
     }
 
+    @Override
+    public Health health() {
+        List<Users> usersList = usersService.findAll();
 
-
+        if(usersList.isEmpty()) {
+            return Health.down().build();
+        }
+        return Health.up().build();
+    }
 }

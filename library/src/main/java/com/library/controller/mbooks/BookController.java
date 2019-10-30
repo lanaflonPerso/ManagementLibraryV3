@@ -65,9 +65,9 @@ public class BookController implements IBookController {
     @ModelAttribute("getCoverPath")
     public String getCoverPath(){return appPropertiesConfig.getCoverPath();}
 
-    @ModelAttribute("cuurentUser")
-    public String getCurrentUserFullName(){
-        return  usersService.getCurrentUserFullName();
+    @ModelAttribute("currentUser")
+    public String getCurrentUserFirstName(){
+        return  usersService.getCurrentUserFirstName();
     }
 
     @ModelAttribute

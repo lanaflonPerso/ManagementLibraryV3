@@ -80,7 +80,7 @@ public class LendingController {
     public String sendRevival() {
 
 
-            lendingService.revival();
+            lendingService.sendLendingRevival();
             return "Les mails ont été envoyés";
 
     }

@@ -14,5 +14,5 @@ public interface ILendingService {
     Lending save(Lending lending);
     boolean delete(Long id);
 
-    void revival();
+    void sendLendingRevival();
 }

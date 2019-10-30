@@ -9,6 +9,7 @@ import mbooks.model.Lending;
 import mbooks.proxies.IMicroserviceUsersProxy;
 import mbooks.repository.ILendingRepository;
 import mbooks.service.IBooksService;
+import mbooks.service.email.EmailServiceImpl;
 import mbooks.service.email.IEmailService;
 import mbooks.technical.date.SimpleDate;
 import mbooks.technical.email.EmailWrapper;
@@ -31,15 +32,14 @@ public class LendingServiceImpl implements ILendingService {
     private ApplicationPropertiesConfig appPropertiesConfig;
 
     @Autowired
-    private SimpleDate simpleDate;
+    private IMicroserviceUsersProxy usersProxy;
 
     @Autowired
     private IEmailService emailService;
 
-
-
     @Autowired
-    private IMicroserviceUsersProxy usersProxy;
+    private SimpleDate simpleDate ;
+
 
     public void renewal(Long id){
     Lending lending = this.find( id );
@@ -83,20 +83,23 @@ public class LendingServiceImpl implements ILendingService {
         }
     }
 
-    public void revival() {
 
-            Date now = new Date();
-            List<Lending> lendingList = lendingRepository.findAllByReturnDateIsNullAndAndEndDateBefore(now);
 
-            ArrayList<EmailWrapper> emails = new ArrayList<>();
+    public void sendLendingRevival(){
+        Date now = new Date();
+      List<Lending> lendingList = lendingRepository.findAllByReturnDateIsNullAndAndEndDateBefore(now);
 
-            if (lendingList.size() > 0)
-                for (Lending l : lendingList) {
-                    UsersBean usersBean = usersProxy.user(l.getIdUser());
-                    emails.add(new EmailWrapper(usersBean.getEmail(), l.getBook().getTitle(), simpleDate.getDate(l.getEndDate())));
-                }
+        ArrayList<EmailWrapper> emails = new ArrayList<>();
 
-            List<EmailWrapper> emailList = new ArrayList<>(emails);
-            emailService.sendRevival(emailList);
+        if (lendingList.size() > 0)
+            for (Lending l : lendingList) {
+                UsersBean usersBean = usersProxy.user(l.getIdUser());
+                emails.add(new EmailWrapper(usersBean.getEmail(), l.getBook().getTitle(), simpleDate.getDate(l.getEndDate())));
+            }
+
+        List<EmailWrapper> emailList = new ArrayList<>(emails);
+        emailService.sendRevival(emailList);
     }
+
+
 }

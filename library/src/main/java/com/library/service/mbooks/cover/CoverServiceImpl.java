@@ -25,12 +25,10 @@ public class CoverServiceImpl implements ICoverService {
 
 
     /**
-     * Gère la sauvegarde du fichier en base de données. On vérifie si le fichier est existant et dans le cas contraire
-     * le fichier est sauvegardé dans la base de données
+     * Permet la création de l'entity CoverCreateBean en vu de la sauvegarde dans mfile
      * @param file le fichier à sauvegarder
      *
-     * @return On retourne le fichier si présent en base de données
-     * sinon on retourne le nouveau fichier : (entity) Photo
+     * @return Entity CoverCreateBean
      */
     public CoverCreateBean storeFile(MultipartFile file)  {
 
@@ -57,8 +55,6 @@ public class CoverServiceImpl implements ICoverService {
         }
 
     }
-
-
 
     /**
      * Getter

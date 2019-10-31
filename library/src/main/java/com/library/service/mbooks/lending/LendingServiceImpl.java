@@ -26,11 +26,20 @@ public class LendingServiceImpl implements ILendingService {
     @Autowired
     private IBooksPropertiesProxy booksPropertiesProxy;
 
+    /**
+     * Permet de faire le renouvellement de l'emprunt
+     * @param id Identifiant de l'emprunt à renouveler
+     */
     public void renewal(Long id){
 
         lendingProxy.renewal( id );
     }
 
+    /**
+     * Permet la recherche d'un emprunt
+     * @param id Identifiant de l'emprunt à rechercher
+     * @return Entity lendingbean si l'emprunt a été trouvé sinon null
+     */
     public LendingBean find(Long id){
             try {
                 return lendingProxy.find( id ) ;
@@ -39,6 +48,10 @@ public class LendingServiceImpl implements ILendingService {
             }
     }
 
+    /**
+     * Permet la recherche de la liste de tous les emprunts
+     * @return La liste de tous les emprunts si existant sinon null
+     */
     public List<LendingBean> list(){
         try {
             return lendingProxy.list();
@@ -48,6 +61,11 @@ public class LendingServiceImpl implements ILendingService {
 
     }
 
+    /**
+     * Permet la recherche de la liste de tous les emprunts d'un livre
+     * @param isbn Numéro ISBN du livre
+     * @return a liste de tous les emprunts si existant sinon null
+     */
     public List<LendingBean> list(String isbn){
         try {
             return  lendingProxy.list( isbn );
@@ -57,7 +75,11 @@ public class LendingServiceImpl implements ILendingService {
 
 
     }
-
+    /**
+     * Permet la recherche de la liste de tous les emprunts d'un utilisateur
+     * @param idUser Numéro ISBN du livre
+     * @return a liste de tous les emprunts si existant sinon null
+     */
     public List<LendingBean> list(Long idUser){
         try {
             return lendingProxy.list( idUser );
@@ -67,28 +89,63 @@ public class LendingServiceImpl implements ILendingService {
 
     }
 
+    /**
+     * Permet la création d'un emprunt
+     * @param lending Entity à créer
+     * @return Entity lendingbean
+     */
     public LendingBean save(LendingCreateBean lending){
         return lendingProxy.save( lending );
     }
 
+    /**
+     * Permet la modification d'un emprunt
+     * @param lending Entity à modifier
+     * @return Entity lendingbean
+     */
     public LendingBean save(LendingBean lending){
         return lendingProxy.update( lending );
     }
 
+    /**
+     * Permet m'effacement d'un emprunt
+     * @param id Identifiant de l'emprunt à effacer
+     * @return true si l'effacement à pu se réaliser sinon false
+     */
     public boolean delete(Long id){
         return lendingProxy.delete( id );
     }
 
+    /**
+     * Permet la mise en forme d'une date
+     * @param date La date à metre en forme
+     * @return La date mise en forme "dd MMM yyyy"
+     */
     public String getDate(Date date){ return simpleDate.getDate( date );   }
 
+    /**
+     * Permet de vérifier si l'emprunt est en cours
+     * @param lending Emprunt à vérifier
+     * @return true si l'emprunt est toujours en vous sinon fdalse
+     */
     public boolean isInProgress( LendingBean lending){
         return isStartDateBeforeEndDate(  lending);
     }
 
+    /**
+     * Permet de vérifier si l'emprunt est hors délais
+     * @param lending Emprunt à vérifier
+     * @return true si l'emprunt est hors délai sinon false
+     */
     public boolean isOutOfTime( LendingBean lending ){
         return !isStartDateBeforeEndDate(  lending);
     }
 
+    /**
+     * Permet de vérifier si le livre emprunté a été rendu
+     * @param lending Emprunt à vérifier
+     * @return true si le livre a été rendu sinon false
+     */
     public boolean isReturn(LendingBean lending){
         if ( lending.getReturnDate() == null)
             return false;
@@ -96,6 +153,11 @@ public class LendingServiceImpl implements ILendingService {
         return true;
     }
 
+    /**
+     * Permet de vérifier si la date de fin d'un emprunt en cours ou hors délai est dépassée
+     * @param lending Emprunt à vérifier
+     * @return true si la date de fin est dépassé sinon false
+     */
     private boolean isStartDateBeforeEndDate( LendingBean lending){
         Date now = new Date();
         if( !this.isReturn( lending ) )
@@ -104,6 +166,11 @@ public class LendingServiceImpl implements ILendingService {
         return false;
     }
 
+    /**
+     * Permet de vérifier le renouvellement est encore possible
+     * @param renewal Nombre de renouvelement déjà réalisé
+     * @return true si le renouvellement est encore possible sinon false
+     */
     public boolean isRenewable(Integer renewal){
         return (renewal < booksPropertiesProxy.renewalNumber() );
     }

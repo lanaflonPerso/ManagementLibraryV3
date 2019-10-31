@@ -31,14 +31,37 @@ public class BooksServiceImpl implements IBooksService {
     @Autowired
     private ILanguageProxy languageProxy;
 
+    /**
+     * Permet la recherche d'un livre
+     * @param id Identifiant du livre à rechercher
+     * @return Entity bookbean si trouvé sinon null
+     */
     public BookBean find(Long id ){
-        return  booksProxy.find(id );
+
+        try {
+            return  booksProxy.find(id );
+        }catch (ResourceNotFoundException e){
+            return null;
+        }
     }
 
+    /**
+     * Permet la recherche d'un titre d'un livre
+     * @param id Idenitifiant du livre
+     * @return Titre du livre si trouvé sinon null
+     */
     public String getTitle(String id){
-        return booksProxy.find( id ).getTitle() ;
+        try {
+            return booksProxy.find( id ).getTitle() ;
+        }catch (ResourceNotFoundException e){
+            return null;
+        }
     }
 
+    /**
+     * Permet la recherche de la liste de tous les livres
+     * @return Liste de tous les livre si trouvé sinon false
+     */
     public List<BookBean> list(){
 
         try {
@@ -48,6 +71,11 @@ public class BooksServiceImpl implements IBooksService {
         }
     }
 
+    /**
+     * Permet la création d'un livre
+     * @param book Entity à créer
+     * @return Entity bookbean
+     */
     public BookBean save(BookCreateBean book){
 
         book.setAuthor( authorProxy.find( book.getAuthor().getId() ) );
@@ -57,15 +85,29 @@ public class BooksServiceImpl implements IBooksService {
 
         return booksProxy.save( book );
     }
-
+    /**
+     * Permet la modification d'un livre
+     * @param book Entity à modifier
+     * @return Entity bookbean
+     */
     public BookBean save(BookBean book){
         return booksProxy.update( book );
     }
 
+    /**
+     * Permet l'effacement d'un livre
+     * @param id Identifiant du livre à effacer
+     * @return true si l'effacement à pu se réaliser sinon false
+     */
     public boolean delete(Long id){
         return booksProxy.delete( id );
     }
 
+    /**
+     * Vérification de l disponibilité d'un livre
+     * @param book Livre à vérifier
+     * @return true si le livre est encore disponible sinon false
+     */
     public boolean isAvailability(BookBean book){
         return ( book.getAvailability() > 0) ;
     }

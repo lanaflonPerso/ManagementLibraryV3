@@ -2,6 +2,7 @@ package com.library.service.mbooks.theme;
 
 import com.library.beans.mbooks.book.theme.ThemeBean;
 import com.library.beans.mbooks.book.theme.ThemeCreateBean;
+import com.library.exception.ResourceNotFoundException;
 import com.library.proxies.IThemeProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,11 +16,21 @@ public class ThemeServiceImpl implements IThemeService {
     private IThemeProxy themeProxy;
 
     public ThemeBean find(Long id ){
-        return  themeProxy.find(id );
+
+        try {
+            return  themeProxy.find(id );
+        }catch (ResourceNotFoundException e){
+            return null;
+        }
     }
 
     public List<ThemeBean> list(){
-        return themeProxy.list();
+
+        try {
+            return themeProxy.list();
+        }catch (ResourceNotFoundException e){
+            return null;
+        }
     }
 
     public ThemeBean save(ThemeCreateBean theme){

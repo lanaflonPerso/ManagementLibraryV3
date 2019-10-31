@@ -115,6 +115,10 @@ public class BookController implements IBookController {
     @GetMapping("/all")
     public String list(  Model model)  {
         List<BookBean> bookBeanList = booksService.list();
+        if ( bookBeanList == null) {
+            model.addAttribute("title","Aucun livre à afficher");
+            return "error/not-found";
+        }
         model.addAttribute( bookBeanList );
         model.addAttribute("title","Liste des livres");
 

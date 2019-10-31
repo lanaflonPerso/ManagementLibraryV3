@@ -3,6 +3,7 @@ package com.library.service.mbooks;
 import com.library.beans.mbooks.book.BookBean;
 import com.library.beans.mbooks.book.BookCreateBean;
 import com.library.beans.mbooks.book.author.AuthorBean;
+import com.library.exception.ResourceNotFoundException;
 import com.library.proxies.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,12 @@ public class BooksServiceImpl implements IBooksService {
     }
 
     public List<BookBean> list(){
-        return booksProxy.list();
+
+        try {
+            return booksProxy.list();
+        }catch (ResourceNotFoundException e){
+            return null;
+        }
     }
 
     public BookBean save(BookCreateBean book){

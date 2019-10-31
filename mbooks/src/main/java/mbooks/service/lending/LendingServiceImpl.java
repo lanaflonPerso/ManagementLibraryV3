@@ -40,7 +40,10 @@ public class LendingServiceImpl implements ILendingService {
     @Autowired
     private SimpleDate simpleDate ;
 
-
+    /**
+     * Permet de faire un renouvellement d'emprun
+     * @param id Identifiant de l'emprunt à renouveler
+     */
     public void renewal(Long id){
     Lending lending = this.find( id );
 
@@ -54,26 +57,55 @@ public class LendingServiceImpl implements ILendingService {
         }
     }
 
+    /**
+     * Permet la recherche d'un emprunt
+     * @param id Identifiant de l'emprunt
+     * @return Entity lending si existant
+     */
     public Lending find(Long id){
         return lendingRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Prêt non trouvé avec l'id " + id ) );
     }
 
+    /**
+     * Permet la recherche de la liste de tous les emprunts
+     * @return La liste de tous les emprunts
+     */
     public List<Lending> list(){
         return lendingRepository.findAll();
     }
 
+    /**
+     * Permet la recherche de la liste de tous les emprumts lié à un livre
+     * @param isbn Numéro ISBN du livre
+     * @return Liste des emprunts d'un livre spécifique
+     */
     public List<Lending> list(String isbn){
         Books book = booksService.find( isbn );
         return  lendingRepository.findAllByBook( book );
     }
 
+    /**
+     * Permet la recherche de la liste de tous les emprunts d'un utilisateur
+     * @param idUser Identifiant de l'utilisateur
+     * @return Liste de tous les emprunts d'un utilisateur
+     */
     public List<Lending> list(Long idUser){
         return lendingRepository.findAllByIdUser( idUser );
     }
 
+    /**
+     * Permet la création oou la modification d'un emprunt
+     * @param lending Entity de l'enmrpunt à créer ou à modifier
+     * @return Entity lending
+     */
     public Lending  save(Lending lending){ return lendingRepository.save( lending ); }
 
+    /**
+     * Permet l'effacement d'un emprunt
+     * @param id Identifiant del'emprunt à effacer
+     * @return true si l'effacement a pu se réaliser sinon false
+     */
     public boolean delete(Long id){
         try {
             lendingRepository.deleteById( id );
@@ -84,7 +116,9 @@ public class LendingServiceImpl implements ILendingService {
     }
 
 
-
+    /**
+     * Permet de réaliser l'envoi d'un mail de relancer des emprunts des livres non rendus
+     */
     public void sendLendingRevival(){
         Date now = new Date();
       List<Lending> lendingList = lendingRepository.findAllByReturnDateIsNullAndAndEndDateBefore(now);

@@ -18,6 +18,10 @@ public class BatchJob {
     @Autowired
     Job job;
 
+    /**
+     * Programmation de la relance des emprunts à 3h00 du matin tous les jours
+     * @throws Exception
+     */
     @Scheduled(cron = "0 0 3 * * *")
     public void lendingRevival() throws Exception
     {

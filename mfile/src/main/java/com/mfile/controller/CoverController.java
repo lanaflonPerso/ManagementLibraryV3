@@ -24,12 +24,13 @@ public class CoverController implements HealthIndicator {
     private ICoverService coverService;
 
     @GetMapping("/{id}")
-    public Cover getCover(@PathVariable String id) {
+    public @ResponseBody Cover getCover(@PathVariable String id) {
+
         return coverService.find( id );
     }
 
     @GetMapping("/all")
-    public List<Cover> coverList(){
+    public @ResponseBody List<Cover> coverList(){
 
         List<Cover> coverList = coverService.findAll();
         if (coverList.isEmpty()) throw new ResourceNotFoundException( "Aucune couverture de livre trouvée");

@@ -2,6 +2,7 @@ package com.library.service.mbooks.lending;
 import com.library.beans.mbooks.lending.LendingBean;
 import com.library.beans.mbooks.lending.LendingCreateBean;
 import com.library.config.ApplicationPropertiesConfig;
+import com.library.exception.ResourceNotFoundException;
 import com.library.proxies.IBooksPropertiesProxy;
 import com.library.proxies.ILendingProxy;
 import com.library.technical.date.SimpleDate;
@@ -31,21 +32,39 @@ public class LendingServiceImpl implements ILendingService {
     }
 
     public LendingBean find(Long id){
-        return lendingProxy.find( id ) ;
+            try {
+                return lendingProxy.find( id ) ;
+            }catch (ResourceNotFoundException e){
+                return null;
+            }
     }
 
     public List<LendingBean> list(){
-        return lendingProxy.list();
+        try {
+            return lendingProxy.list();
+        }catch (ResourceNotFoundException e){
+            return null;
+        }
+
     }
 
     public List<LendingBean> list(String isbn){
+        try {
+            return  lendingProxy.list( isbn );
+        }catch (ResourceNotFoundException e){
+            return null;
+        }
 
 
-        return  lendingProxy.list( isbn );
     }
 
     public List<LendingBean> list(Long idUser){
-        return lendingProxy.list( idUser );
+        try {
+            return lendingProxy.list( idUser );
+        }catch (ResourceNotFoundException e){
+            return null;
+        }
+
     }
 
     public LendingBean save(LendingCreateBean lending){

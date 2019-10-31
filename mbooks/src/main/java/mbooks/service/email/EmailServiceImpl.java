@@ -25,20 +25,32 @@ public class EmailServiceImpl implements IEmailService {
     @Autowired
     private IEmailRepository emailRepository;
 
+    @Autowired
+    public JavaMailSender emailSender;
 
+    /**
+     * Permet la recherche de la liste des modèles de mail
+     * @return La liste de des modèles de mails
+     */
     public List<Email> findAll(){
         return emailRepository.findAll();
     }
 
+    /**
+     * Permet la création ou la modification d'un mmodèle de mail
+     * @param email Entity email à créer ou à modifier
+     */
     public void save(Email email){
         emailRepository.save(email);
     }
 
-    @Autowired
-    public JavaMailSender emailSender;
 
-
-
+    /**
+     * Permet l'envoi d'un simple mail
+     * @param to Adresse mail du destintaire
+     * @param subject Sujet du mail
+     * @param text Message du mail
+     */
    private void sendSimpleMessage(String to, String subject, String text) {
 
         //String text = String.format(template.getText(), templateArgs);
@@ -51,6 +63,14 @@ public class EmailServiceImpl implements IEmailService {
         emailSender.send(message);
     }
 
+    /**
+     * Permet l'envoi d'un mail avec un fichier rattaché
+     * @param to Adresse mail du destinataire
+     * @param subject Sujet du mail
+     * @param text Message du mail
+     * @param pathToAttachment Chemin du fichier à envoyer
+     * @throws MessagingException
+     */
     private void sendMessageWithAttachment(String to, String subject, String text, String pathToAttachment) throws MessagingException {
 
 
@@ -68,6 +88,11 @@ public class EmailServiceImpl implements IEmailService {
         emailSender.send(message);
 
     }
+
+    /**
+     * Permet d'envoyer le mail de relance des emprunts non rendu
+     * @param emailList Liste des emprunteurs qui n'ont pas rendu leur livre
+     */
     public void sendRevival(List<EmailWrapper> emailList){
 
        Email email = emailRepository.findByName("relance");

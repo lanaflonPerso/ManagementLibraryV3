@@ -21,6 +21,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Tache permettant  le traitment par batch la relance des emprunts des livres non rendu
+ */
 @Component
 public class MyTaskOne implements Tasklet  {
 

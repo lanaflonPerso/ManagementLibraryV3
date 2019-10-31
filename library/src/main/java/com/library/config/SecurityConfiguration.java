@@ -46,7 +46,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/apropos",
                         appPropertiesConfig.getCoverPath() + "*",
                         "/book/all",
-                        "/book/bookList"
+                        "/book/bookList",
+                        "/error/not-found"
                         ).permitAll()
                 .anyRequest().authenticated()
                 .and()

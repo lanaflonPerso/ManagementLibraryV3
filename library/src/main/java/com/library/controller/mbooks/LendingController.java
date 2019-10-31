@@ -70,6 +70,11 @@ public class LendingController implements ILendingController {
 
         model.addAttribute("title","Liste de mes prêts " );
         List<LendingBean> lendingBeanList = lendingService.list( usersService.getCurrentUserId() );
+        if ( lendingBeanList == null) {
+            model.addAttribute("title","Aucun emprunt à afficher");
+            return "error/not-found";
+        }
+
         model.addAttribute( lendingBeanList );
         return "books/lending/list-lending";
     }
@@ -89,7 +94,13 @@ public class LendingController implements ILendingController {
 
     @GetMapping("/all")
     public String allList(Model model){
+
         List<LendingBean> lendingBeanList = lendingService.list();
+        if ( lendingBeanList == null) {
+            model.addAttribute("title","Aucun emprunt à afficher");
+            return "error/not-found";
+        }
+
         model.addAttribute( lendingBeanList );
 
         model.addAttribute("title","Liste de tous les prêts.");
@@ -104,6 +115,10 @@ public class LendingController implements ILendingController {
 
         model.addAttribute("title","Liste des prêts du livre : " + booksService.getTitle( id ));
         List<LendingBean> lendingBeanList = lendingService.list( id );
+        if ( lendingBeanList == null) {
+            model.addAttribute("title","Aucun emprunt à afficher");
+            return "error/not-found";
+        }
         model.addAttribute( lendingBeanList );
         return "books/lending/list-lending";
     }
@@ -112,6 +127,8 @@ public class LendingController implements ILendingController {
     @GetMapping("/info/{id}")
     public String info(@PathVariable("id") long id, Model model){
         model.addAttribute( "idLending", id);
+
+
 
         return "books/lending/info-lending";
     }

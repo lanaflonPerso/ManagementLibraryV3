@@ -35,12 +35,20 @@ public class UsersServiceImpl implements IUsersService {
     private BCryptPasswordEncoder passwordEncoder;
 
 
-
+    /**
+     * Permet la recherche d'un utilisateur
+     * @param id Identifiant de l'utilisateur à rechercher
+     * @return Entity users si il a été trouvé
+     */
     public Users findUser(Long id){
         return usersRepository.findById(id) .orElseThrow(
-                () -> new ResourceNotFoundException("Livre non trouvé avec l'id " + id ) );
+                () -> new ResourceNotFoundException("Utilisateur non trouvé avec l'id " + id ) );
     }
-
+    /**
+     * Permet la recherche d'un utilisateur
+     * @param email Email de l'utilisateur à rechercher
+     * @return Entity users si il a été trouvé
+     */
     public Users findUser(String email){return usersRepository.findByEmailAndActiveTrue( email );}
 
     /**

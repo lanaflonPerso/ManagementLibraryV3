@@ -13,10 +13,18 @@ public class AddressServiceImpl implements IAddressService {
     @Autowired
     private IAddressRepository addressRepository;
 
+    /**
+     * Permet la recherche de toutes les adresses
+     * @return La liste toutes les adresses
+     */
     public List<Address> findAll(){
         return addressRepository.findAll();
     }
 
+    /**
+     * Permet la création ou la modification d'une adresse
+     * @param address Entity address à créer ou à modifier
+     */
     public void save(Address address){
         addressRepository.save(address);
     }

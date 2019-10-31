@@ -12,7 +12,7 @@ public interface ICoverService {
 
     Cover find(String id );
     List<Cover> findAll();
-    List<Cover> findAll(String coverUse );
+
 
     Cover save(Cover cover);
 

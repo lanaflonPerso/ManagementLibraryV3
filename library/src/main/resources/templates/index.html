@@ -5,14 +5,314 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       layout:decorate="model/layout">
 
-<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
+        <link rel="pingback" href="https://mediatheques.villeurbanne.fr/xmlrpc.php">
+        <script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebSite","@id":"#website","url":"https:\/\/mediatheques.villeurbanne.fr\/","name":"m\u00e9diath\u00e8ques de Villeurbanne","potentialAction":{"@type":"SearchAction","target":"https:\/\/mediatheques.villeurbanne.fr\/?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
+        <script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Organization","url":"https:\/\/mediatheques.villeurbanne.fr\/","sameAs":["http:\/\/www.facebook.com\/mediathequesvilleurbanne","http:\/\/bibliovilleurbanne@gmail.com","https:\/\/www.youtube.com\/channel\/UCHFbLXyMNFLpf5cfAU4uYpg"],"@id":"https:\/\/mediatheques.villeurbanne.fr\/#organization","name":"r\u00e9seau des m\u00e9diath\u00e8ques de Villeurbanne","logo":"http:\/\/mediatheques.villeurbanne.fr\/wp-content\/upload\/2016\/05\/mlis.png"}</script>
+        <!-- / Yoast SEO Premium plugin. -->
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//s.w.org">
+        <link rel="alternate" type="application/rss+xml" title="médiathèques de Villeurbanne » Flux" href="https://mediatheques.villeurbanne.fr/feed/">
+        <link rel="alternate" type="application/rss+xml" title="médiathèques de Villeurbanne » Flux des commentaires" href="https://mediatheques.villeurbanne.fr/comments/feed/">
+        <script type="text/javascript">
+            window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/mediatheques.villeurbanne.fr\/wp-includes\/js\/wp-emoji-release.min.js"}};
+            !function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+        </script><script src="https://mediatheques.villeurbanne.fr/wp-includes/js/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+        <style type="text/css">
+            img.wp-smiley,
+            img.emoji {
+                display: inline !important;
+                border: none !important;
+                box-shadow: none !important;
+                height: 1em !important;
+                width: 1em !important;
+                margin: 0 .07em !important;
+                vertical-align: -0.1em !important;
+                background: none !important;
+                padding: 0 !important;
+            }
+        </style>
+        <link rel="stylesheet" id="wp-block-library-css" href="https://mediatheques.villeurbanne.fr/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
+        <link rel="stylesheet" id="contact-form-7-css" href="https://mediatheques.villeurbanne.fr/wp-content/plugins/contact-form-7/includes/css/styles.css" type="text/css" media="all">
+        <link rel="stylesheet" id="cf7msm_styles-css" href="https://mediatheques.villeurbanne.fr/wp-content/plugins/contact-form-7-multi-step-module/resources/cf7msm.css" type="text/css" media="all">
+        <link rel="stylesheet" id="cookie-notice-front-css" href="https://mediatheques.villeurbanne.fr/wp-content/plugins/cookie-notice/css/front.min.css" type="text/css" media="all">
+        <link rel="stylesheet" id="rs-plugin-settings-css" href="https://mediatheques.villeurbanne.fr/wp-content/plugins/revslider/public/assets/css/rs6.css" type="text/css" media="all">
+        <style id="rs-plugin-settings-inline-css" type="text/css">
+            #rs-demo-id {}
+        </style>
+        <link rel="stylesheet" id="tie-style-css" href="https://mediatheques.villeurbanne.fr/wp-content/themes/sahifa/style.css" type="text/css" media="all">
+        <link rel="stylesheet" id="tie-ilightbox-skin-css" href="https://mediatheques.villeurbanne.fr/wp-content/themes/sahifa/css/ilightbox/smooth-skin/skin.css" type="text/css" media="all">
+        <link rel="stylesheet" id="Droid+Sans-css" href="https://fonts.googleapis.com/css?family=Droid+Sans%3Aregular%2C700" type="text/css" media="all">
+        <link rel="stylesheet" id="tablepress-default-css" href="https://mediatheques.villeurbanne.fr/wp-content/tablepress-combined.min.css" type="text/css" media="all">
+        <link rel="stylesheet" id="cf7cf-style-css" href="https://mediatheques.villeurbanne.fr/wp-content/plugins/cf7-conditional-fields/style.css" type="text/css" media="all">
+        <script type="text/javascript" src="https://mediatheques.villeurbanne.fr/wp-includes/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="https://mediatheques.villeurbanne.fr/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var cnArgs = {"ajaxurl":"https:\/\/mediatheques.villeurbanne.fr\/wp-admin\/admin-ajax.php","hideEffect":"fade","onScroll":"","onScrollOffset":"100","cookieName":"cookie_notice_accepted","cookieValue":"true","cookieTime":"2592000","cookiePath":"\/","cookieDomain":"","redirection":"","cache":"","refuse":"no","revoke_cookies":"0","revoke_cookies_opt":"automatic","secure":"1"};
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://mediatheques.villeurbanne.fr/wp-content/plugins/cookie-notice/js/front.min.js"></script>
+        <script type="text/javascript" src="https://mediatheques.villeurbanne.fr/wp-content/plugins/revslider/public/assets/js/revolution.tools.min.js"></script>
+        <script type="text/javascript" src="https://mediatheques.villeurbanne.fr/wp-content/plugins/revslider/public/assets/js/rs6.min.js"></script>
+        <link rel="https://api.w.org/" href="https://mediatheques.villeurbanne.fr/wp-json/">
+        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://mediatheques.villeurbanne.fr/xmlrpc.php?rsd">
+        <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://mediatheques.villeurbanne.fr/wp-includes/wlwmanifest.xml">
+
+        <link rel="shortlink" href="https://mediatheques.villeurbanne.fr/">
+        <link rel="alternate" type="application/json+oembed" href="https://mediatheques.villeurbanne.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmediatheques.villeurbanne.fr%2F">
+        <link rel="alternate" type="text/xml+oembed" href="https://mediatheques.villeurbanne.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmediatheques.villeurbanne.fr%2F&amp;format=xml">
+        <script type="text/javascript" src="https://mediatheques.villeurbanne.fr/wp-includes/js/tw-sack.min.js"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+            function alo_em_pubblic_form ()
+            {
+
+                var alo_cf_array = new Array();
+                document.alo_easymail_widget_form.submit.value="envoi en cours...";
+                document.alo_easymail_widget_form.submit.disabled = true;
+                document.getElementById('alo_em_widget_loading').style.display = "inline";
+                document.getElementById('alo_easymail_widget_feedback').innerHTML = "";
+
+                var alo_em_sack = new sack("https://mediatheques.villeurbanne.fr/wp-admin/admin-ajax.php" );
+
+                alo_em_sack.execute = 1;
+                alo_em_sack.method = 'POST';
+                alo_em_sack.setVar( "action", "alo_em_pubblic_form_check" );
+                alo_em_sack.setVar( "alo_em_opt_name", document.alo_easymail_widget_form.alo_em_opt_name.value );
+                alo_em_sack.setVar( "alo_em_opt_email", document.alo_easymail_widget_form.alo_em_opt_email.value );
+
+                alo_em_sack.setVar( "alo_em_privacy_agree", ( document.getElementById('alo_em_privacy_agree').checked ? 1 : 0 ) );
+
+                alo_em_sack.setVar( "alo_easymail_txt_generic_error", 'Erreur durant l\'opération.' );
+                alo_em_sack.setVar( "alo_em_error_email_incorrect", "L\'adresse e-mail est incorrecte");
+                alo_em_sack.setVar( "alo_em_error_name_empty", "Le champ Nom est vide");
+                alo_em_sack.setVar( "alo_em_error_privacy_empty", "The Privacy Policy field is empty");
+                alo_em_sack.setVar( "alo_em_error_email_added", "Avertissement : cette adresse email a déjà été abonnée, mais non activée. Un autre e-mail d\'activation va être envoyé");
+                alo_em_sack.setVar( "alo_em_error_email_activated", "Avertissement : cette adresse e-mail a déjà été abonnée");
+                alo_em_sack.setVar( "alo_em_error_on_sending", "Erreur durant l\'envoi&nbsp;: merci d\'essayer à nouveau");
+                alo_em_sack.setVar( "alo_em_txt_ok", "Abonnement effectué. Vous allez recevoir un e-mail contenant le lien. Vous devez cliquer sur ce lien pour confirmer votre abonnement.");
+                alo_em_sack.setVar( "alo_em_txt_subscribe", "S\'abonner");
+                alo_em_sack.setVar( "alo_em_lang_code", "fr");
+
+                var cbs = document.getElementById('alo_easymail_widget_form').getElementsByTagName('input');
+                var length = cbs.length;
+                var lists = "";
+                for (var i=0; i < length; i++) {
+                    if (cbs[i].name == 'alo_em_form_lists' +'[]' && cbs[i].type == 'checkbox') {
+                        if ( cbs[i].checked ) lists += cbs[i].value + ",";
+                    }
+                }
+                alo_em_sack.setVar( "alo_em_form_lists", lists );
+                alo_em_sack.setVar( "alo_em_nonce", '31fefa9aad' );
+                alo_em_sack.runAJAX();
+
+                return true;
+
+            }
+            //]]>
+        </script>
+        <link rel="shortcut icon" href="https://mediatheques.villeurbanne.fr/wp-content/upload/2016/07/mlis-1.png" title="Favicon">
+        <!--[if IE]>
+        <script type="text/javascript">jQuery(document).ready(function (){ jQuery(".menu-item").has("ul").children("a").attr("aria-haspopup", "true");});</script>
+        <![endif]-->
+        <!--[if lt IE 9]>
+        <script src="https://mediatheques.villeurbanne.fr/wp-content/themes/sahifa/js/html5.js"></script>
+        <script src="https://mediatheques.villeurbanne.fr/wp-content/themes/sahifa/js/selectivizr-min.js"></script>
+        <![endif]-->
+        <!--[if IE 9]>
+        <link rel="stylesheet" type="text/css" media="all" href="https://mediatheques.villeurbanne.fr/wp-content/themes/sahifa/css/ie9.css" />
+        <![endif]-->
+        <!--[if IE 8]>
+        <link rel="stylesheet" type="text/css" media="all" href="https://mediatheques.villeurbanne.fr/wp-content/themes/sahifa/css/ie8.css" />
+        <![endif]-->
+        <!--[if IE 7]>
+        <link rel="stylesheet" type="text/css" media="all" href="https://mediatheques.villeurbanne.fr/wp-content/themes/sahifa/css/ie7.css" />
+        <![endif]-->
+        <style type="text/css" media="screen">
+
+            body{
+                font-family: 'Droid Sans';
+            }
+
+            #main-nav,
+            .cat-box-content,
+            #sidebar .widget-container,
+            .post-listing,
+            #commentform {
+                border-bottom-color: #009ca6;
+            }
+
+            .search-block .search-button,
+            #topcontrol,
+            #main-nav ul li.current-menu-item a,
+            #main-nav ul li.current-menu-item a:hover,
+            #main-nav ul li.current_page_parent a,
+            #main-nav ul li.current_page_parent a:hover,
+            #main-nav ul li.current-menu-parent a,
+            #main-nav ul li.current-menu-parent a:hover,
+            #main-nav ul li.current-page-ancestor a,
+            #main-nav ul li.current-page-ancestor a:hover,
+            .pagination span.current,
+            .share-post span.share-text,
+            .flex-control-paging li a.flex-active,
+            .ei-slider-thumbs li.ei-slider-element,
+            .review-percentage .review-item span span,
+            .review-final-score,
+            .button,
+            a.button,
+            a.more-link,
+            #main-content input[type="submit"],
+            .form-submit #submit,
+            #login-form .login-button,
+            .widget-feedburner .feedburner-subscribe,
+            input[type="submit"],
+            #buddypress button,
+            #buddypress a.button,
+            #buddypress input[type=submit],
+            #buddypress input[type=reset],
+            #buddypress ul.button-nav li a,
+            #buddypress div.generic-button a,
+            #buddypress .comment-reply-link,
+            #buddypress div.item-list-tabs ul li a span,
+            #buddypress div.item-list-tabs ul li.selected a,
+            #buddypress div.item-list-tabs ul li.current a,
+            #buddypress #members-directory-form div.item-list-tabs ul li.selected span,
+            #members-list-options a.selected,
+            #groups-list-options a.selected,
+            body.dark-skin #buddypress div.item-list-tabs ul li a span,
+            body.dark-skin #buddypress div.item-list-tabs ul li.selected a,
+            body.dark-skin #buddypress div.item-list-tabs ul li.current a,
+            body.dark-skin #members-list-options a.selected,
+            body.dark-skin #groups-list-options a.selected,
+            .search-block-large .search-button,
+            #featured-posts .flex-next:hover,
+            #featured-posts .flex-prev:hover,
+            a.tie-cart span.shooping-count,
+            .woocommerce span.onsale,
+            .woocommerce-page span.onsale ,
+            .woocommerce .widget_price_filter .ui-slider .ui-slider-handle,
+            .woocommerce-page .widget_price_filter .ui-slider .ui-slider-handle,
+            #check-also-close,
+            a.post-slideshow-next,
+            a.post-slideshow-prev,
+            .widget_price_filter .ui-slider .ui-slider-handle,
+            .quantity .minus:hover,
+            .quantity .plus:hover,
+            .mejs-container .mejs-controls .mejs-time-rail .mejs-time-current,
+            #reading-position-indicator  {
+                background-color:#009ca6;
+            }
+
+            ::-webkit-scrollbar-thumb{
+                background-color:#009ca6 !important;
+            }
+
+            #theme-footer,
+            #theme-header,
+            .top-nav ul li.current-menu-item:before,
+            #main-nav .menu-sub-content ,
+            #main-nav ul ul,
+            #check-also-box {
+                border-top-color: #009ca6;
+            }
+
+            .search-block:after {
+                border-right-color:#009ca6;
+            }
+
+            body.rtl .search-block:after {
+                border-left-color:#009ca6;
+            }
+
+            #main-nav ul > li.menu-item-has-children:hover > a:after,
+            #main-nav ul > li.mega-menu:hover > a:after {
+                border-color:transparent transparent #009ca6;
+            }
+
+            .widget.timeline-posts li a:hover,
+            .widget.timeline-posts li a:hover span.tie-date {
+                color: #009ca6;
+            }
+
+            .widget.timeline-posts li a:hover span.tie-date:before {
+                background: #009ca6;
+                border-color: #009ca6;
+            }
+
+            #order_review,
+            #order_review_heading {
+                border-color: #009ca6;
+            }
+
+
+            body {
+                background-color: #ffffff !important;
+                background-position: top center;
+            }
+
+            a:hover {
+                color: #55C0D4;
+                text-decoration: none;
+            }
+
+        </style>
+
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var sf_position = '0';
+            var sf_templates = "<a href=\"{search_url_escaped}\">View All Results<\/a>";
+            var sf_input = '.search-live';
+            jQuery(document).ready(function(){
+                jQuery(sf_input).ajaxyLiveSearch({"expand":false,"searchUrl":"https:\/\/mediatheques.villeurbanne.fr\/?s=%s","text":"Search","delay":500,"iwidth":180,"width":315,"ajaxUrl":"https:\/\/mediatheques.villeurbanne.fr\/wp-admin\/admin-ajax.php","rtl":0});
+                jQuery(".live-search_ajaxy-selective-input").keyup(function() {
+                    var width = jQuery(this).val().length * 8;
+                    if(width < 50) {
+                        width = 50;
+                    }
+                    jQuery(this).width(width);
+                });
+                jQuery(".live-search_ajaxy-selective-search").click(function() {
+                    jQuery(this).find(".live-search_ajaxy-selective-input").focus();
+                });
+                jQuery(".live-search_ajaxy-selective-close").click(function() {
+                    jQuery(this).parent().remove();
+                });
+            });
+            /* ]]> */
+        </script>
+        <meta name="generator" content="Powered by Slider Revolution 6.1.3 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface.">
+        <link rel="icon" href="https://mediatheques.villeurbanne.fr/wp-content/upload/2019/02/cropped-logo_mlis-32x32.png" sizes="32x32">
+        <link rel="icon" href="https://mediatheques.villeurbanne.fr/wp-content/upload/2019/02/cropped-logo_mlis-192x192.png" sizes="192x192">
+        <link rel="apple-touch-icon-precomposed" href="https://mediatheques.villeurbanne.fr/wp-content/upload/2019/02/cropped-logo_mlis-180x180.png">
+        <meta name="msapplication-TileImage" content="https://mediatheques.villeurbanne.fr/wp-content/upload/2019/02/cropped-logo_mlis-270x270.png">
+
+        <!-- BEGIN ExactMetrics v5.3.9 Universal Analytics - https://exactmetrics.com/ -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-18199474-1', 'auto');
+            ga('require', 'displayfeatures');
+            ga('set', 'anonymizeIp', true);
+            ga('send', 'pageview');
+        </script>
+        <!-- END ExactMetrics Universal Analytics -->
+        <script type="text/javascript">function setREVStartSize(t){try{var h,e=document.getElementById(t.c).parentNode.offsetWidth;if(e=0===e||isNaN(e)?window.innerWidth:e,t.tabw=void 0===t.tabw?0:parseInt(t.tabw),t.thumbw=void 0===t.thumbw?0:parseInt(t.thumbw),t.tabh=void 0===t.tabh?0:parseInt(t.tabh),t.thumbh=void 0===t.thumbh?0:parseInt(t.thumbh),t.tabhide=void 0===t.tabhide?0:parseInt(t.tabhide),t.thumbhide=void 0===t.thumbhide?0:parseInt(t.thumbhide),t.mh=void 0===t.mh||""==t.mh||"auto"===t.mh?0:parseInt(t.mh,0),"fullscreen"===t.layout||"fullscreen"===t.l)h=Math.max(t.mh,window.innerHeight);else{for(var i in t.gw=Array.isArray(t.gw)?t.gw:[t.gw],t.rl)void 0!==t.gw[i]&&0!==t.gw[i]||(t.gw[i]=t.gw[i-1]);for(var i in t.gh=void 0===t.el||""===t.el||Array.isArray(t.el)&&0==t.el.length?t.gh:t.el,t.gh=Array.isArray(t.gh)?t.gh:[t.gh],t.rl)void 0!==t.gh[i]&&0!==t.gh[i]||(t.gh[i]=t.gh[i-1]);var r,a=new Array(t.rl.length),n=0;for(var i in t.tabw=t.tabhide>=e?0:t.tabw,t.thumbw=t.thumbhide>=e?0:t.thumbw,t.tabh=t.tabhide>=e?0:t.tabh,t.thumbh=t.thumbhide>=e?0:t.thumbh,t.rl)a[i]=t.rl[i]<window.innerWidth?0:t.rl[i];for(var i in r=a[0],a)r>a[i]&&0<a[i]&&(r=a[i],n=i);var d=e>t.gw[n]+t.tabw+t.thumbw?1:(e-(t.tabw+t.thumbw))/t.gw[n];h=t.gh[n]*d+(t.tabh+t.thumbh)}void 0===window.rs_init_css&&(window.rs_init_css=document.head.appendChild(document.createElement("style"))),document.getElementById(t.c).height=h,window.rs_init_css.innerHTML+="#"+t.c+"_wrapper { height: "+h+"px }"}catch(t){console.log("Failure at Presize of Slider:"+t)}};</script>
+        <style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style>
     <title>Accueil</title>
 </head>
 <body>
 
     <main role="main" class="container" layout:fragment="content">
         <div class="d-flex justify-content-center">
-            <!--th:block th:insert="~{ fragment/carousel :: carousel }"></th:block-->
+            <div  role="alert" class="alert alert-success float-left w-50 p-2 text-center"  >La page d'accueil est un contenu d'illustration</div>
         </div>
 
         <div class="row">

@@ -29,7 +29,7 @@ Description :
     1 - déployer springadmin
     2 - déployer mbooks
     3 - déployer mfile :
-        Après le déploiement de mfile il faudra réaliser depuis pgadmin réaliser un backup (option : only-data)
+        Après le déploiement de mfile il faudra depuis pgadmin réaliser un backup (option : only-data)
         de data-dump.sql présent dans le répertoire resources du microservice
     4 - déployer musers 
 

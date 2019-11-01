@@ -25,13 +25,11 @@ public class LendingController   {
 
 
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
     public Lending find(@PathVariable Long id) {
         return lendingService.find( id );
     }
 
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
     public List<Lending> list(){
 
         List<Lending> lendingList = lendingService.list();
@@ -41,7 +39,6 @@ public class LendingController   {
     }
 
     @GetMapping("/user/{id}")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
     public List<Lending> list(@PathVariable Long id){
 
         List<Lending> lendingList = lendingService.list( id );

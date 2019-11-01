@@ -20,19 +20,20 @@ Description :
 
     Attention bien suivre l'ordre de déploiement
 
-#### Etape 1 - Les edges service
+#### Etape 1 - Les edges microservice
     1 - déployer config-server
     2 - déployer eureka-server
     3 - déployer zuul-server
+    4 - déployer springadmin
+    
 ---
-#### Etape 2 - Les services
-    1 - déployer springadmin
-    2 - déployer mbooks
-    3 - déployer mfile :
+#### Etape 2 - Les microservices
+    1 - déployer mbooks
+    2 - déployer mfile :
         Après le déploiement de mfile il faudra depuis pgadmin réaliser un backup (option : only-data)
         de data-dump.sql présent dans le répertoire resources du microservice
-    4 - déployer musers 
-    5 - déployer library
+    3 - déployer musers 
+    4 - déployer library
 
 
 

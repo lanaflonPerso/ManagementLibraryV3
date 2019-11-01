@@ -16,15 +16,15 @@ Description :
     
 ---
 
-###Etapes de déploiement :
+### Etapes de déploiement :
 Attention bien suivre l'ordre de déploiement
 
-###Etape 1 - Les edges service
+### Etape 1 - Les edges service
     1 - déployer config-server
     2 - déployer eureka-server
     3 - déployer zuul-server
 ---
-###Etape 2 - Les services
+### Etape 2 - Les services
     1 - déployer springadmin
     2 - déployer mbooks
     3 - déployer mfile :

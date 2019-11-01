@@ -5,7 +5,7 @@ Description :
 
     Client UI : module library
     3 Microservices : modules mbooks, mfile et musers
-    Edge service : module config-server , eureka-server
+    Edge service : module config-server , eureka-server, springadmin
     Gateway : module zuul-server
     - authentification basic : user = utilisateur - password = mdp
     Properties : https://github.com/RomainDavidS/ManagementLibrary.git

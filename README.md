@@ -22,12 +22,13 @@ Description :
 
 #### Etape 1 - Les edges microservice
     1 - déployer config-server
-    2 - déployer eureka-server
-    3 - déployer zuul-server
-    4 - déployer springadmin
-    
+    2 - déployer eureka-server    
+    3 - déployer springadmin
 ---
-#### Etape 2 - Les microservices
+#### Etape 2 - API Gateway
+    1 - déployer zuul-server
+---
+#### Etape 3 - Les microservices
     1 - déployer mbooks
     2 - déployer mfile :
         Après le déploiement de mfile il faudra depuis pgadmin réaliser un backup (option : only-data)

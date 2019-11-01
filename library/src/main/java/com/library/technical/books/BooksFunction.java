@@ -3,6 +3,7 @@ package com.library.technical.books;
 import com.library.beans.mbooks.book.BookBean;
 import com.library.beans.mbooks.book.author.AuthorBean;
 import com.library.beans.mbooks.lending.LendingBean;
+import com.library.config.ApplicationPropertiesConfig;
 import com.library.service.mbooks.BooksServiceImpl;
 import com.library.service.mbooks.IBooksService;
 import com.library.service.mbooks.author.AuthorServiceImpl;
@@ -21,12 +22,12 @@ public interface BooksFunction {
     IBooksService booksService = new BooksServiceImpl();
     ILendingService lendingService = new LendingServiceImpl();
     SimpleDate simpleDate = new SimpleDate();
+    ApplicationPropertiesConfig appPropertiesConfig = new ApplicationPropertiesConfig();
 
 
     static String getFullAuthorName(AuthorBean author){ return  authorService.fullAuthorName( author );}
+
     static boolean isAvailability(BookBean book) {return booksService.isAvailability( book ) ;}
-
-
 
     static boolean isInProgress(LendingBean lending){return lendingService.isInProgress( lending ); }
 
@@ -36,7 +37,7 @@ public interface BooksFunction {
 
     static String getDate(Date date){return simpleDate.getDate( date ); }
 
-    static boolean isRenewable(Integer renewal){return lendingService.isRenewable( renewal );}
+
 
 
 

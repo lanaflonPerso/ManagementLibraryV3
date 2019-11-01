@@ -13,4 +13,7 @@ public interface IBooksPropertiesProxy {
 
     @GetMapping("/renewalNumber")
     Integer renewalNumber();
+
+    @GetMapping("/renewalDay")
+    Integer renewalDay();
 }

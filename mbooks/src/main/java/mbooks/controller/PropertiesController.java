@@ -21,5 +21,11 @@ public class PropertiesController  {
 
     }
 
+    @GetMapping("/renewalDay")
+    public Integer renewalDay(){
+        return appPropertiesConfig.getRenewalDay();
+
+    }
+
 
 }

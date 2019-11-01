@@ -12,13 +12,18 @@ public class SimpleDate {
 
     private static final SimpleDateFormat sdfTime = new SimpleDateFormat("dd MMM yyyy à HH:mm");
 
+    public String getDateLow( Date date){
+        if ( date != null)
+            return  sdf.format( date );
+        else
+            return "";
+    }
     public String getDate( Date date){
         if ( date != null)
             return "le " + sdf.format( date );
         else
             return "";
     }
-
     public String getDateTime( Date date){
         if ( date != null)
             return "le " + sdfTime.format( date );

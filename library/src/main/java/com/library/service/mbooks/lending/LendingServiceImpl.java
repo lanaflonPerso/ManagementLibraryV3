@@ -9,6 +9,7 @@ import com.library.technical.date.SimpleDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,9 @@ public class LendingServiceImpl implements ILendingService {
 
 
     @Autowired
-    private ApplicationPropertiesConfig appPropertiesConfig;
+    private IBooksPropertiesProxy booksPropertiesProxy;
+
+
 
     /**
      * Permet de faire le renouvellement de l'emprunt
@@ -119,7 +122,7 @@ public class LendingServiceImpl implements ILendingService {
     /**
      * Permet la mise en forme d'une date
      * @param date La date à metre en forme
-     * @return La date mise en forme "dd MMM yyyy"
+     * @return La date mise en forme "le dd MMM yyyy"
      */
     public String getDate(Date date){ return simpleDate.getDate( date );   }
 
@@ -172,8 +175,28 @@ public class LendingServiceImpl implements ILendingService {
      * @return true si le renouvellement est encore possible sinon false
      */
     public boolean isRenewable(Integer renewal){
-      //  return (renewal < booksPropertiesProxy.renewalNumber() );
-        return (renewal < appPropertiesConfig.getRenewalNumber() );
+        return (renewal < booksPropertiesProxy.renewalNumber() );
+      //  return (renewal < appPropertiesConfig.getRenewalNumber() );
     }
 
+    /**
+     * Permet de calculer la date renouvelée
+     * @param date La date de base
+     * @return La date renouvelé
+     */
+    public String renewalDate(Date date){
+        Calendar c = Calendar.getInstance();
+        c.setTime( date );
+        c.add(Calendar.DAY_OF_MONTH, booksPropertiesProxy.renewalDay() );
+        return simpleDate.getDateLow( c.getTime() );
+    }
+
+    /**
+     * permet de mettre en forme la date en format "
+     * @param date Date à mettre en forme
+     * @return Date en forme "dd MMM yyyy"
+     */
+    public String getEndDate(Date date){
+        return simpleDate.getDateLow( date );
+    }
 }

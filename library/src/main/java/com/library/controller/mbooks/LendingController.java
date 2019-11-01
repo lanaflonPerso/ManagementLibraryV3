@@ -4,8 +4,8 @@ package com.library.controller.mbooks;
 import com.library.beans.mbooks.lending.LendingBean;
 import com.library.beans.mbooks.lending.LendingCreateBean;
 import com.library.config.ApplicationPropertiesConfig;
+import com.library.proxies.IBooksPropertiesProxy;
 import com.library.service.mbooks.IBooksService;
-import com.library.service.mbooks.author.IAuthorService;
 import com.library.service.mbooks.lending.ILendingService;
 import com.library.service.users.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -31,6 +30,9 @@ public class LendingController  {
     @Autowired
     private IUsersService usersService;
 
+    @Autowired
+    private IBooksPropertiesProxy booksPropertiesProxy;
+
 
 
     @Autowired
@@ -42,6 +44,11 @@ public class LendingController  {
     @ModelAttribute("currentUser")
     public String getCurrentUserFirstName(){
         return  usersService.getCurrentUserFirstName();
+    }
+
+    @ModelAttribute("renewalNumber")
+    public Integer getRenewalNumber(){
+        return booksPropertiesProxy.renewalNumber();
     }
 
     @GetMapping("/user")
@@ -60,9 +67,22 @@ public class LendingController  {
 
     @GetMapping("/renewal/{id}")
     public String renawal(@PathVariable("id")Long id, Model model){
-        lendingService.renewal( id );
 
-        return "redirect:/lending/user";
+        LendingBean lendingBean = lendingService.find( id );
+        model.addAttribute("id",id);
+        model.addAttribute("title", lendingBean.getBook().getTitle() );
+        model.addAttribute("endDate",lendingService.renewalDate( lendingBean.getEndDate() ) );
+        return "books/lending/renewal-lending";
+    }
+
+    @GetMapping("/renewal/yes/{id}")
+    public String renawalYes(@PathVariable("id")Long id, Model model){
+
+        lendingService.renewal( id );
+        LendingBean lendingBean = lendingService.find( id );
+        model.addAttribute("title", lendingBean.getBook().getTitle() );
+        model.addAttribute("endDate",lendingService.getEndDate( lendingBean.getEndDate() ) );
+        return "books/lending/renewal-lending-success";
     }
 
 

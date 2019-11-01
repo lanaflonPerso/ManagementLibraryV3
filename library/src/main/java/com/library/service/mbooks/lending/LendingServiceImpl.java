@@ -24,7 +24,7 @@ public class LendingServiceImpl implements ILendingService {
 
 
     @Autowired
-    private IBooksPropertiesProxy booksPropertiesProxy;
+    private ApplicationPropertiesConfig appPropertiesConfig;
 
     /**
      * Permet de faire le renouvellement de l'emprunt
@@ -172,7 +172,8 @@ public class LendingServiceImpl implements ILendingService {
      * @return true si le renouvellement est encore possible sinon false
      */
     public boolean isRenewable(Integer renewal){
-        return (renewal < booksPropertiesProxy.renewalNumber() );
+      //  return (renewal < booksPropertiesProxy.renewalNumber() );
+        return (renewal < appPropertiesConfig.getRenewalNumber() );
     }
 
 }

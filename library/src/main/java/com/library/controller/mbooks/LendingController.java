@@ -1,6 +1,6 @@
 package com.library.controller.mbooks;
 
-import com.library.beans.mbooks.book.author.AuthorBean;
+
 import com.library.beans.mbooks.lending.LendingBean;
 import com.library.beans.mbooks.lending.LendingCreateBean;
 import com.library.config.ApplicationPropertiesConfig;
@@ -20,27 +20,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/lending")
-public class LendingController implements ILendingController {
-    @Autowired
-    private ILendingController lendingController;
-
-    @ModelAttribute
-    public ILendingController lendingController(){ return lendingController;}
-
-    public String getDate(Date date){ return lendingService.getDate( date );   }
-
-    public boolean isInProgress(LendingBean lending){
-        return lendingService.isInProgress( lending );
-    }
-
-    public boolean isOutOfTime(LendingBean lending){ return lendingService.isOutOfTime( lending ); }
-
-    public boolean isReturn(LendingBean lending){ return lendingService.isReturn( lending);   }
-
-    public boolean isRenewable(Integer renewal){ return lendingService.isRenewable( renewal ); }
-
-    public String getFullAuthorName(AuthorBean author){ return authorService.fullAuthorName( author );}
-
+public class LendingController  {
 
     @Autowired
     private ILendingService lendingService;
@@ -51,8 +31,7 @@ public class LendingController implements ILendingController {
     @Autowired
     private IUsersService usersService;
 
-    @Autowired
-    private IAuthorService authorService;
+
 
     @Autowired
     private ApplicationPropertiesConfig appPropertiesConfig;

@@ -13,6 +13,7 @@ import com.library.service.mbooks.edition.IEditionService;
 import com.library.service.mbooks.language.ILanguageService;
 import com.library.service.mbooks.theme.IThemeService;
 import com.library.service.users.IUsersService;
+import com.library.technical.books.BooksFunction;
 import com.library.technical.error.Field;
 import com.library.technical.search.BookWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,19 +28,8 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/book")
-public class BookController implements IBookController {
+public class BookController  {
 
-    @Autowired
-    private IBookController bookController;
-
-    @ModelAttribute
-    public IBookController bookController(){return bookController;}
-
-    public String getFullAuthorName(AuthorBean author){
-        return  authorService.fullAuthorName( author );
-    }
-
-    public boolean isAvailability(BookBean book){ return booksService.isAvailability( book ) ;}
 
     @Autowired
     private IBooksService booksService;

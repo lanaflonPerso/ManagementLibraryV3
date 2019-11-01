@@ -31,7 +31,7 @@ Description :
 #### Etape 3 - Les microservices
     1 - déployer mbooks
     2 - déployer mfile :
-        Après le déploiement de mfile il faudra depuis pgadmin réaliser un backup (option : only-data)
+        Après le déploiement de mfile il faudra depuis pgadmin réaliser un restore (option : only-data)
         de data-dump.sql présent dans le répertoire resources du microservice
     3 - déployer musers 
     4 - déployer library

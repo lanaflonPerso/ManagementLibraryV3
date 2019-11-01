@@ -32,6 +32,7 @@ Description :
         Après le déploiement de mfile il faudra depuis pgadmin réaliser un backup (option : only-data)
         de data-dump.sql présent dans le répertoire resources du microservice
     4 - déployer musers 
+    5 - déployer library
 
 
 

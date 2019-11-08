@@ -12,7 +12,6 @@
         <module name="zuul-server" />
         <module name="musers" />
         <module name="library" />
-        <module name="springadmin" />
         <module name="config-server" />
       </profile>
     </annotationProcessing>

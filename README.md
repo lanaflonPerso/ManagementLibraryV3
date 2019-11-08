@@ -22,8 +22,7 @@ Description :
 
 #### Etape 1 - Les edges microservice
     1 - déployer config-server
-    2 - déployer eureka-server    
-    3 - déployer springadmin
+    2 - déployer eureka-server  
 ---
 #### Etape 2 - API Gateway
     1 - déployer zuul-server
@@ -35,6 +34,9 @@ Description :
         de data-dump.sql présent dans le répertoire resources du microservice
     3 - déployer musers 
     4 - déployer library
+
+### Etape finale
+    Lancer zipkin-server
 
 
 

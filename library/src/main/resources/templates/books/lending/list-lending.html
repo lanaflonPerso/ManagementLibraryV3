@@ -9,7 +9,9 @@
     <title>Liste des prêts</title>
 </head>
 <body>
-<main role="main" class="container" layout:fragment="content" th:with="fn = ${T(com.library.technical.books.BooksFunction)}" >
+<main role="main" class="container" layout:fragment="content" th:with="fn = ${@booksFunction}" >
+    <!-- pour mémo en mode static
+    main role="main" class="container" layout:fragment="content" th:with="fn = ${T(com.library.technical.books.BooksFunction)}" -->
 
     <div class="row">
         <th:block th:insert="~{fragment/commons :: titles( ${ title } ) }"></th:block>

@@ -11,31 +11,38 @@ import com.library.service.mbooks.author.IAuthorService;
 import com.library.service.mbooks.lending.ILendingService;
 import com.library.service.mbooks.lending.LendingServiceImpl;
 import com.library.technical.date.SimpleDate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 @Component
-public interface BooksFunction {
+public class BooksFunction {
 
-    IAuthorService authorService = new AuthorServiceImpl();
-    IBooksService booksService = new BooksServiceImpl();
-    ILendingService lendingService = new LendingServiceImpl();
-    SimpleDate simpleDate = new SimpleDate();
-    ApplicationPropertiesConfig appPropertiesConfig = new ApplicationPropertiesConfig();
+    @Autowired
+    private IAuthorService authorService;
+
+    @Autowired
+    private IBooksService booksService;
+
+    @Autowired
+    private ILendingService lendingService;
+
+    @Autowired
+    private SimpleDate simpleDate;
 
 
-    static String getFullAuthorName(AuthorBean author){ return  authorService.fullAuthorName( author );}
+    public String getFullAuthorName(AuthorBean author){ return  authorService.fullAuthorName( author );}
 
-    static boolean isAvailability(BookBean book) {return booksService.isAvailability( book ) ;}
+    public boolean isAvailability(BookBean book) {return booksService.isAvailability( book ) ;}
 
-    static boolean isInProgress(LendingBean lending){return lendingService.isInProgress( lending ); }
+    public boolean isInProgress(LendingBean lending){return lendingService.isInProgress( lending ); }
 
-    static boolean isOutOfTime(LendingBean lending){return lendingService.isOutOfTime( lending );}
+    public boolean isOutOfTime(LendingBean lending){return lendingService.isOutOfTime( lending );}
 
-    static boolean isReturn(LendingBean lending){return lendingService.isReturn( lending);}
+    public boolean isReturn(LendingBean lending){return lendingService.isReturn( lending);}
 
-    static String getDate(Date date){return simpleDate.getDate( date ); }
+    public String getDate(Date date){return simpleDate.getDate( date ); }
 
 
 

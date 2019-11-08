@@ -19,10 +19,6 @@ public class AppConfig {
     @Bean
     public SimpleDate simpleDate(){ return  new SimpleDate(); }
 
-    @Bean
-    public BooksFunction booksFunction() {
-        return new BooksFunction() {};
-    }
 
 
 

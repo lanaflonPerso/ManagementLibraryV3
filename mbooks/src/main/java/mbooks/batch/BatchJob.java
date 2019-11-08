@@ -22,7 +22,7 @@ public class BatchJob {
      * Programmation de la relance des emprunts à 3h00 du matin tous les jours
      * @throws Exception
      */
-    @Scheduled(cron = "0 41 12 * * *")
+    @Scheduled(cron = "0 0 3 * * *")
     public void lendingRevival() throws Exception
     {
         JobParameters params = new JobParametersBuilder()

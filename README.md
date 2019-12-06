@@ -1,5 +1,5 @@
 # ManagementLibrary
-P7 - OCR Gestion d'un bibliothèque d'une grande ville
+P10 - OCR Amélioration de la Gestion d'un bibliothèque d'une grande ville 
 ---
 Description :
 

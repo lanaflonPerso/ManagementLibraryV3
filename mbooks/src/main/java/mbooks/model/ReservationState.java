@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @NoArgsConstructor
-@RequiredArgsConstructor
 @Entity
 public class ReservationState {
     @Id

@@ -38,8 +38,6 @@ public @Data class Books {
     @NonNull
     private Long availability;
 
-    @OneToOne(mappedBy = "book")
-    private BooksReservation booksReservation;
 
     @ManyToOne
     @JoinColumn(name="id_language", referencedColumnName="id")

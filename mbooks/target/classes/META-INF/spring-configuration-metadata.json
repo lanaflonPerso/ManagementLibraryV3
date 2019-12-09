@@ -33,12 +33,22 @@
       "sourceType": "mbooks.config.ApplicationPropertiesConfig"
     },
     {
+      "name": "microservice.config.number-reservation-possible",
+      "type": "java.lang.Integer",
+      "sourceType": "mbooks.config.ApplicationPropertiesConfig"
+    },
+    {
       "name": "microservice.config.renewal-day",
       "type": "java.lang.Integer",
       "sourceType": "mbooks.config.ApplicationPropertiesConfig"
     },
     {
       "name": "microservice.config.renewal-number",
+      "type": "java.lang.Integer",
+      "sourceType": "mbooks.config.ApplicationPropertiesConfig"
+    },
+    {
+      "name": "microservice.config.reservation-cancellation-day",
       "type": "java.lang.Integer",
       "sourceType": "mbooks.config.ApplicationPropertiesConfig"
     },

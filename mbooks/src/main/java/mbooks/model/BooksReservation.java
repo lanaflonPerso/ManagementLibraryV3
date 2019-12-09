@@ -13,9 +13,8 @@ import java.util.Date;
 @Entity
 public class BooksReservation {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "books_fk")
-    private Books book;
+   @Id
+   private Long id;
 
     @NonNull
     private Long number ;

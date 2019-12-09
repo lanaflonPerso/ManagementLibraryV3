@@ -29,6 +29,11 @@
                     </li>
                     <li class="nav-item active" sec:authorize="isAuthenticated()">
                         <a class="nav-link" th:href="@{/lending/user}">Mes emprunts</a>
+                        <a class="nav-link" th:href="@{/reservation/user}">Mes réservations</a>
+                    </li>
+                    <li class="nav-item active" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="@{/lending/all}">Liste des emprunts</a>
+                        <a class="nav-link" th:href="@{/reservation/all}">Liste des réservations</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" th:href="@{/apropos}">A propos</a>

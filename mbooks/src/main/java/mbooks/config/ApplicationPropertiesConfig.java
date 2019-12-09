@@ -16,4 +16,6 @@ public class ApplicationPropertiesConfig {
     private Integer lendingDay;
     private Integer renewalNumber;
     private Integer renewalDay;
+    private Integer reservationCancellationDay;
+    private Integer numberReservationPossible;
 }

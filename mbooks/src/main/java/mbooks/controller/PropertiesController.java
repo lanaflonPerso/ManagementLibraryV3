@@ -26,6 +26,16 @@ public class PropertiesController  {
         return appPropertiesConfig.getRenewalDay();
 
     }
+    @GetMapping("/reservationCancellationDay")
+    public Integer reservationCancellationDay(){
+        return appPropertiesConfig.getReservationCancellationDay();
+
+    }
+    @GetMapping("/numberReservationPossible")
+    public Integer numberReservationPossible(){
+        return appPropertiesConfig.getNumberReservationPossible();
+
+    }
 
 
 }

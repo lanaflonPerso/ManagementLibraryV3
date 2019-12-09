@@ -25,7 +25,7 @@ public class Reservation {
     private Long idUserCreate;
 
     @NonNull
-    private Long idUserModif;
+    private Long idUserUpdate;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

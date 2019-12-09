@@ -12,15 +12,20 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Entity
 public class BooksReservation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-   @Id
-   private Long id;
+    @OneToOne
+    @JoinColumn(name="id_book", referencedColumnName="id",unique = true)
+    @NonNull
+    private  Books books;
 
     @NonNull
-    private Long number ;
+    private Integer number ;
 
     @NonNull
-    private Long possible;
+    private Integer possible;
 
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")

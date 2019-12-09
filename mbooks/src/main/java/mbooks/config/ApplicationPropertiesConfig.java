@@ -18,4 +18,7 @@ public class ApplicationPropertiesConfig {
     private Integer renewalDay;
     private Integer reservationCancellationDay;
     private Integer numberReservationPossible;
+    private Long reservationInprogress;
+    private Long reservationCanceled;
+    private Long reservationCompleted;
 }

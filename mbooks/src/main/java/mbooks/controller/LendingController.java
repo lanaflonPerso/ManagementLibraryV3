@@ -47,6 +47,13 @@ public class LendingController   {
         return lendingList;
     }
 
+    @GetMapping("/isRenawal/{id}")
+    public boolean isRenawal(@PathVariable Long id){
+
+        Lending lending = lendingService.find( id );
+        return lendingService.isRenewable( lending );
+    }
+
     @GetMapping("/book/{id}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public List<Lending> list(@PathVariable String id){

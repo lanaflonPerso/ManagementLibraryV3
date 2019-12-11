@@ -38,4 +38,7 @@ public interface ILendingProxy {
     @DeleteMapping("/{id}")
     boolean delete(@PathVariable("id") Long id);
 
+    @GetMapping("/isRenawal/{id}")
+    boolean isRenawal(@PathVariable("id") Long id);
+
 }

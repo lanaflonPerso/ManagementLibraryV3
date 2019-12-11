@@ -40,6 +40,8 @@ public class BooksFunction {
 
     public boolean isOutOfTime(LendingBean lending){return lendingService.isOutOfTime( lending );}
 
+    public boolean isRenewable(LendingBean lending){return lendingService.isRenewable( lending ) ; }
+
     public boolean isReturn(LendingBean lending){return lendingService.isReturn( lending);}
 
     public String getDate(Date date){return simpleDate.getDate( date ); }

@@ -69,10 +69,14 @@ public class LendingController  {
     public String renawal(@PathVariable("id")Long id, Model model){
 
         LendingBean lendingBean = lendingService.find( id );
+
         model.addAttribute("id",id);
         model.addAttribute("title", lendingBean.getBook().getTitle() );
         model.addAttribute("endDate",lendingService.renewalDate( lendingBean.getEndDate() ) );
-        return "books/lending/renewal-lending";
+        if (lendingService.isRenewable( lendingBean ) )
+            return "books/lending/renewal-lending";
+        else
+            return "books/lending/renewal-lending-out";
     }
 
     @GetMapping("/renewal/yes/{id}")
